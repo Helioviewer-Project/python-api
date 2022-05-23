@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+
 from setuptools import setup
 
 VERSION_TEMPLATE = """
@@ -14,7 +15,5 @@ except Exception:
 """.lstrip()
 
 setup(
-    use_scm_version={'write_to': os.path.join('hvpy', 'version.py'),
-                     'write_to_template': VERSION_TEMPLATE},
-
+    use_scm_version={"write_to": os.path.join("hvpy", "version.py"), "write_to_template": VERSION_TEMPLATE},
 )
