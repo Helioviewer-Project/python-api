@@ -135,3 +135,4 @@ dmypy.json
 # Verison file is created at install, not to be commited.
 version.py
 docs/api/
+.DS_Store
