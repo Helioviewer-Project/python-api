@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# vscode
+.vscode
+.history
+
+# Verison file is created at install, not to be commited.
+version.py
+docs/api/
