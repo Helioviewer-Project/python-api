@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 class InputParameters(BaseModel):
     date: datetime
     sourceId: int
-    jpip: Optional[bool] = Field(False, alias="jpip")
+    jpip: Optional[bool] = False
     Json: Optional[bool] = Field(False, alias="json")
 
 
@@ -71,10 +71,6 @@ if __name__ == "__main__":
     URL = "https://api.helioviewer.org/v2/getJP2Image/"
     DATE = datetime(2022, 1, 1, 23, 59, 59)
 
-    input_parameters = {"date": DATE, "sourceId": 14}
+    input_parameters = {"date": DATE, "sourceId": 14, "jpip": True}
 
-    r = execute_api_call(url=URL, input_parameters=input_parameters, output_parameters="binary")
-
-    # Save the image to a file
-    with open("test.jp2", "wb") as f:
-        f.write(r)
+    r = execute_api_call(url=URL, input_parameters=input_parameters, output_parameters="url")
