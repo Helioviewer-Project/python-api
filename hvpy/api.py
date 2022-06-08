@@ -22,6 +22,7 @@ class InputParameters(BaseModel):
         return d
 
 
+
 def parse_response(response: requests.Response, output_parameters: str):
     """
     _summary_
@@ -82,8 +83,4 @@ if __name__ == "__main__":
 
     input_parameters = {"date": DATE, "sourceId": 14, 'json': True, 'jpip': True}
 
-    r = execute_api_call(url=URL, input_parameters=input_parameters, output_parameters="binary")
-
-    # Save the image to a file
-    with open("test.jp2", "wb") as f:
-        f.write(r)
+    r = execute_api_call(url=URL, input_parameters=input_parameters, output_parameters="url")
