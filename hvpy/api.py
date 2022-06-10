@@ -1,44 +1,12 @@
-__all__ = ["fake_api_call"]
-
 from datetime import datetime
-from typing import Optional
+from api_groups.jpeg2000.getJp2Image import getJP2ImageInputParameters as InputParameters
 import requests
-from pydantic import BaseModel, Field
 
 
-class InputParameters(BaseModel):
-    date: datetime
-    sourceId: int
-    jpip: Optional[bool] = Field(False)
-    Json: Optional[bool] = Field(False, alias='json')
-
-    def dict(self):
-        d = super().dict()
-        # Pydantic doesn't allow using lower case 'json' as a field,
-        # so override it here.
-        if 'Json' in d:
-            d['json'] = d['Json']
-            del d['Json']
-        return d
-
-
-
+# create `io.py` and add an enum class OutputType to handle the different output_parameters
 def parse_response(response: requests.Response, output_parameters: str):
-    """
-    _summary_
 
-    Parameters
-    ----------
-    response: ?
-        _description_
-    output_parameters: ?
-        _description_
-
-    Returns
-    -------
-    _type_
-        _description_
-    """
+    # Once you have the OutputType class, let's change these to OutputType.Raw, OutputType.String, and OutputType.Json
     if output_parameters == "binary":
         return response.content
     elif output_parameters == "url":
@@ -48,27 +16,8 @@ def parse_response(response: requests.Response, output_parameters: str):
 
 
 def execute_api_call(url: str, input_parameters: dict, output_parameters: str):
-    """
-    _summary_
 
-    Parameters
-    ----------
-    url: str
-        _description_
-    input_parameters: dict
-        _description_
-    output_parameters: ?
-        _description_
-
-    Returns
-    -------
-    _type_
-        _description_
-    """
-    params = InputParameters(**input_parameters)
-    params.date = params.date.isoformat() + "Z"
-
-    response = requests.get(url, params=params.dict())
+    response = requests.get(url, params=input_parameters())
     # check if we have a valid response
     if response.status_code != 200:
         raise Exception(f"API call failed with status code {response.status_code}")
@@ -76,11 +25,13 @@ def execute_api_call(url: str, input_parameters: dict, output_parameters: str):
     return parse_response(response, output_parameters)
 
 
+# This should be in unit tests
 if __name__ == "__main__":
 
     URL = "https://api.helioviewer.org/v2/getJP2Image/"
     DATE = datetime(2022, 1, 1, 23, 59, 59)
 
-    input_parameters = {"date": DATE, "sourceId": 14, 'json': True, 'jpip': True}
+    input_parameters = InputParameters(date=DATE, sourceId=1)
+    input_parameters.date = input_parameters.date.isoformat() + "Z"
 
-    r = execute_api_call(url=URL, input_parameters=input_parameters, output_parameters="url")
+    r = execute_api_call(url=URL, input_parameters=input_parameters.dict(), output_parameters="url")
