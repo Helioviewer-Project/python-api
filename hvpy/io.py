@@ -1,6 +1,4 @@
-# Add an enum class to handle different output_parameters
-# OutputType.Raw, OutputType.String, and OutputType.Json
-# Add a function to handle output_parameters
+from enum import Enum
 from pydantic import BaseModel
 
 
@@ -15,4 +13,12 @@ class HvpyParameters(BaseModel):
         return d
 
     def get_output_type(self):
+        # For now just return the raw output
         return OutputType.Raw
+
+
+class OutputType(Enum):
+    # temporary strings, untill meeting with the team
+    Raw = "binary"
+    String = "string"
+    Json = "json"
