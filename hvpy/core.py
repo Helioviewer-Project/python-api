@@ -19,4 +19,4 @@ def execute_api_call(url: str, input_parameters: dict, output_parameters: Output
     if response.status_code != 200:
         raise Exception(f"API call failed with status code {response.status_code}")
 
-    return parse_response(response, output_parameters)
+    return parse_response(response, input_parameters.get_output_type())
