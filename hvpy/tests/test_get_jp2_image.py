@@ -1,8 +1,8 @@
-from hvpy.io import BASE_URL
 from datetime import datetime
+
 from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
-from hvpy.io import OutputType
 from hvpy.core import execute_api_call
+from hvpy.io import BASE_URL
 
 URL = BASE_URL + "getJP2Image/"
 
@@ -14,7 +14,6 @@ def test_get_jp2_image():
     input = {"date": DATE, "sourceId": 14}
     input = getJP2ImageInputParameters(**input)
 
-    output = OutputType.String
-    r = execute_api_call(url=URL, input_parameters=input.dict(), output_type=output)
+    r = execute_api_call(url=URL, input_parameters=input)
 
     assert isinstance(r, str)

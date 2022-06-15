@@ -1,4 +1,5 @@
 from enum import Enum, auto
+
 from pydantic import BaseModel
 
 BASE_URL = "https://api.helioviewer.org/v2/"
@@ -15,8 +16,8 @@ class HvpyParameters(BaseModel):
         return d
 
     def get_output_type(self):
-        # For now just return the raw output
-        return OutputType.Raw
+        # For now just return the String output
+        return OutputType.String
 
 
 class OutputType(Enum):
