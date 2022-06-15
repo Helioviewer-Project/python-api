@@ -12,7 +12,7 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
         return response.json()
 
 
-def execute_api_call(url: str, input_parameters: dict, output_parameters: OutputType):
+def execute_api_call(url: str, input_parameters: HvpyParameters, output_parameters: OutputType):
 
     response = requests.get(url, params=input_parameters())
     # check if we have a valid response
