@@ -1,6 +1,8 @@
 from enum import Enum
 from pydantic import BaseModel
 
+BASE_URL = "https://api.helioviewer.org/v2/"
+
 
 class HvpyParameters(BaseModel):
     def dict(self):
@@ -18,7 +20,6 @@ class HvpyParameters(BaseModel):
 
 
 class OutputType(Enum):
-    # temporary strings, untill meeting with the team
-    Raw = "binary"
-    String = "string"
-    Json = "json"
+    Raw = 1
+    String = 2
+    Json = 3

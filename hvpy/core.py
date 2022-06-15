@@ -1,17 +1,19 @@
 import requests
+from hvpy.io import OutputType
 
 
-def parse_response(response: requests.Response, output_parameters: str):
-    # TODO: replace with OutputType class
-    if output_parameters == "binary":
+def parse_response(response: requests.Response, output_parameters: OutputType):
+
+    if output_parameters == OutputType.Raw:
         return response.content
-    elif output_parameters == "url":
-        return response.url
-    elif output_parameters == "json":
+    elif output_parameters == OutputType.String:
+        return str(response.content)
+    elif output_parameters == OutputType.Json:
         return response.json()
 
 
-def execute_api_call(url: str, input_parameters: dict, output_parameters: str):
+def execute_api_call(url: str, input_parameters: dict, output_parameters: OutputType):
+
     response = requests.get(url, params=input_parameters())
     # check if we have a valid response
     if response.status_code != 200:
