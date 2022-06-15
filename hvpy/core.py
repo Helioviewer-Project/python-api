@@ -14,7 +14,7 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
 
 def execute_api_call(url: str, input_parameters: HvpyParameters, output_parameters: OutputType):
 
-    response = requests.get(url, params=input_parameters())
+    response = requests.get(url, params=input_parameters)
     # check if we have a valid response
     if response.status_code != 200:
         raise Exception(f"API call failed with status code {response.status_code}")
