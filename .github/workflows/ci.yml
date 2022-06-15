@@ -69,11 +69,10 @@ jobs:
         contains(github.event.pull_request.labels.*.name, 'Run publish')
       )
     needs: [test]
-    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish.yml@main
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v1
     with:
       test_extras: 'all,tests'
       test_command: 'pytest -p no:warnings --doctest-rst -m "not mpl_image_compare" --pyargs hvpy'
       submodules: false
-      targets: ''
     secrets:
       pypi_token: ${{ secrets.pypi_token }}
