@@ -20,6 +20,6 @@ class HvpyParameters(BaseModel):
 
 
 class OutputType(Enum):
-    Raw = 1
-    String = 2
-    Json = 3
+    Raw = auto()
+    String = auto()
+    Json = auto()
