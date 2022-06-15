@@ -74,9 +74,6 @@ jobs:
       test_extras: 'all,tests'
       test_command: 'pytest -p no:warnings --doctest-rst -m "not mpl_image_compare" --pyargs hvpy'
       submodules: false
-      targets: |
-        - linux
-        - macos
-        - windows
+      targets: ''
     secrets:
       pypi_token: ${{ secrets.pypi_token }}
