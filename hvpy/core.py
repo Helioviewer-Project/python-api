@@ -1,5 +1,5 @@
 import requests
-from hvpy.io import OutputType
+from hvpy.io import HvpyParameters, OutputType
 
 
 def parse_response(response: requests.Response, output_parameters: OutputType):
