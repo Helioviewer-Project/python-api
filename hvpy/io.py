@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, auto
 from pydantic import BaseModel
 
 BASE_URL = "https://api.helioviewer.org/v2/"
