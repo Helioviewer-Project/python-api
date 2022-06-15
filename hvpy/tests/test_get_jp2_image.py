@@ -1,7 +1,8 @@
 from hvpy.io import BASE_URL
 from datetime import datetime
 from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
-from hvpy.io import OutputType, execute_api_call
+from hvpy.io import OutputType
+from hvpy.core import execute_api_call
 
 URL = BASE_URL + "getJP2Image/"
 
