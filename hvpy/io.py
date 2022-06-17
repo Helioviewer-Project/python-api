@@ -19,6 +19,9 @@ class HvpyParameters(BaseModel):
         # For now just return the String output
         return OutputType.String
 
+    def url(self):
+        return BASE_URL + self.__class__.__name__[:-15] + "/"
+
 
 class OutputType(Enum):
     Raw = auto()
