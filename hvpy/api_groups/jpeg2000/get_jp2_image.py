@@ -18,9 +18,9 @@ class getJP2ImageInputParameters(HvpyParameters):
         return v.isoformat() + "Z"
 
     def get_output_type(self):
-        if self.Json == False and self.jpip == False:
-            return OutputType.Raw
-        elif self.Json == True and self.jpip == True:
+        if self.Json == True and self.jpip == True:
             return OutputType.Json
         elif self.Json == False and self.jpip == True:
             return OutputType.String
+        else:
+            return OutputType.Raw

@@ -28,6 +28,14 @@ def test_raw_response():
     assert isinstance(response, bytes)
 
 
+def test_raw_response_with_json():
+    date = datetime(2022, 1, 1, 23, 59, 59)
+    input = {"date": date, "sourceId": 14, "jpip": False, "Json": True}
+    input = getJP2ImageInputParameters(**input)
+    response = execute_api_call(input_parameters=input)
+    assert isinstance(response, bytes)
+
+
 def test_default_response():
     date = datetime(2022, 1, 1, 23, 59, 59)
     input = {"date": date, "sourceId": 14}
