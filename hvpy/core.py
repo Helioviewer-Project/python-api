@@ -15,7 +15,6 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
 
 def execute_api_call(input_parameters: HvpyParameters):
 
-    url = input_parameters.url()
-    response = requests.get(url, params=input_parameters.dict())
+    response = requests.get(input_parameters.url, params=input_parameters.dict())
     if response.raise_for_status() == None:
         return parse_response(response, input_parameters.get_output_type())
