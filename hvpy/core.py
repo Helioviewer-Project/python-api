@@ -8,7 +8,7 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
     if output_parameters == OutputType.Raw:
         return response.content
     elif output_parameters == OutputType.String:
-        return str(response.content)
+        return response.content.decode('utf-8')
     elif output_parameters == OutputType.Json:
         return response.json()
 
