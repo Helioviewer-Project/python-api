@@ -19,7 +19,6 @@ class HvpyParameters(BaseModel):
         # Default output type is raw.
         return OutputType.Raw
 
-    @property
     def url(self):
         return BASE_URL + self.__class__.__name__[:-15] + "/"
 
