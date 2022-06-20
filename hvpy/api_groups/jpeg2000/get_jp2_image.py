@@ -12,7 +12,6 @@ class getJP2ImageInputParameters(HvpyParameters):
     jpip: Optional[bool] = False
     Json: Optional[bool] = False
 
-    # Use validator to convert date to isoformat with suffix 'Z'
     @validator("date")
     def convert_date_to_isoformat(cls, v):
         return v.isoformat() + "Z"

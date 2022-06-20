@@ -5,8 +5,19 @@ from hvpy.io import HvpyParameters, OutputType
 
 def parse_response(response: requests.Response, output_parameters: OutputType):
     """
-    This function parses the response from the API call based on the output
-    type.
+    Parses the response from the API call based on the output type.
+
+    Parameters
+    ----------
+    response : requests.Response
+        The response from the API call.
+    output_parameters : OutputType
+        The output type.
+
+    Returns
+    -------
+    parsed_response : binary, str or json
+        The parsed response.
     """
 
     if output_parameters == OutputType.Raw:
@@ -19,7 +30,16 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
 
 def execute_api_call(input_parameters: HvpyParameters):
     """
-    This function executes the API call and returns a parsed response.
+    Executes the API call and returns a parsed response.
+
+    Parameters
+    ----------
+    input_parameters : HvpyParameters
+        The input parameters.
+
+    Returns
+    -------
+    parsed response returned by parse_response
     """
 
     response = requests.get(input_parameters.url, params=input_parameters.dict())
