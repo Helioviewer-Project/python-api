@@ -16,7 +16,7 @@ def parse_response(response: requests.Response, output_parameters: OutputType):
 
     Returns
     -------
-    parsed_response : binary, str or json
+    binary | str | json
         The parsed response.
     """
 
@@ -39,7 +39,7 @@ def execute_api_call(input_parameters: HvpyParameters):
 
     Returns
     -------
-    parsed response returned by parse_response
+    Parsed response from the API.
     """
 
     response = requests.get(input_parameters.url, params=input_parameters.dict())
