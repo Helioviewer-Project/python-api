@@ -8,11 +8,7 @@ from hvpy.io import HvpyParameters, OutputType
 
 class getJP2ImageInputParameters(HvpyParameters):
     """
-    A class for the input parameters of the getJP2Image API call.
-    ref: https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image
-
-
-    ...
+    Handles the input parameters of the `getJP2Image API <https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__.
 
     Attributes
     ----------
