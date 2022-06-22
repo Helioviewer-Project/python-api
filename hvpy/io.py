@@ -7,16 +7,17 @@ BASE_URL = "https://api.helioviewer.org/v2/"
 
 class HvpyParameters(BaseModel):
     def dict(self):
+        """
+        Pydantic doesn't allow using lowercase 'json' as a field, so we
+        override it.
+        """
         d = super().dict()
-        # Pydantic doesn't allow using lower case 'json' as a field,
-        # so override it here.
         if "Json" in d:
             d["json"] = d["Json"]
             del d["Json"]
         return d
 
     def get_output_type(self):
-        # Default output type is raw.
         return OutputType.Raw
 
     @property
