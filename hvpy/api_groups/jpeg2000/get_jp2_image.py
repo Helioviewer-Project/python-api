@@ -17,7 +17,7 @@ class getJP2ImageInputParameters(HvpyParameters):
     sourceId : int
         Unique image datasource identifier.
     jpip : bool, optional
-        Optionally return a JPIP URI instead of the binary data of the image itself.
+        Returns a JPIP URI instead of the binary data of the image if set to `True`, defaults to `False`.
     Json : bool, optional
         Returns the JSON if set to `True`, defaults to `False`.
 
