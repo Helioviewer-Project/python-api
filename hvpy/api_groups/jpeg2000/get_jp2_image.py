@@ -22,15 +22,6 @@ class getJP2ImageInputParameters(HvpyParameters):
         Returns a JPIP URI instead of the binary data of the image if set to `True`, defaults to `False`.
     Json : bool, optional
         Returns the JSON if set to `True`, defaults to `False`.
-
-
-    Methods
-    -------
-    convert_date_to_isoformat
-        Converts the date from a datetime object to a string in the ISO format.
-
-    get_output_type
-        Returns the output type of the API call.
     """
 
     date: datetime
@@ -40,9 +31,15 @@ class getJP2ImageInputParameters(HvpyParameters):
 
     @validator("date")
     def convert_date_to_isoformat(cls, v):
+        """
+        Converts the date from a datetime object to a string in the ISO format.
+        """
         return v.isoformat() + "Z"
 
     def get_output_type(self):
+        """
+        Returns the output type of the API call.
+        """
         if self.Json == True and self.jpip == True:
             return OutputType.Json
         elif self.Json == False and self.jpip == True:
