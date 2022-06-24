@@ -40,9 +40,9 @@ class getJP2ImageInputParameters(HvpyParameters):
         """
         Returns the output type of the API call.
         """
-        if self.Json == True and self.jpip == True:
+        if self.Json and self.jpip:
             return OutputType.Json
-        elif self.Json == False and self.jpip == True:
+        elif not self.Json and self.jpip:
             return OutputType.String
         else:
             return OutputType.Raw
