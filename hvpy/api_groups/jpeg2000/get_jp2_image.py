@@ -1,4 +1,3 @@
-from typing import Optional
 from datetime import datetime
 
 from pydantic import validator
@@ -26,8 +25,8 @@ class getJP2ImageInputParameters(HvpyParameters):
 
     date: datetime
     sourceId: int
-    jpip: Optional[bool] = False
-    Json: Optional[bool] = False
+    jpip: bool = False
+    Json: bool = False
 
     @validator("date")
     def convert_date_to_isoformat(cls, v):
