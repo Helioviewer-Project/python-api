@@ -51,8 +51,10 @@ def test_default_response():
 
 
 def test_error_handling():
+    error_message = "getJP2ImageInputParameters\ndate\n  field required"
+
     params = {"sourceId": 14, "jpip": True, "json": True}
-    with pytest.raises(ValidationError):
+    with pytest.raises(ValidationError, match=error_message):
         params = getJP2ImageInputParameters(**params)
 
 
