@@ -7,9 +7,5 @@ def test_default_get_output_type_is_raw():
 
 
 def test_url_property():
-    class MockInputParameters(HvpyParameters):
-        jpip: bool
-
-    params = {"jpip": True}
-    params = MockInputParameters(**params)
-    assert params.url == "https://api.helioviewer.org/v2/Mock/"
+    params = HvpyParameters()
+    assert params.url == "https://api.helioviewer.org/v2//"
