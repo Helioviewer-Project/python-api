@@ -2,24 +2,14 @@
 API Reference
 *************
 
-.. automodapi:: hvpy.parameters
-    :inherited-members:
-    :include-all-objects:
+.. automodapi:: hvpy
 
-
-************
-IO Reference
-************
+IO
+==
 
 .. automodapi:: hvpy.io
-    :inherited-members:
-    :include-all-objects:
 
-
-**************
-core Reference
-**************
+core
+====
 
 .. automodapi:: hvpy.core
-    :inherited-members:
-    :include-all-objects:
