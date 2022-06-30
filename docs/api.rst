@@ -9,3 +9,4 @@ API Reference
 .. automodapi:: hvpy.io
 
 .. automodapi:: hvpy.parameters
+   :allowed-package-names: hvpy.api_groups

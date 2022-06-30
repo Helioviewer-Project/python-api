@@ -7,9 +7,7 @@ from hvpy.io import HvpyParameters, OutputType
 
 class getJP2ImageInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the `getJP2Image API.
-
-    <https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__.
+    Handles the input parameters of the getJP2Image API.
 
     Attributes
     ----------
@@ -21,6 +19,10 @@ class getJP2ImageInputParameters(HvpyParameters):
         Returns a JPIP URI instead of the binary data of the image if set to `True`, defaults to `False`.
     json : bool, optional
         Returns the JSON if set to `True`, defaults to `False`.
+
+    References
+    ----------
+    * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__
     """
 
     date: datetime
