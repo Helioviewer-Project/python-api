@@ -18,4 +18,3 @@ parameters
 ==========
 
 .. automodapi:: hvpy.parameters
-
