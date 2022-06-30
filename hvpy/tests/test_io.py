@@ -3,7 +3,7 @@ from hvpy.io import HvpyParameters, OutputType
 
 def test_default_get_output_type_is_raw():
     params = HvpyParameters()
-    assert params.get_output_type() == OutputType.RAW == 1
+    assert params.get_output_type() == OutputType.RAW
 
 
 def test_url_property():

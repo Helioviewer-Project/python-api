@@ -1,5 +1,5 @@
-from enum import IntEnum, auto
-from typing import Any, Dict
+from enum import Enum, auto
+from typing import Any, Dict, Literal
 
 from pydantic.main import BaseModel
 
@@ -8,7 +8,7 @@ __all__ = ["HvpyParameters", "OutputType"]
 BASE_URL = "https://api.helioviewer.org/v2/"
 
 
-class OutputType(IntEnum):
+class OutputType(Enum):
     RAW = auto()
     """
     Defines the RAW output type.
@@ -36,7 +36,7 @@ class HvpyParameters(BaseModel):
             del d["Json"]
         return d
 
-    def get_output_type(self) -> int:
+    def get_output_type(self) -> Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]:
         """
         Works out the return type of the API call.
 

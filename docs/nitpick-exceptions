@@ -2,3 +2,4 @@ py:class optional
 py:class pydantic.main.BaseModel
 py:class pydantic.utils.Representation
 py:class rtype
+py:obj typing.Literal[<OutputType.RAW: 1>, <OutputType.JSON: 3>, <OutputType.STRING: 2>]
