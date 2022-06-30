@@ -4,6 +4,8 @@ import requests
 
 from hvpy.io import HvpyParameters, OutputType
 
+__all__ = ["execute_api_call", "parse_response"]
+
 
 def parse_response(
     response: requests.Response, output_type: Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]
