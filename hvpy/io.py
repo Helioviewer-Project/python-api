@@ -3,6 +3,7 @@ from enum import Enum, auto
 from pydantic import BaseModel
 
 BASE_URL = "https://api.helioviewer.org/v2/"
+__all__ = ["HvpyParameters", "OutputType"]
 
 
 class HvpyParameters(BaseModel):
