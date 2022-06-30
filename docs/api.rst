@@ -3,5 +3,9 @@ API Reference
 *************
 
 .. automodapi:: hvpy
-    :inherited-members:
-    :include-all-objects:
+
+.. automodapi:: hvpy.core
+
+.. automodapi:: hvpy.io
+
+.. automodapi:: hvpy.parameters

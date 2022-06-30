@@ -2,6 +2,8 @@ from enum import Enum, auto
 
 from pydantic import BaseModel
 
+__all__ = ["HvpyParameters", "OutputType"]
+
 BASE_URL = "https://api.helioviewer.org/v2/"
 
 
