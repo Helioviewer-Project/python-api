@@ -37,3 +37,4 @@ repos:
     rev: 'v0.961'
     hooks:
     - id: mypy
+      additional_dependencies: [types-requests==2.28.0]
