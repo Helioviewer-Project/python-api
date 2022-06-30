@@ -18,3 +18,5 @@ parameters
 ==========
 
 .. automodapi:: hvpy.parameters
+    :inherited-members:
+    :include-all-objects:
