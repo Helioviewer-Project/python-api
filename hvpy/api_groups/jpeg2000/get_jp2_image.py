@@ -1,4 +1,3 @@
-from typing import Literal
 from datetime import datetime
 
 from pydantic import Field, validator
@@ -38,7 +37,7 @@ class getJP2ImageInputParameters(HvpyParameters):
         """
         return v.isoformat() + "Z"
 
-    def get_output_type(self) -> Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]:
+    def get_output_type(self) -> OutputType:
         """
         Returns the output type of the API call.
         """

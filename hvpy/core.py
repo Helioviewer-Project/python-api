@@ -1,4 +1,4 @@
-from typing import Any, Dict, Union, Literal
+from typing import Any, Dict, Union
 
 import requests
 
@@ -7,9 +7,7 @@ from hvpy.io import HvpyParameters, OutputType
 __all__ = ["execute_api_call", "parse_response"]
 
 
-def parse_response(
-    response: requests.Response, output_type: Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]
-) -> Union[bytes, str, Dict[str, Any]]:
+def parse_response(response: requests.Response, output_type: OutputType) -> Union[bytes, str, Dict[str, Any]]:
     """
     Parses the response from the API call based on the output type.
 
@@ -17,7 +15,7 @@ def parse_response(
     ----------
     response : requests.Response
         The response from the API call.
-    output_type : Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]
+    output_type : hvpy.io.OutputType
         The output type.
 
     Returns

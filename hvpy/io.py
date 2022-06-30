@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from typing import Any, Dict, Literal
+from typing import Any, Dict
 
 from pydantic.main import BaseModel
 
@@ -36,15 +36,15 @@ class HvpyParameters(BaseModel):
             del d["Json"]
         return d
 
-    def get_output_type(self) -> Literal[OutputType.RAW, OutputType.JSON, OutputType.STRING]:
+    def get_output_type(self) -> OutputType:
         """
         Works out the return type of the API call.
 
-        This by default is RAW (1), subclasses should redefine this.
+        This by default is RAW, subclasses should redefine this.
 
         Returns
         -------
-        int
+        hvpy.io.OutputType
             Output type based on the model.
         """
         return OutputType.RAW
