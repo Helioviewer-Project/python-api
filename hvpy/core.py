@@ -18,7 +18,7 @@ def parse_response(response: requests.Response, output_parameters: OutputType) -
 
     Returns
     -------
-    `bytes` | `str` | `dict`
+    {`bytes` | `str` | `dict`}
         The parsed response.
     """
     if output_parameters == OutputType.Raw:
@@ -42,7 +42,7 @@ def execute_api_call(input_parameters: HvpyParameters) -> Union[bytes, str, dict
 
     Returns
     -------
-    `bytes` | `str` | `dict`
+    {`bytes` | `str` | `dict`}
         Parsed response from the API.
     """
     response = requests.get(input_parameters.url, params=input_parameters.dict())
