@@ -1,0 +1,3 @@
+py:class pydantic.main.BaseModel
+py:class pydantic.utils.Representation
+py:class rtype

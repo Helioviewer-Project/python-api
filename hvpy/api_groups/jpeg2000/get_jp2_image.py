@@ -1,4 +1,3 @@
-from typing import Any, Literal
 from datetime import datetime
 
 from pydantic import Field, validator
@@ -14,13 +13,13 @@ class getJP2ImageInputParameters(HvpyParameters):
 
     Attributes
     ----------
-    date : `datetime.datetime`
+    date : datetime.datetime
         Desired date/time of the JP2 image.
-    sourceId : `int`
+    sourceId : int
         Unique image datasource identifier.
-    jpip : `bool`, optional
+    jpip : bool, optional
         Returns a JPIP URI instead of the binary data of the image if set to `True`, defaults to `False`.
-    json : `bool`, optional
+    json : bool, optional
         Returns the JSON if set to `True`, defaults to `False`.
     """
 
@@ -30,19 +29,19 @@ class getJP2ImageInputParameters(HvpyParameters):
     Json: bool = Field(False, alias="json")
 
     @validator("date")
-    def convert_date_to_isoformat(cls, v) -> Any:
+    def convert_date_to_isoformat(cls, v) -> str:
         """
         Converts the date from a datetime object to a string in the ISO format.
         """
         return v.isoformat() + "Z"
 
-    def get_output_type(self) -> Literal[OutputType.Raw, OutputType.String, OutputType.Json]:
+    def get_output_type(self) -> int:
         """
         Returns the output type of the API call.
         """
         if self.Json and self.jpip:
-            return OutputType.Json
+            return OutputType.JSON
         elif not self.Json and self.jpip:
-            return OutputType.String
+            return OutputType.STRING
         else:
-            return OutputType.Raw
+            return OutputType.RAW
