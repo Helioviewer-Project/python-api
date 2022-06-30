@@ -13,3 +13,9 @@ core
 ====
 
 .. automodapi:: hvpy.core
+
+parameters
+==========
+
+.. automodapi:: hvpy.parameters
+
