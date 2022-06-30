@@ -35,6 +35,7 @@ jobs:
       libraries: |
         apt:
           - libopenjp2-7
+          - graphviz
       envs: |
         - macos: py38
         - windows: py39
