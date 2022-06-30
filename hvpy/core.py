@@ -13,7 +13,7 @@ def parse_response(response: requests.Response, output_type: int) -> Union[bytes
     ----------
     response : requests.Response
         The response from the API call.
-    output_type : int
+    output_type : OutputType
         The output type.
 
     Returns
