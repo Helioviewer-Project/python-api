@@ -40,7 +40,6 @@ jobs:
         - macos: py38
         - windows: py39
         - linux: build_docs
-
   publish:
     # Build wheels when pushing to any branch except main
     # publish.yml will only publish if tagged ^v.*
