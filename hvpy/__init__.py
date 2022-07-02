@@ -1,2 +1,2 @@
-from .facade import getJP2Image
+from .facade import * # NOQA
 from .version import __version__
