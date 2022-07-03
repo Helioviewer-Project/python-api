@@ -8,11 +8,11 @@ __all__ = ["getJP2Image"]
 
 def _copy_docstring(input_class):
     def decorator(func):
-        docstring = input_class.__doc__.split("\n")[1:]
-        docstring2 = func.__doc__.split("\n")[1:]
-        docstring[0] = docstring2[0]
-        docstring = "\n".join(docstring)
-        func.__doc__ = docstring
+        input_class_docstr = input_class.__doc__.split("\n")[1:]
+        func_docstr = func.__doc__.split("\n")[1:]
+        input_class_docstr[0] = func_docstr[0]
+        input_class_docstr = "\n".join(input_class_docstr)
+        func.__doc__ = input_class_docstr
         return func
 
     return decorator
@@ -20,14 +20,13 @@ def _copy_docstring(input_class):
 
 @_copy_docstring(getJP2ImageInputParameters)
 def getJP2Image(
-    *,
     date: datetime,
     sourceId: int,
     jpip: bool = False,
     json: bool = False,
 ):
     """
-    Get a JP2 image from the helioviewer.org API.
+    Retrieve a JP2000 image from the helioviewer.org API.
     """
     params = locals()
     params = getJP2ImageInputParameters(**params)
