@@ -28,6 +28,5 @@ def getJP2Image(
     """
     Retrieve a JP2000 image from the helioviewer.org API.
     """
-    params = locals()
-    params = getJP2ImageInputParameters(**params)
+    params = getJP2ImageInputParameters(**locals())
     return execute_api_call(input_parameters=params)
