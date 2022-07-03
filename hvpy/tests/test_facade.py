@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import pytest
+
 from hvpy import getJP2Image
 
 
@@ -19,3 +21,14 @@ def test_getJP2Image():
 
     response = getJP2Image(date=date_obj, sourceId=1, jpip=False, json=True)
     assert isinstance(response, bytes)
+
+
+def test_invalid_inputs():
+    with pytest.raises(TypeError, match="missing 1 required keyword-only argument: 'date'"):
+        getJP2Image(sourceId=1, json=True)
+
+    with pytest.raises(TypeError, match="missing 1 required keyword-only argument: 'sourceId'"):
+        getJP2Image(date=datetime(2020, 1, 1), json=True)
+
+    with pytest.raises(TypeError, match="missing 2 required keyword-only arguments: 'date' and 'sourceId'"):
+        getJP2Image(json=True)

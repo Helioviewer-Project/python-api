@@ -6,15 +6,19 @@ from hvpy.parameters import getJP2ImageInputParameters
 __all__ = ["getJP2Image"]
 
 
-def copy_docstring(input_class):
+def _copy_docstring(input_class):
     def decorator(func):
-        func.__doc__ = func.__doc__ + input_class.__doc__
+        docstring = input_class.__doc__.split("\n")[1:]
+        docstring2 = func.__doc__.split("\n")[1:]
+        docstring[0] = docstring2[0]
+        docstring = "\n".join(docstring)
+        func.__doc__ = docstring
         return func
 
     return decorator
 
 
-@copy_docstring(getJP2ImageInputParameters)
+@_copy_docstring(getJP2ImageInputParameters)
 def getJP2Image(
     *,
     date: datetime,
