@@ -26,7 +26,4 @@ class getJP2HeaderInputParameters(HvpyParameters):
         """
         Returns the output type of the API call.
         """
-        if self.callback is not None:
-            return OutputType.STRING
-        else:
-            return OutputType.RAW
+        return OutputType.STRING

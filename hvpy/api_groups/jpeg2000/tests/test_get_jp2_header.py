@@ -8,7 +8,7 @@ from hvpy.core import execute_api_call
 def test_getJP2HeaderInputParameters():
     params = getJP2HeaderInputParameters(id=9838343)
     response = execute_api_call(input_parameters=params)
-    assert isinstance(response, bytes)
+    assert isinstance(response, str)
 
     params = getJP2HeaderInputParameters(id=9838343, callback="my_callback")
     response = execute_api_call(input_parameters=params)
@@ -29,4 +29,4 @@ def test_url_property():
 def test_unknown_parameters():
     params = getJP2HeaderInputParameters(id=9838343, should_reject_this=True)
     response = execute_api_call(input_parameters=params)
-    assert isinstance(response, bytes)
+    assert isinstance(response, str)
