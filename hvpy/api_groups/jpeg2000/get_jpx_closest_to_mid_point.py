@@ -1,4 +1,3 @@
-import time
 from typing import List
 from datetime import datetime
 
@@ -44,7 +43,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
         Converts date from datetime object to Unix timestamps format separated
         with commas.
         """
-        return ",".join([str(int(time.mktime(dt.timetuple()))) for dt in v])
+        return ",".join([str(int(datetime.timestamp(d))) for d in v])
 
     def get_output_type(self) -> OutputType:
         """
