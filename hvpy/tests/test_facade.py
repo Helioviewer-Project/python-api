@@ -23,7 +23,7 @@ def test_getJP2Image():
     assert isinstance(response, bytes)
 
 
-def test_invalid_inputs():
+def test_getJP2Image_invalid_inputs():
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'date'"):
         getJP2Image(sourceId=1, json=True)
 
