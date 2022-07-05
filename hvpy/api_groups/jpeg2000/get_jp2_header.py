@@ -1,4 +1,4 @@
-from pydantic import Field
+from typing import Optional
 
 from hvpy.io import HvpyParameters, OutputType
 
@@ -20,7 +20,7 @@ class getJP2HeaderInputParameters(HvpyParameters):
     """
 
     id: int
-    callback: str = Field(default=None)
+    callback: Optional[str] = None
 
     def get_output_type(self) -> OutputType:
         """
