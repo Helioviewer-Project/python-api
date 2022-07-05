@@ -29,7 +29,8 @@ def getJP2Image(
     """
     Retrieve a JP2000 image from the helioviewer.org API.
 
-    Examples:
+    Examples
+    --------
         >>> from hvpy import getJP2Image
         >>> getJP2Image(date=datetime(2019,1,1), sourceId=1, jpip=True)
         'jpip://helioviewer.org:8090/EIT/2013/08/07/195/2013_08_07__01_13_50_146__SOHO_EIT_EIT_195.jp2'
