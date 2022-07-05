@@ -10,37 +10,37 @@ startTime = datetime(2014, 1, 1, 0, 0, 0)
 endTime = datetime(2014, 1, 1, 0, 45, 0)
 
 
-@pytest.mark.parametrize(
-    "startTime, endTime, sourceId, linked, verbose, jpip, candence",
-    [
-        (startTime, endTime, 14, False, False, False, None),
-        (startTime, endTime, 14, False, False, True, None),
-        (startTime, endTime, 14, False, True, True, None),
-        (startTime, endTime, 14, False, True, False, None),
-    ],
-)
-def test_getJPXInputParameters(startTime, endTime, sourceId, linked, verbose, jpip, candence):
+def test_raw_response():
     params = getJPXInputParameters(
-        startTime=startTime,
-        endTime=endTime,
-        sourceId=sourceId,
-        linked=linked,
-        verbose=verbose,
-        jpip=jpip,
-        cadence=candence,
+        startTime=startTime, endTime=endTime, sourceId=14, linked=False, verbose=False, jpip=False, cadence=None
     )
-    response = execute_api_call(input_parameters=params)
-    if not jpip and not verbose:
-        assert isinstance(response, bytes)
-    elif jpip and not verbose:
-        assert isinstance(response, str)
-        assert response.startswith("jpip://")
-    elif jpip and verbose:
-        assert isinstance(response, dict)
-        assert response["uri"].startswith("jpip://")
-    elif not jpip and verbose:
-        assert isinstance(response, dict)
-        assert response["uri"].startswith("https://")
+    response = execute_api_call(params)
+    assert isinstance(response, bytes)
+
+
+def test_str_response():
+    params = getJPXInputParameters(
+        startTime=startTime, endTime=endTime, sourceId=14, linked=False, verbose=False, jpip=True, cadence=None
+    )
+    response = execute_api_call(params)
+    assert isinstance(response, str)
+    assert response.startswith("jpip://")
+
+
+def test_json_response():
+    params = getJPXInputParameters(
+        startTime=startTime, endTime=endTime, sourceId=14, linked=False, verbose=True, jpip=True, cadence=None
+    )
+    response = execute_api_call(params)
+    assert isinstance(response, dict)
+    assert response["uri"].startswith("jpip://")
+
+    params = getJPXInputParameters(
+        startTime=startTime, endTime=endTime, sourceId=14, linked=False, verbose=True, jpip=False, cadence=None
+    )
+    response = execute_api_call(params)
+    assert isinstance(response, dict)
+    assert response["uri"].startswith("https://")
 
 
 def test_error_handling():
