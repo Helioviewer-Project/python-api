@@ -57,18 +57,3 @@ def test_error_handling():
 def test_url_property():
     params = getJPXInputParameters(startTime=startTime, endTime=endTime, sourceId=14)
     assert params.url == "https://api.helioviewer.org/v2/getJPX/"
-
-
-def test_unknown_parameters():
-    params = getJPXInputParameters(
-        startTime=startTime,
-        endTime=endTime,
-        sourceId=14,
-        linked=False,
-        verbose=False,
-        jpip=False,
-        cadence=None,
-        unknown_parameter="unknown",
-    )
-    response = execute_api_call(input_parameters=params)
-    assert isinstance(response, bytes)

@@ -9,6 +9,8 @@ def test_getJP2HeaderInputParameters():
     params = getJP2HeaderInputParameters(id=9838343)
     response = execute_api_call(input_parameters=params)
     assert isinstance(response, str)
+    assert response.startswith("<?xml")
+    assert response.endswith("</meta>")
 
     params = getJP2HeaderInputParameters(id=9838343, callback="my_callback")
     response = execute_api_call(input_parameters=params)
@@ -24,9 +26,3 @@ def test_error_handling():
 def test_url_property():
     params = getJP2HeaderInputParameters(id=9838343)
     assert params.url == "https://api.helioviewer.org/v2/getJP2Header/"
-
-
-def test_unknown_parameters():
-    params = getJP2HeaderInputParameters(id=9838343, should_reject_this=True)
-    response = execute_api_call(input_parameters=params)
-    assert isinstance(response, str)

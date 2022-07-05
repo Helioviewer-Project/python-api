@@ -11,9 +11,3 @@ def test_getStatusInputParameters():
 def test_url_property():
     params = getStatusInputParameters()
     assert params.url == "https://api.helioviewer.org/v2/getStatus/"
-
-
-def test_unknown_parameters():
-    params = getStatusInputParameters(should_reject_this=True)
-    response = execute_api_call(input_parameters=params)
-    assert isinstance(response, dict)
