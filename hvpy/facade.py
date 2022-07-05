@@ -8,11 +8,11 @@ __all__ = ["getJP2Image"]
 
 def _copy_docstring(input_class):
     def decorator(func):
-        input_class_docstr = input_class.__doc__.split("\n")[1:]
-        func_docstr = func.__doc__.split("\n")[1:]
-        input_class_docstr[0] = func_docstr[0]
-        input_class_docstr = "\n".join(input_class_docstr)
-        func.__doc__ = input_class_docstr
+        func.__doc__ = (
+            "\n".join(func.__doc__.split("\n")[1:3])
+            + "\n".join(input_class.__doc__.split("\n")[2:])
+            + "\n".join(func.__doc__.split("\n")[2:])
+        )
         return func
 
     return decorator
@@ -27,6 +27,11 @@ def getJP2Image(
 ):
     """
     Retrieve a JP2000 image from the helioviewer.org API.
+
+    Example:
+
+        >>> getJP2Image(date=datetime(2019,1,1), sourceId=1, jpip=True)
+        'jpip://helioviewer.org:8090/EIT/2013/08/07/195/2013_08_07__01_13_50_146__SOHO_EIT_EIT_195.jp2'
     """
     params = getJP2ImageInputParameters(date=date, sourceId=sourceId, jpip=jpip, json=json)
     return execute_api_call(input_parameters=params)
