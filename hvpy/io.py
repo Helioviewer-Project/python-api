@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Any, Dict
 
-from pydantic.main import BaseModel
+from pydantic import BaseModel, validator
 
 __all__ = ["HvpyParameters", "OutputType"]
 
@@ -56,6 +56,7 @@ class HvpyParameters(BaseModel):
         """
         return BASE_URL + self.__class__.__name__[:-15] + "/"
 
+    @validator("date", "startTime", "endTime", check_fields=False)
     def convert_date_to_isoformat(cls, v) -> str:
         """
         Converts the date from a datetime object to a string in the ISO format.

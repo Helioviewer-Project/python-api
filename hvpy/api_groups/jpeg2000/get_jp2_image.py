@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import Field, validator
+from pydantic import Field
 
 from hvpy.io import HvpyParameters, OutputType
 
@@ -29,10 +29,6 @@ class getJP2ImageInputParameters(HvpyParameters):
     sourceId: int
     jpip: bool = False
     Json: bool = Field(False, alias="json")
-
-    @validator("date")
-    def convert_date_to_isoformat(cls, v) -> str:
-        return super().convert_date_to_isoformat(v)
 
     def get_output_type(self) -> OutputType:
         """
