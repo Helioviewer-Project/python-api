@@ -39,6 +39,16 @@ def test_error_handling():
         getJP2Image(sourceId=14, jpip=True, json=True)
 
 
+def test_unknown_parameters():
+    date_obj = datetime(2022, 1, 1, 23, 59, 59)
+    params = {"date": date_obj, "sourceId": 14, "jpip": True, "json": True, "should_reject_this": True}
+    params = getJP2ImageInputParameters(**params)
+    response = execute_api_call(input_parameters=params)
+    assert isinstance(response, dict)
+    assert "uri" in response
+    assert response["uri"].startswith("jpip://")
+
+
 def test_url_property():
     date_obj = datetime(2022, 1, 1, 23, 59, 59)
     params = {"date": date_obj, "sourceId": 14, "jpip": True, "json": True}
