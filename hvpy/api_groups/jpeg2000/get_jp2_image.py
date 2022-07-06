@@ -9,6 +9,7 @@ class getJP2ImageInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJP2Image API.
 
+    {{Shared}}
     Attributes
     ----------
     date : datetime.datetime
@@ -23,6 +24,7 @@ class getJP2ImageInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__
+    {{End Shared}}
     """
 
     date: datetime

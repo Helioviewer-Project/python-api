@@ -7,19 +7,16 @@ from hvpy.parameters import *
 __all__ = ["getJP2Image"]
 
 
-def _copy_docstring(input_class) -> Callable[[Any], Any]:
+def _update_docstring(input_class) -> Callable[[Any], Any]:
     def decorator(func):
-        func.__doc__ = (
-            "\n".join(func.__doc__.split("\n")[1:3])
-            + "\n".join(input_class.__doc__.split("\n")[2:])
-            + "\n".join(func.__doc__.split("\n")[2:])
-        )
+        docstring = input_class.__doc__.split("{{Shared}}", 1)[1].split("{{End Shared}}", 1)[0]
+        func.__doc__ = func.__doc__.replace("{{Insert Shared}}", docstring)
         return func
 
     return decorator
 
 
-@_copy_docstring(getJP2ImageInputParameters)
+@_update_docstring(getJP2ImageInputParameters)
 def getJP2Image(
     date: datetime,
     sourceId: int,
@@ -28,6 +25,8 @@ def getJP2Image(
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
     Retrieve a JP2000 image from the helioviewer.org API.
+
+    {{Insert Shared}}
 
     Examples
     --------
