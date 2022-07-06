@@ -55,3 +55,9 @@ class HvpyParameters(BaseModel):
         Final API endpoint URL.
         """
         return BASE_URL + self.__class__.__name__[:-15] + "/"
+
+    def convert_date_to_isoformat(cls, v) -> str:
+        """
+        Converts the date from a datetime object to a string in the ISO format.
+        """
+        return v.isoformat() + "Z"
