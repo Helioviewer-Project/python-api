@@ -34,10 +34,7 @@ class getJP2ImageInputParameters(HvpyParameters):
 
     @validator("date")
     def convert_date_to_isoformat(cls, v) -> str:
-        """
-        Converts the date from a datetime object to a string in the ISO format.
-        """
-        return v.isoformat() + "Z"
+        return super().convert_date_to_isoformat(v)
 
     def get_output_type(self) -> OutputType:
         """
