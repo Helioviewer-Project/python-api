@@ -4,6 +4,7 @@ from datetime import datetime
 from pydantic import validator
 
 from hvpy.io import HvpyParameters, OutputType
+from hvpy.utils import convert_date_to_unix
 
 
 class getJPXClosestToMidPointInputParameters(HvpyParameters):
@@ -36,14 +37,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     linked: bool = False
     verbose: bool = False
     jpip: bool = False
-
-    @validator("startTimes", "endTimes")
-    def convert_date_to_unix(cls, v) -> str:
-        """
-        Converts date from datetime object to Unix timestamps format separated
-        with commas.
-        """
-        return ",".join([str(int(datetime.timestamp(d))) for d in v])
+    _date_validator = validator("startTimes", "endTimes", allow_reuse=True)(convert_date_to_unix)
 
     def get_output_type(self) -> OutputType:
         """

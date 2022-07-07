@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Any, Dict
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel
 
 __all__ = ["HvpyParameters", "OutputType"]
 
@@ -55,10 +55,3 @@ class HvpyParameters(BaseModel):
         Final API endpoint URL.
         """
         return BASE_URL + self.__class__.__name__[:-15] + "/"
-
-    @validator("date", "startTime", "endTime", check_fields=False)
-    def convert_date_to_isoformat(cls, v) -> str:
-        """
-        Converts the date from a datetime object to a string in the ISO format.
-        """
-        return v.isoformat() + "Z"
