@@ -1,7 +1,10 @@
 from typing import Optional
 from datetime import datetime
 
+from pydantic import validator
+
 from hvpy.io import HvpyParameters, OutputType
+from hvpy.utils import convert_date_to_isoformat
 
 
 class getJPXInputParameters(HvpyParameters):
@@ -37,6 +40,7 @@ class getJPXInputParameters(HvpyParameters):
     verbose: bool = False
     jpip: bool = False
     cadence: Optional[int] = None
+    _date_validator = validator("startTime", "endTime", allow_reuse=True)(convert_date_to_isoformat)
 
     def get_output_type(self) -> OutputType:
         """
