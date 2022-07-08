@@ -36,7 +36,7 @@ class getJPXInputParameters(HvpyParameters):
     startTime: datetime
     endTime: datetime
     sourceId: int
-    linked: bool = False
+    linked: bool = True
     verbose: bool = False
     jpip: bool = False
     cadence: Optional[int] = None
