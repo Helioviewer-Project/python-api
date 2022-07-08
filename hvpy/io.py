@@ -1,7 +1,7 @@
 from enum import Enum, auto
 from typing import Any, Dict
 
-from pydantic.main import BaseModel
+from pydantic import BaseModel
 
 __all__ = ["HvpyParameters", "OutputType"]
 

@@ -40,7 +40,6 @@ def test_error_handling():
 
 
 def test_url_property():
-    date_obj = datetime(2022, 1, 1, 23, 59, 59)
-    params = {"date": date_obj, "sourceId": 14, "jpip": True, "json": True}
+    params = {"date": datetime(2022, 1, 1, 23, 59, 59), "sourceId": 14, "jpip": True, "json": True}
     params = getJP2ImageInputParameters(**params)
     assert params.url == "https://api.helioviewer.org/v2/getJP2Image/"
