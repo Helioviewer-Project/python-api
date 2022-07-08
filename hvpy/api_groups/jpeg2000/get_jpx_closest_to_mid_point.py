@@ -34,7 +34,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     startTimes: List[datetime]
     endTimes: List[datetime]
     sourceId: int
-    linked: bool = False
+    linked: bool = True
     verbose: bool = False
     jpip: bool = False
     _date_validator = validator("startTimes", "endTimes", allow_reuse=True)(convert_date_to_unix)
