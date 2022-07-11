@@ -67,7 +67,7 @@ def getJPXClosestToMidPoint(
     --------
     >>> from hvpy import getJPXClosestToMidPoint
     >>> from datetime import datetime
-    >>> getJPXClosestToMidPoint(startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)], endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)], sourceId=14, linked=False, verbose=False, jpip=True)
+    >>> getJPXClosestToMidPoint(startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)], endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)], sourceId=14, linked=False, jpip=True)
     'jpip://helioviewer.org:8090/movies/SDO_AIA_335_F2014-01-01T00.00.00Z_T2014-01-01T02.33.03ZCMP.jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
@@ -126,7 +126,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     --------
     >>> from hvpy import getStatus
     >>> getStatus()
-    {'AIA': {'time': '2022-07-11T08:01:35Z', 'level': 1, 'secondsBehind': 1801, 'measurement': 'AIA 94'}, 'COSMO': {'time': '2022-07-05T00:46:07Z', 'level': 4, 'secondsBehind': 546329, 'measurement': 'COSMO KCor'}, ...}
+    {'AIA': {'time': '2022-07-11T12:20:53Z', 'level': 1, 'secondsBehind': 1754, ... 'XRT': {'time': '2022-06-24T23:56:45Z', 'level': 5, 'secondsBehind': 1428224, 'measurement': 'XRT Any/Any'}}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)
