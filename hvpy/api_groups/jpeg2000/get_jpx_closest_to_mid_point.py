@@ -11,6 +11,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJPXClosestToMidPoint API.
 
+    {Shared}
     Attributes
     ----------
     startTimes : datetime
@@ -29,6 +30,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjpxclosesttomidpoint>`__
+    {Shared}
     """
 
     startTimes: List[datetime]
