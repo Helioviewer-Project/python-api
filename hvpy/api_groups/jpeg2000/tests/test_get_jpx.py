@@ -64,7 +64,6 @@ def test_error_handling():
         getJPX(endTime=datetime(2014, 1, 1, 0, 45, 0), sourceId=14)
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'endTime'"):
         getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0), sourceId=14)
-
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'sourceId'"):
         getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0), endTime=datetime(2014, 1, 1, 0, 45, 0))
 
