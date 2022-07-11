@@ -2,8 +2,8 @@ from datetime import datetime
 
 import pytest
 
+from hvpy import getJPX
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
-from hvpy.facade import getJPX
 
 
 def test_raw_response():

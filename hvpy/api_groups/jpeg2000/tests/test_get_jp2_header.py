@@ -1,7 +1,7 @@
 import pytest
 
+from hvpy import getJP2Header
 from hvpy.api_groups.jpeg2000.get_jp2_header import getJP2HeaderInputParameters
-from hvpy.facade import getJP2Header
 
 
 def test_getJP2HeaderInputParameters():
