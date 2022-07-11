@@ -100,7 +100,7 @@ def getJPX(
     --------
     >>> from hvpy import getJPX
     >>> from datetime import datetime
-    >>> getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0),endTime=datetime(2014, 1, 1, 0, 45, 0),sourceId=14,linked=True,verbose=False,jpip=True,cadence=None)
+    >>> getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0),endTime=datetime(2014, 1, 1, 0, 45, 0),sourceId=14,jpip=True)
     'jpip://helioviewer.org:8090/movies/SDO_AIA_335_F2014-01-01T00.00.00Z_T2014-01-01T00.45.00ZL.jpx'
     """
     params = getJPXInputParameters(
@@ -126,7 +126,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     --------
     >>> from hvpy import getStatus
     >>> getStatus()
-    {'AIA': {'time': '2022-07-11T08:01:35Z', 'level': 1, 'secondsBehind': 1801, 'measurement': 'AIA 94'}, 'COSMO': {'time': '2022-07-05T00:46:07Z', 'level': 4, 'secondsBehind': 546329, 'measurement': 'COSMO KCor'}, 'EIT': {'time': '2013-08-07T13:06:09Z', 'level': 5, 'secondsBehind': 281647527, 'measurement': 'EIT 284'}, 'HMI': {'time': '2022-07-11T06:00:39Z', 'level': 1, 'secondsBehind': 9057, 'measurement': 'HMI Mag'}, 'LASCO': {'time': '2022-07-11T06:30:07Z', 'level': 1, 'secondsBehind': 7289, 'measurement': 'LASCO C3'}, 'MDI': {'time': '2011-01-11T22:39:00Z', 'level': 5, 'secondsBehind': 362742756, 'measurement': 'MDI Int'}, 'SECCHI': {'time': '2022-07-08T23:57:30Z', 'level': 1, 'secondsBehind': 203646, 'measurement': 'EUVI-A 195'}, 'SWAP': {'time': '2022-07-11T06:17:19Z', 'level': 1, 'secondsBehind': 8057, 'measurement': 'SWAP 174'}, 'SXT': {'time': '2001-12-14T21:06:33Z', 'level': 5, 'secondsBehind': 649164303, 'measurement': 'SXT AlMgMn'}, 'XRT': {'time': '2022-06-24T23:56:45Z', 'level': 5, 'secondsBehind': 1413291, 'measurement': 'XRT Any/Any'}}
+    {'AIA': {'time': '2022-07-11T08:01:35Z', 'level': 1, 'secondsBehind': 1801, 'measurement': 'AIA 94'}, 'COSMO': {'time': '2022-07-05T00:46:07Z', 'level': 4, 'secondsBehind': 546329, 'measurement': 'COSMO KCor'}, ...}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)

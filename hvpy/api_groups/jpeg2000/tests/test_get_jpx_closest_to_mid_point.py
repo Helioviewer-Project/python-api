@@ -41,6 +41,10 @@ def test_json_response():
 def test_error_handling():
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'startTimes'"):
         getJPXClosestToMidPoint(endTimes=endTimes, sourceId=14)
+    with pytest.raises(TypeError, match="missing 1 required positional argument: 'endTimes'"):
+        getJPXClosestToMidPoint(startTimes=startTimes, sourceId=14)
+    with pytest.raises(TypeError, match="missing 1 required positional argument: 'sourceId'"):
+        getJPXClosestToMidPoint(startTimes=startTimes, endTimes=endTimes)
 
 
 def test_url_property():
