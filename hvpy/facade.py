@@ -44,7 +44,6 @@ def getJP2Header(
     >>> from hvpy import getJP2Header
     >>> getJP2Header(id=9838343,callback="xml_header")
     'xml_header(\'<?xml version="1.0" encoding="utf-8"?><meta><fits>...<HV_SUPPORTED>TRUE</HV_SUPPORTED></helioviewer></meta>\')'
-
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
     return execute_api_call(input_parameters=params)
