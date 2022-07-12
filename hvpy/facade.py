@@ -42,8 +42,8 @@ def getJP2Header(
     Examples
     --------
     >>> from hvpy import getJP2Header
-    >>> getJP2Header(id=9838343,callback="xml_header")
-    r'xml_header(\'<?xml version="1.0" encoding="utf-8"?><meta><fits>...<HV_SUPPORTED>TRUE</HV_SUPPORTED></helioviewer></meta>\')'
+    >>> getJP2Header(id=9838343,callback="xml_header") #doctest: +ELLIPSIS
+    'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits><SIMPLE>1</SIMPLE><BITPIX>16</BITPIX>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
     return execute_api_call(input_parameters=params)
@@ -125,8 +125,8 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     Examples
     --------
     >>> from hvpy import getStatus
-    >>> getStatus()
-    {'AIA': {'time': '2022-07-11T15:35:26Z', 'level': 1, 'secondsBehind': 2525, 'measurement': 'AIA 1600'}, ... 'XRT': {'time': '2022-06-24T23:56:45Z', 'level': 5, 'secondsBehind': 1441246, 'measurement': 'XRT Any/Any'}}
+    >>> getStatus() #doctest: +ELLIPSIS
+    {'AIA': {...}, 'COSMO': {...}, 'EIT': {...}, 'HMI': {...}, 'LASCO': {...}, 'MDI': {...}, 'SECCHI': {...}, 'SWAP': {...}, 'SXT': {...}, 'XRT': {...}}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)
