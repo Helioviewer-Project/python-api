@@ -14,9 +14,9 @@ class getJPXInputParameters(HvpyParameters):
     {Shared}
     Attributes
     ----------
-    startTime : datetime
+    startTime : datetime.datetime
         Date/Time for the beginning of the JPX movie data.
-    endTime : datetime
+    endTime : datetime.datetime
         Date/Time for the end of the JPX movie data.
     sourceId : int
         Unique image datasource identifier.

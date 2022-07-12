@@ -14,9 +14,9 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     {Shared}
     Attributes
     ----------
-    startTimes : datetime
+    startTimes : datetime.datetime
         Comma separated timestamps for the beginning of the JPX movie data.
-    endTimes : datetime
+    endTimes : datetime.datetime
         Comma separated timestamps for the end of the JPX movie data.
     sourceId : int
         Unique image datasource identifier.
