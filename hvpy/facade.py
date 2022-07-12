@@ -67,8 +67,8 @@ def getJPXClosestToMidPoint(
     --------
     >>> from hvpy import getJPXClosestToMidPoint
     >>> from datetime import datetime
-    >>> getJPXClosestToMidPoint(startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)], endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)], sourceId=14, linked=False, jpip=True)
-    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_F2013-12-31T18.30.00Z_T2013-12-31T21.03.03ZCMP.jpxmid'
+    >>> getJPXClosestToMidPoint(startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)], endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)], sourceId=14, linked=False, jpip=True) #doctest: +ELLIPSIS
+    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
         startTimes=startTimes,
