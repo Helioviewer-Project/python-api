@@ -13,9 +13,10 @@ class getJPXInputParameters(HvpyParameters):
 
     Attributes
     ----------
-    startTime : datetime
+    {Shared}
+    startTime : datetime.datetime
         Date/Time for the beginning of the JPX movie data.
-    endTime : datetime
+    endTime : datetime.datetime
         Date/Time for the end of the JPX movie data.
     sourceId : int
         Unique image datasource identifier.
@@ -31,6 +32,7 @@ class getJPXInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjpx>`__
+    {Shared}
     """
 
     startTime: datetime

@@ -1,10 +1,9 @@
+from hvpy import getStatus
 from hvpy.api_groups.jpeg2000.get_status import getStatusInputParameters
-from hvpy.core import execute_api_call
 
 
 def test_getStatusInputParameters():
-    params = getStatusInputParameters()
-    response = execute_api_call(input_parameters=params)
+    response = getStatus()
     assert isinstance(response, dict)
 
 

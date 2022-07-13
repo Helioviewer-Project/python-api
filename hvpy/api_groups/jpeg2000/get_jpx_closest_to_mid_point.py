@@ -13,9 +13,10 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
 
     Attributes
     ----------
-    startTimes : datetime
+    {Shared}
+    startTimes : datetime.datetime
         Comma separated timestamps for the beginning of the JPX movie data.
-    endTimes : datetime
+    endTimes : datetime.datetime
         Comma separated timestamps for the end of the JPX movie data.
     sourceId : int
         Unique image datasource identifier.
@@ -29,6 +30,7 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjpxclosesttomidpoint>`__
+    {Shared}
     """
 
     startTimes: List[datetime]
