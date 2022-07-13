@@ -18,6 +18,8 @@ def getJP2Image(
     """
     Retrieve a JP2000 image from the helioviewer.org API.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------
