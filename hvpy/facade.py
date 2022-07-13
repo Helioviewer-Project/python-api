@@ -42,7 +42,7 @@ def getJP2Header(
     Examples
     --------
     >>> from hvpy import getJP2Header
-    >>> getJP2Header(id=9838343,callback="xml_header") #doctest: +ELLIPSIS
+    >>> getJP2Header(id=9838343,callback="xml_header")
     'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits><SIMPLE>1</SIMPLE><BITPIX>16</BITPIX>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
@@ -67,7 +67,13 @@ def getJPXClosestToMidPoint(
     --------
     >>> from hvpy import getJPXClosestToMidPoint
     >>> from datetime import datetime
-    >>> getJPXClosestToMidPoint(startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)], endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)], sourceId=14, linked=False, jpip=True) #doctest: +ELLIPSIS
+    >>> getJPXClosestToMidPoint(
+    ...     startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)],
+    ...     endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)],
+    ...     sourceId=14,
+    ...     linked=False,
+    ...     jpip=True
+    ... )
     'jpip://helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
@@ -125,7 +131,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     Examples
     --------
     >>> from hvpy import getStatus
-    >>> getStatus() #doctest: +ELLIPSIS
+    >>> getStatus()
     {'AIA': {...}, 'COSMO': {...}, 'EIT': {...}, 'HMI': {...}, 'LASCO': {...}, 'MDI': {...}, 'SECCHI': {...}, 'SWAP': {...}, 'SXT': {...}, 'XRT': {...}}
     """
     params = getStatusInputParameters()
