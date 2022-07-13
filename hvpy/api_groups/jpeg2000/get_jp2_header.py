@@ -7,9 +7,9 @@ class getJP2HeaderInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJP2Header API.
 
-    {Shared}
     Attributes
     ----------
+    {Shared}
     id : int
         Unique JP2 image identifier.
     callback : str, optional

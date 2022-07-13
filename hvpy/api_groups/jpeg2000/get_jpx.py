@@ -11,9 +11,9 @@ class getJPXInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJPX API.
 
-    {Shared}
     Attributes
     ----------
+    {Shared}
     startTime : datetime.datetime
         Date/Time for the beginning of the JPX movie data.
     endTime : datetime.datetime

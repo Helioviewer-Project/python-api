@@ -18,6 +18,8 @@ def getJP2Image(
     """
     Retrieve a JP2000 image from the helioviewer.org API.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------
@@ -38,6 +40,8 @@ def getJP2Header(
     Get the XML header embedded in a JPEG2000 image. Includes the FITS header
     as well as a section of Helioviewer-specific metadata.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------
@@ -62,6 +66,8 @@ def getJPXClosestToMidPoint(
     Generate and (optionally) download a custom JPX movie of the specified
     datasource with one frame per pair of startTimes/endTimes parameters.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------
@@ -101,6 +107,8 @@ def getJPX(
     Generate and (optionally) download a custom JPX movie of the specified
     datasource from the helioviewer.org API.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------
@@ -127,6 +135,8 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     Returns information about how far behind the latest available JPEG2000
     images.
 
+    Parameters
+    ----------
     {Insert}
     Examples
     --------

@@ -10,9 +10,9 @@ class getJP2ImageInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJP2Image API.
 
-    {Shared}
     Attributes
     ----------
+    {Shared}
     date : datetime.datetime
         Desired date/time of the JP2 image.
     sourceId : int

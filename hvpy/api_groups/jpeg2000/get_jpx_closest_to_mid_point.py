@@ -11,9 +11,9 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     """
     Handles the input parameters of the getJPXClosestToMidPoint API.
 
-    {Shared}
     Attributes
     ----------
+    {Shared}
     startTimes : datetime.datetime
         Comma separated timestamps for the beginning of the JPX movie data.
     endTimes : datetime.datetime
