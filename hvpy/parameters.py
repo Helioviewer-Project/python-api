@@ -3,6 +3,7 @@ from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
 from hvpy.api_groups.jpeg2000.get_jpx_closest_to_mid_point import getJPXClosestToMidPointInputParameters
 from hvpy.api_groups.jpeg2000.get_status import getStatusInputParameters
+from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
 from hvpy.api_groups.official_clients.get_data_sources import getDataSourcesInputParameters
 
@@ -14,4 +15,5 @@ __all__ = [
     "getStatusInputParameters",
     "getClosestImageInputParameters",
     "getDataSourcesInputParameters",
+    "queueMovieInputParameters",
 ]
