@@ -11,9 +11,9 @@ class queueMovieInputParameters(HvpyParameters):
     """
     Handles the input parameters of the queueMovie API.
 
-    {Shared}
     Attributes
     ----------
+    {Shared}
     startTime : datetime
         Date and time of the first frame of the movie.
     endTime : datetime
