@@ -14,9 +14,9 @@ class queueMovieInputParameters(HvpyParameters):
     Attributes
     ----------
     {Shared}
-    startTime : datetime
+    startTime : datetime.datetime
         Date and time of the first frame of the movie.
-    endTime : datetime
+    endTime : datetime.datetime
         Date and time of the final frame of the movie.
     layers : str
         Image datasource layers to include in the movie.
@@ -68,7 +68,7 @@ class queueMovieInputParameters(HvpyParameters):
         Display other user generated movies on the video.
     followViewport : int, optional
         Rotate field of view of movie with Sun.
-    reqObservationDate : datetime, optional
+    reqObservationDate : datetime.datetime, optional
         Viewport time. Used when 'followViewport' enabled to shift viewport area to correct coordinates
 
 
