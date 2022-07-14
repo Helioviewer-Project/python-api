@@ -9,6 +9,7 @@ class getJP2HeaderInputParameters(HvpyParameters):
 
     Attributes
     ----------
+    {Shared}
     id : int
         Unique JP2 image identifier.
     callback : str, optional
@@ -17,6 +18,7 @@ class getJP2HeaderInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2header>`__
+    {Shared}
     """
 
     id: int
