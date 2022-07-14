@@ -5,7 +5,7 @@ from hvpy.core import execute_api_call
 from hvpy.parameters import *
 from hvpy.utils import add_shared_docstring
 
-__all__ = ["getJP2Image", "getJP2Header", "getJPXClosestToMidPoint", "getJPX", "getStatus"]
+__all__ = ["getJP2Image", "getJP2Header", "getJPXClosestToMidPoint", "getJPX", "getStatus", "getClosestImage"]
 
 
 @add_shared_docstring(getJP2ImageInputParameters)
@@ -145,4 +145,32 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     {'AIA': {...}, 'COSMO': {...}, 'EIT': {...}, 'HMI': {...}, 'LASCO': {...}, 'MDI': {...}, 'SECCHI': {...}, 'SWAP': {...}, 'SXT': {...}, 'XRT': {...}}
     """
     params = getStatusInputParameters()
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(getClosestImageInputParameters)
+def getClosestImage(
+    date: datetime,
+    sourceId: int,
+    callback: Optional[str] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Find the image data that is closest to the requested date/time. Return the
+    associated metadata from the helioviewer database and the XML header of the
+    JPEG2000 image file.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from datetime import datetime
+    >>> from hvpy import getClosestImage
+    >>> getClosestImage(
+    ...     date=datetime(2014,1,1,23,59,59),
+    ...     sourceId=14,
+    ... )
+    {'id': '32271665', 'date': '2014-01-02 00:00:03', 'name': 'AIA 335', 'scale': 0.5899606831770233, 'width': 4096, 'height': 4096, 'refPixelX': 2048.5, 'refPixelY': 2048.5, 'sunCenterOffsetParams': [], 'layeringOrder': 1}
+    """
+    params = getClosestImageInputParameters(date=date, sourceId=sourceId, callback=callback)
     return execute_api_call(input_parameters=params)
