@@ -6,7 +6,6 @@ from hvpy.api_groups.jpeg2000.get_status import getStatusInputParameters
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
 from hvpy.api_groups.official_clients.get_data_sources import getDataSourcesInputParameters
 
-
 __all__ = [
     "getJP2ImageInputParameters",
     "getJP2HeaderInputParameters",
