@@ -5,6 +5,7 @@ from hvpy.core import execute_api_call
 from hvpy.parameters import *
 from hvpy.utils import add_shared_docstring
 
+
 __all__ = [
     "getJP2Image",
     "getJP2Header",
@@ -14,6 +15,7 @@ __all__ = [
     "getClosestImage",
     "getDataSources",
 ]
+
 
 
 @add_shared_docstring(getJP2ImageInputParameters)
@@ -182,6 +184,7 @@ def getClosestImage(
     """
     params = getClosestImageInputParameters(date=date, sourceId=sourceId, callback=callback)
     return execute_api_call(input_parameters=params)
+
 
 
 @add_shared_docstring(getDataSourcesInputParameters)
