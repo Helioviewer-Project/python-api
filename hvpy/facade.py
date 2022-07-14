@@ -5,7 +5,6 @@ from hvpy.core import execute_api_call
 from hvpy.parameters import *
 from hvpy.utils import add_shared_docstring
 
-
 __all__ = [
     "getJP2Image",
     "getJP2Header",
@@ -15,7 +14,6 @@ __all__ = [
     "getClosestImage",
     "getDataSources",
 ]
-
 
 
 @add_shared_docstring(getJP2ImageInputParameters)
@@ -186,7 +184,6 @@ def getClosestImage(
     return execute_api_call(input_parameters=params)
 
 
-
 @add_shared_docstring(getDataSourcesInputParameters)
 def getDataSources(
     verbose: Optional[bool] = False,
@@ -203,7 +200,8 @@ def getDataSources(
     --------
     >>> from hvpy import getDataSources
     >>> getDataSources()
-    {'SDO': {'HMI': {'continuum': {'sourceId': 18, 'nickname': 'HMI Int', 'layeringOrder': 1, 'start': '2010-12-06 06:53:41', 'end': '2022-07-11 23:59:54', 'uiLabels': [{'label': 'Observatory', 'name': 'SDO'}, {'label': 'Instrument', 'name': 'HMI'}, {'label': 'Measurement', 'name': 'continuum'}]}, ...}
+    {'SDO': {'HMI': {'continuum': {'sourceId': 18, 'nickname': 'HMI Int', 'layeringOrder': 1, 'start': '2010-12-06 06:53:41', 'end': '2022-07-11 23:59:54',
+    'uiLabels': [{'label': 'Observatory', 'name': 'SDO'}, {'label': 'Instrument', 'name': 'HMI'}, {'label': 'Measurement', 'name': 'continuum'}]}, ...}
     """
     params = getDataSourcesInputParameters(
         verbose=verbose,

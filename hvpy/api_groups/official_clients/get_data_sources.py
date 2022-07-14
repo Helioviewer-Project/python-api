@@ -11,7 +11,7 @@ class getDataSourcesInputParameters(HvpyParameters):
     ----------
     {Shared}
     verbose : bool, optional
-        Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client
+        Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client, default is False.
     enable : str, optional
         Comma-separated list of observatories to enable.
     callback : str, optional
