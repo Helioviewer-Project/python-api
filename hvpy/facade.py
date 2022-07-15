@@ -5,7 +5,15 @@ from hvpy.core import execute_api_call
 from hvpy.parameters import *
 from hvpy.utils import add_shared_docstring
 
-__all__ = ["getJP2Image", "getJP2Header", "getJPXClosestToMidPoint", "getJPX", "getStatus", "getClosestImage"]
+__all__ = [
+    "getJP2Image",
+    "getJP2Header",
+    "getJPXClosestToMidPoint",
+    "getJPX",
+    "getStatus",
+    "getClosestImage",
+    "getDataSources",
+]
 
 
 @add_shared_docstring(getJP2ImageInputParameters)
@@ -173,4 +181,31 @@ def getClosestImage(
     {'id': '32271665', 'date': '2014-01-02 00:00:03', 'name': 'AIA 335', 'scale': 0.5899606831770233, 'width': 4096, 'height': 4096, 'refPixelX': 2048.5, 'refPixelY': 2048.5, 'sunCenterOffsetParams': [], 'layeringOrder': 1}
     """
     params = getClosestImageInputParameters(date=date, sourceId=sourceId, callback=callback)
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(getDataSourcesInputParameters)
+def getDataSources(
+    verbose: Optional[bool] = False,
+    enable: Optional[str] = None,
+    callback: Optional[str] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Return a hierarchial list of the available datasources.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import getDataSources
+    >>> getDataSources()
+    {'SDO': {'HMI': {'continuum': {'sourceId': 18, 'nickname': 'HMI Int', 'layeringOrder': 1, 'start': '2010-12-06 06:53:41', 'end': '2022-07-11 23:59:54',
+    'uiLabels': [{'label': 'Observatory', 'name': 'SDO'}, {'label': 'Instrument', 'name': 'HMI'}, {'label': 'Measurement', 'name': 'continuum'}]}, ...}
+    """
+    params = getDataSourcesInputParameters(
+        verbose=verbose,
+        enable=enable,
+        callback=callback,
+    )
     return execute_api_call(input_parameters=params)
