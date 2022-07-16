@@ -24,6 +24,17 @@ class OutputType(Enum):
     """
 
 
+class BaseUrl(Enum):
+    V2 = auto()
+    """
+    Defines the V2 base URL.
+    """
+    V3 = auto()
+    """
+    Defines the V3 base URL.
+    """
+
+
 class HvpyParameters(BaseModel):
     """
     Base model for all Helioviewer API parameters.
