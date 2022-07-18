@@ -1,10 +1,10 @@
 import os
 from enum import Enum, auto
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from pydantic import BaseModel
 
-__all__ = ["HvpyParameters", "OutputType", "set_api"]
+__all__ = ["HvpyParameters", "OutputType", "set_api_url"]
 
 
 class OutputType(Enum):
@@ -53,11 +53,19 @@ class HvpyParameters(BaseModel):
         """
         Final API endpoint URL.
         """
-        base_url = os.environ.get("HVPY_BASE_URL", default="https://api.helioviewer.org/v2/")
+        base_url = get_api_url()
         return base_url + self.__class__.__name__[:-15] + "/"
 
 
-def set_api(url: Optional[str] = None) -> None:
+def get_api_url() -> str:
     """
-    Sets the base URL for the Helioviewer python API.
+    Returns the base URL for all API calls.
     """
+    return os.environ.get("HVPY_BASE_URL", default="https://api.helioviewer.org/v2/")
+
+
+def set_api_url(private_url: str) -> None:
+    """
+    Sets the base URL for all API calls.
+    """
+    os.environ["HVPY_BASE_URL"] = private_url

@@ -2,6 +2,7 @@ import os
 
 import pytest
 
+import hvpy
 from hvpy import getJP2Header
 from hvpy.api_groups.jpeg2000.get_jp2_header import getJP2HeaderInputParameters
 
@@ -27,7 +28,7 @@ def test_url_property():
     assert params.url == "https://api.helioviewer.org/v2/getJP2Header/"
 
 
-def test_set_api():
+def test_set_api_url():
     params = getJP2HeaderInputParameters(id=9838343)
     assert params.url == "https://api.helioviewer.org/v2/getJP2Header/"
 
@@ -36,7 +37,6 @@ def test_set_api():
     assert params.url == "https://localhost:3000/getJP2Header/"
     os.environ.clear()
 
-    # hvpy.set_api("https://api.beta.helioviewer.org/")
-    # params = getJP2HeaderInputParameters(id=9838343)
-    # print(params.url)
-    # assert params.url == "https://api.beta.helioviewer.org/getJP2Header/"
+    hvpy.set_api_url("https://api.beta.helioviewer.org/")
+    params = getJP2HeaderInputParameters(id=9838343)
+    assert params.url == "https://api.beta.helioviewer.org/getJP2Header/"
