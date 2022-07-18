@@ -61,6 +61,10 @@ def get_api_url() -> str:
     """
     Returns the base URL for all API calls.
     """
+    if "PRIVATE_URL" in os.environ:
+        base_url = os.environ["PRIVATE_URL"]
+        del os.environ["PRIVATE_URL"]
+        return base_url
     return os.environ.get("HVPY_BASE_URL", default="https://api.helioviewer.org/v2/")
 
 
@@ -68,4 +72,4 @@ def set_api_url(private_url: str) -> None:
     """
     Sets the base URL for all API calls.
     """
-    os.environ["HVPY_BASE_URL"] = private_url
+    os.environ["PRIVATE_URL"] = private_url
