@@ -23,7 +23,7 @@ def test_queue():
 
 def test_error_handling():
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'imageScale'"):
-        response = queueMovie(
+        queueMovie(
             startTime=datetime(2022, 7, 20, 12, 12, 12),
             endTime=datetime(2022, 7, 21, 12, 12, 12),
             layers="[12,7,22],[13,7,22]",
@@ -33,5 +33,12 @@ def test_error_handling():
 
 
 def test_url_property():
-    params = queueMovieInputParameters(id=9838343)
+    params = queueMovieInputParameters(
+        startTime=datetime(2022, 7, 20, 12, 12, 12),
+        endTime=datetime(2022, 7, 21, 12, 12, 12),
+        layers="[12,7,22],[13,7,22]",
+        events="[AR,HMI_HARP;SPoCA,1],[CH,all,1]",
+        eventsLabels=False,
+        imageScale=1,
+    )
     assert params.url == "https://api.helioviewer.org/v2/queueMovie/"
