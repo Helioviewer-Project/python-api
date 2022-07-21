@@ -7,6 +7,9 @@ from pydantic import BaseModel
 __all__ = ["HvpyParameters", "OutputType", "set_api_url"]
 
 
+_base_url = "https://api.helioviewer.org/v2/"
+
+
 class OutputType(Enum):
     RAW = auto()
     """
@@ -53,23 +56,14 @@ class HvpyParameters(BaseModel):
         """
         Final API endpoint URL.
         """
-        base_url = get_api_url()
-        return base_url + self.__class__.__name__[:-15] + "/"
+        if "PRIVATE_URL" in os.environ:
+            return os.environ["PRIVATE_URL"] + self.__class__.__name__[:-15] + "/"
+        return _base_url + self.__class__.__name__[:-15] + "/"
 
 
-def get_api_url() -> str:
+def set_api_url(url: str) -> None:
     """
-    Returns the base URL for all API calls.
+    Sets the base API URL.
     """
-    if "PRIVATE_URL" in os.environ:
-        base_url = os.environ["PRIVATE_URL"]
-        del os.environ["PRIVATE_URL"]
-        return base_url
-    return os.environ.get("HVPY_BASE_URL", default="https://api.helioviewer.org/v2/")
-
-
-def set_api_url(private_url: str) -> None:
-    """
-    Sets the base URL for all API calls.
-    """
-    os.environ["PRIVATE_URL"] = private_url
+    global _base_url
+    _base_url = url
