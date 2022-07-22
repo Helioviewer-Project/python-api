@@ -35,7 +35,6 @@ def test_set_api_url():
     os.environ["PRIVATE_URL"] = "https://localhost:3000/"
     params = getJP2HeaderInputParameters(id=9838343)
     assert params.url == "https://localhost:3000/getJP2Header/"
-    del os.environ["PRIVATE_URL"]
 
     hvpy.set_api_url("https://api.beta.helioviewer.org/")
     params = getJP2HeaderInputParameters(id=9838343)
