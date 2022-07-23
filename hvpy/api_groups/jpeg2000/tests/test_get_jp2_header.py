@@ -32,7 +32,7 @@ def test_set_api_url():
     params = getJP2HeaderInputParameters(id=9838343)
     assert params.url == "https://api.helioviewer.org/v2/getJP2Header/"
 
-    os.environ["PRIVATE_URL"] = "https://localhost:3000/"
+    os.environ["HELIOVIEWER_API_URL"] = "https://localhost:3000/"
     params = getJP2HeaderInputParameters(id=9838343)
     assert params.url == "https://localhost:3000/getJP2Header/"
 

@@ -66,14 +66,19 @@ def get_api_url() -> str:
     """
     if _base_url:
         return _base_url
-    if "PRIVATE_URL" in os.environ:
-        return os.environ["PRIVATE_URL"]
+    if "HELIOVIEWER_API_URL" in os.environ:
+        return os.environ["HELIOVIEWER_API_URL"]
     return "https://api.helioviewer.org/v2/"
 
 
 def set_api_url(url: str) -> None:
     """
     Sets the base API URL.
+
+    Parameters
+    ----------
+    url : str
+        Base API URL.
     """
     global _base_url
     _base_url = url
