@@ -14,20 +14,24 @@ class getJPXInputParameters(HvpyParameters):
     Attributes
     ----------
     {Shared}
-    startTime : datetime.datetime
+    startTime
         Date/Time for the beginning of the JPX movie data.
-    endTime : datetime.datetime
+    endTime
         Date/Time for the end of the JPX movie data.
-    sourceId : int
+    sourceId
         Unique image datasource identifier.
-    linked : bool, optional
-        Generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
-    verbose : bool, optional
-        If set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
-    jpip : bool, optional
-        Optionally return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
-    cadence : int, optional
-        The desired amount of time (in seconds) between each frame in the movie.
+    linked
+        Optionally, generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
+        Defaults to True.
+    verbose
+        Optionally, if set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
+        Defaults to False.
+    jpip
+        Optionally, return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
+        Defaults to False.
+    cadence
+        Optionally, The desired amount of time (in seconds) between each frame in the movie.
+        Defaults to None (maximum cadence).
 
     References
     ----------

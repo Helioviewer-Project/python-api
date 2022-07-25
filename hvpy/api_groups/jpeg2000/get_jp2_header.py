@@ -10,10 +10,11 @@ class getJP2HeaderInputParameters(HvpyParameters):
     Attributes
     ----------
     {Shared}
-    id : int
+    id
         Unique JP2 image identifier.
-    callback : str, optional
-        Wrap the response object in a function call of your choosing.
+    callback
+        Optionally, wrap the response object in a function call of your choosing.
+        Default is None (no wrapping).
 
     References
     ----------

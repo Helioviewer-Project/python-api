@@ -14,18 +14,21 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
     Attributes
     ----------
     {Shared}
-    startTimes : datetime.datetime
+    startTimes
         Comma separated timestamps for the beginning of the JPX movie data.
-    endTimes : datetime.datetime
+    endTimes
         Comma separated timestamps for the end of the JPX movie data.
-    sourceId : int
+    sourceId
         Unique image datasource identifier.
-    linked : bool, optional
-        Generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
-    verbose : bool, optional
-        If set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
-    jpip : bool, optional
-        Optionally return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
+    linked
+        Optionally, generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
+        Defaults to True.
+    verbose
+        Optionally,If set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
+        Defaults to False.
+    jpip
+        Optionally, return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
+        Defaults to False.
 
     References
     ----------
