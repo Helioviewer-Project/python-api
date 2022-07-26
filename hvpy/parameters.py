@@ -5,6 +5,8 @@ from hvpy.api_groups.jpeg2000.get_jpx_closest_to_mid_point import getJPXClosestT
 from hvpy.api_groups.jpeg2000.get_status import getStatusInputParameters
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
 from hvpy.api_groups.official_clients.get_data_sources import getDataSourcesInputParameters
+from hvpy.api_groups.screenshots.download_screenshot import downloadScreenshotInputParameters
+from hvpy.api_groups.screenshots.take_screenshot import takeScreenshotInputParameters
 
 __all__ = [
     "getJP2ImageInputParameters",
@@ -14,4 +16,6 @@ __all__ = [
     "getStatusInputParameters",
     "getClosestImageInputParameters",
     "getDataSourcesInputParameters",
+    "takeScreenshotInputParameters",
+    "downloadScreenshotInputParameters",
 ]

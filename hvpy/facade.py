@@ -13,6 +13,8 @@ __all__ = [
     "getStatus",
     "getClosestImage",
     "getDataSources",
+    "takeScreenshot",
+    "downloadScreenshot",
 ]
 
 
@@ -207,4 +209,92 @@ def getDataSources(
         enable=enable,
         callback=callback,
     )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(takeScreenshotInputParameters)
+def takeScreenshot(
+    date: datetime,
+    imageScale: float,
+    layers: str,
+    events: Optional[str] = None,
+    eventLabels: Optional[bool] = False,
+    scale: Optional[bool] = False,
+    scaleType: Optional[str] = None,
+    scaleX: Optional[int] = None,
+    scaleY: Optional[int] = None,
+    width: Optional[str] = None,
+    height: Optional[str] = None,
+    x0: Optional[str] = None,
+    y0: Optional[str] = None,
+    x1: Optional[str] = None,
+    y1: Optional[str] = None,
+    x2: Optional[str] = None,
+    y2: Optional[str] = None,
+    display: Optional[bool] = False,
+    watermark: Optional[bool] = False,
+    callback: Optional[str] = None,
+):
+    """
+    Generate a custom screenshot.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import takeScreenshot
+    >>> from datetime import datetime
+    >>> takeScreenshot(
+    ...     date=datetime(2014, 1, 1, 23, 59, 59),
+    ...     imageScale=2.44,
+    ...     layers="[3,1,100]",
+    ...     x0=0,
+    ...     y0=0,
+    ...     width=1920,
+    ...     height=1200,
+    ... )
+    {'id': ...}
+    """
+    params = takeScreenshotInputParameters(
+        date=date,
+        imageScale=imageScale,
+        layers=layers,
+        events=events,
+        eventLabels=eventLabels,
+        scale=scale,
+        scaleType=scaleType,
+        scaleX=scaleX,
+        scaleY=scaleY,
+        width=width,
+        height=height,
+        x0=x0,
+        y0=y0,
+        x1=x1,
+        y1=y1,
+        x2=x2,
+        y2=y2,
+        display=display,
+        watermark=watermark,
+        callback=callback,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(downloadScreenshotInputParameters)
+def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Download a custom screenshot (that was generated using the `takeScreenshot`
+    API endpoint).
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import downloadScreenshot
+    >>> downloadScreenshot(id=26728529)
+    b'...'
+    """
+    params = downloadScreenshotInputParameters(id=id)
     return execute_api_call(input_parameters=params)
