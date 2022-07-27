@@ -20,14 +20,25 @@ def test_set_url():
     set_api_url("https://api.beta.helioviewer.org/")
     params_second = HvpyParameters()
     assert params_second.url == "https://api.beta.helioviewer.org//"
-
     assert params_first.url == params_second.url
+
     set_api_url("https://api.helioviewer.org/v2/")
 
 
 def test_set_url_env(env):
     env.set("HELIOVIEWER_API_URL", "https://fake_env_url/")
 
-    from hvpy.config import Settings
+    # We need to instantiate a new Settings since the environmental variable
+    # is only read at init. Therefore using the live one in a test is tricky.
+    from hvpy.config import LiveSettings, Settings
 
-    assert Settings().api_url == "https://fake_env_url/"
+    temp_config = Settings()
+    assert temp_config.api_url == "https://fake_env_url/"
+    assert temp_config.api_url != LiveSettings.api_url
+
+    set_api_url("https://api.beta.helioviewer.org/")
+    params = HvpyParameters()
+    assert params.url == "https://api.beta.helioviewer.org//"
+    assert LiveSettings.api_url == "https://api.beta.helioviewer.org/"
+
+    set_api_url("https://api.helioviewer.org/v2/")
