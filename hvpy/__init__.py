@@ -1,3 +1,3 @@
-from .facade import *  # NOQA
-from .io import set_api_url
+from .facade import *
+from .config import set_api_url
 from .version import __version__
