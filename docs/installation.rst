@@ -17,7 +17,7 @@ Using pip
 
     Users of any conda distribution should follow the instructions for :ref:`conda_install`.
 
-To install ``hvpy`` with `pip <https://pip.pypa.io/en/stable/>`_, run::
+To install ``hvpy`` with `pip <https://pip.pypa.io/en/stable/>`__, run ::
 
     pip install hvpy
 
