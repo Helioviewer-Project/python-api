@@ -44,8 +44,7 @@ Obtaining the Source Packages
 Source Packages
 ^^^^^^^^^^^^^^^
 
-The latest stable source package for ``hvpy`` can be `downloaded here
-<https://pypi.org/project/hvpy>`_.
+The latest stable source package for ``hvpy`` can be `downloaded at pypi.org <https://pypi.org/project/hvpy>`__.
 
 Development Repository
 ^^^^^^^^^^^^^^^^^^^^^^
