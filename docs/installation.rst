@@ -12,6 +12,7 @@ This works on all platforms (linux, Mac, Windows) and installs a full-featured P
 
 Using pip
 ---------
+
 .. warning::
 
     Users of the Anaconda Python distribution should follow the instructions
