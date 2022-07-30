@@ -21,7 +21,7 @@ To install ``hvpy`` with `pip <https://pip.pypa.io/en/stable/>`_, run::
 
     pip install hvpy
 
-.. _anaconda_install:
+.. _conda_install:
 
 Using Conda
 -----------
