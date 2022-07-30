@@ -7,7 +7,8 @@ Installation
 Installing ``hvpy``
 -------------------
 
-If you are new to Python and/or do not have familiarity with `Python virtual environments <https://docs.python.org/3/tutorial/venv.html>`_, then we recommend starting by installing the `Anaconda Distribution <https://www.anaconda.com/distribution/>`_. This works on all platforms (linux, Mac, Windows) and installs a full-featured Python environment in your user directory without requiring root privileges.
+If you are new to Python and/or do not have familiarity with `Python virtual environments <https://docs.python.org/3/tutorial/venv.html>`__, then we recommend starting by installing the `mini-forge <https://github.com/conda-forge/miniforge#miniforge3>`__.
+This works on all platforms (linux, Mac, Windows) and installs a full-featured Python environment in your user directory without requiring root privileges.
 
 Using pip
 ---------
