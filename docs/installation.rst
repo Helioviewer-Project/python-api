@@ -60,8 +60,7 @@ To build and install ``hvpy`` (from the root of the source tree)::
 
     pip install -e .
 
-which installs ``hvpy`` in develop mode -- this then means that
-changes in the code are immediately reflected in the installed version.
+which installs ``hvpy`` in development mode, this then means that changes in the code are immediately reflected in the installed version.
 
 
 Building Documentation
