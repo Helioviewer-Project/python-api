@@ -56,7 +56,7 @@ The latest development version of ``hvpy`` can be cloned from `GitHub <https://g
 Building and Installing
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To build and install ``hvpy`` (from the root of the source tree)::
+To build and install ``hvpy`` (from the root of the source tree) ::
 
     pip install -e .
 
