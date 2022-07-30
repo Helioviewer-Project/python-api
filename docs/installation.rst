@@ -15,8 +15,7 @@ Using pip
 
 .. warning::
 
-    Users of the Anaconda Python distribution should follow the instructions
-    for :ref:`anaconda_install`.
+    Users of any conda distribution should follow the instructions for :ref:`conda_install`.
 
 To install ``hvpy`` with `pip <https://pip.pypa.io/en/stable/>`_, run::
 
