@@ -49,8 +49,7 @@ The latest stable source package for ``hvpy`` can be `downloaded at pypi.org <ht
 Development Repository
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The latest development version of ``hvpy`` can be cloned from GitHub
-using this command::
+The latest development version of ``hvpy`` can be cloned from `GitHub <https://github.com/Helioviewer-Project/python-api/>`__ ::
 
    git clone git@github.com:Helioviewer-Project/python-api.git
 
