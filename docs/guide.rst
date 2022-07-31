@@ -2,6 +2,6 @@
 User Guide
 **********
 
-This is the user guide for ``hvpy`` package.
+Welcome to ``hvpy``'s documentation. This user guide provides a walkthrough of the major features in hvpy package.
 
 :ref:`installation`.
