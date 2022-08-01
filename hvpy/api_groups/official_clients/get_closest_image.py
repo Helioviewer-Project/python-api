@@ -9,7 +9,7 @@ from hvpy.utils import convert_date_to_isoformat
 
 class getClosestImageInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getClosestImage API.
+    Handles the input parameters of the ``getClosestImage`` API.
 
     Attributes
     ----------
@@ -20,7 +20,7 @@ class getClosestImageInputParameters(HvpyParameters):
         Unique image datasource identifier.
     callback
         Optionally, wrap the response object in a function call of your choosing.
-        Default is None (no wrapping).
+        Default is `None` (no wrapping), optional.
 
     References
     ----------

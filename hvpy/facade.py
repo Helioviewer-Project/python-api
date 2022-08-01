@@ -74,7 +74,7 @@ def getJPXClosestToMidPoint(
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
     Generate and (optionally) download a custom JPX movie of the specified
-    datasource with one frame per pair of startTimes/endTimes parameters.
+    datasource with one frame per pair of start/endtimes given.
 
     Parameters
     ----------
@@ -165,9 +165,9 @@ def getClosestImage(
     callback: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
-    Find the image data that is closest to the requested date/time. Return the
-    associated metadata from the helioviewer database and the XML header of the
-    JPEG2000 image file.
+    Find the image data that is closest to the requested datetime.
+
+    Return the associated metadata from the helioviewer database and the XML header of the JPEG2000 image file.
 
     Parameters
     ----------
@@ -284,8 +284,8 @@ def takeScreenshot(
 @add_shared_docstring(downloadScreenshotInputParameters)
 def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
     """
-    Download a custom screenshot (that was generated using the `takeScreenshot`
-    API endpoint).
+    Download a custom screenshot that was generated using the
+    ``takeScreenshot`` API endpoint.
 
     Parameters
     ----------

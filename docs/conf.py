@@ -68,6 +68,6 @@ html_theme = "sphinx_book_theme"
 html_theme_options = {
     "repository_url": "https://github.com/Helioviewer-Project/python-api/",
     "use_repository_button": True,
+    "extra_navbar": "",
 }
 html_title = "hvpy"
-extra_navbar = ""

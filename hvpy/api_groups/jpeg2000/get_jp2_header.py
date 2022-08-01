@@ -5,7 +5,7 @@ from hvpy.io import HvpyParameters, OutputType
 
 class getJP2HeaderInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getJP2Header API.
+    Handles the input parameters of the ``getJP2Header`` API.
 
     Attributes
     ----------
@@ -13,8 +13,8 @@ class getJP2HeaderInputParameters(HvpyParameters):
     id
         Unique JP2 image identifier.
     callback
-        Optionally, wrap the response object in a function call of your choosing.
-        Default is None (no wrapping).
+        Wrap the response object in a function call of your choosing.
+        Default is `None` (no wrapping), optional.
 
     References
     ----------
