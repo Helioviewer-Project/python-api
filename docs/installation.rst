@@ -7,7 +7,7 @@ Installation
 Installing ``hvpy``
 -------------------
 
-If you are new to Python and/or do not have familiarity with `Python virtual environments <https://docs.python.org/3/tutorial/venv.html>`__, then we recommend starting by installing `mini-forge <https://github.com/conda-forge/miniforge#miniforge3>`__.
+If you are new to Python and/or do not have familiarity with `Python virtual environments <https://docs.python.org/3/tutorial/venv.html>`__, then we recommend starting by installing `miniforge <https://github.com/conda-forge/miniforge#miniforge3>`__.
 This works on all platforms (Linux, Mac, Windows) and installs a full-featured Python environment in your user directory without requiring root privileges.
 
 Using pip
@@ -115,7 +115,6 @@ e.g.::
     pip install -e .[docs]
 
 before changing to the ``docs`` directory.
-
 
 Reporting Issues or Requesting Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
