@@ -4,4 +4,5 @@ User Guide
 
 This user guide provides a walkthrough of the major features in the ``hvpy`` package.
 
-:ref:`installation`.
+* :ref:`installation`
+* :ref:`dev_guide`
