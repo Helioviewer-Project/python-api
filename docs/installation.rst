@@ -67,10 +67,8 @@ Building Documentation
 Dependencies
 ^^^^^^^^^^^^
 
-Building the documentation requires the ``hvpy`` source code and some
-additional packages. The easiest way to build the documentation is to use `tox
-<https://tox.readthedocs.io/en/latest/>`_ as detailed in
-:ref:`hvpy-doc-building`.
+Building the documentation requires the ``hvpy`` source code and some additional packages.
+The easiest way to build the documentation is to use `tox <https://tox.readthedocs.io/en/latest/>`__ as detailed in :ref:`hvpy-doc-building`.
 
 On the other hand, if you wish to call Sphinx manually to build the
 documentation, you will need to make sure that dependencies are
