@@ -9,6 +9,8 @@
 
    guide
    api
+   installation
+   dev_guide
 
 Reporting Issues or Requesting Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
