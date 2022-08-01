@@ -127,8 +127,8 @@ directory.
 
 
 
-Reporting Issues/Requesting Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Reporting Issues or Requesting Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As mentioned above, building the documentation depends on a number of Sphinx
 extensions and other packages. Since it is not always possible to know which
