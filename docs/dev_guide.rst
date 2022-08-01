@@ -57,3 +57,69 @@ before changing to the ``docs`` directory.
 
 Testing Guidelines
 ------------------
+
+This section describes how to test the hvpy package.
+The testing framework used by hvpy is the `pytest <https://docs.pytest.org/>`__ framework.
+
+.. _running-tests:
+
+Running Tests
+^^^^^^^^^^^^^
+
+There are currently two different ways to invoke ``hvpy`` tests.
+Each method invokes `pytest`_ to run the tests but offers different options when calling.
+To run the tests, you will need to make sure you have the `pytest`_
+package installed.
+
+In addition to running the ``hvpy`` tests, these methods can also be called
+so that they check Python source code for `PEP8 compliance
+<https://www.python.org/dev/peps/pep-0008/>`_.
+All of the PEP8 testing options require the `pytest-pep8 plugin
+<https://pypi.org/project/pytest-pep8>`_, which must be installed
+separately.
+
+``tox``
+=======
+
+The most robust way to run the tests (which can also be the slowest) is
+to make use of `Tox <https://tox.readthedocs.io/en/latest/>`__, which is a
+general purpose tool for automating Python testing.
+One of the benefits of tox is that it first creates a source distribution of the package being tested, and installs it into a new virtual environment, along with any dependencies that are declared in the package, before running the tests.
+This can therefore catch issues related to undeclared package data, or missing dependencies.
+Since we use tox to run many of the tests on continuous integration services, it can also be used in many cases to reproduce issues seen on those services.
+
+To run the tests with tox, first make sure that tox is installed, e.g.::
+
+    pip install tox
+
+You can see a list of available test environments with::
+
+    tox -l -v
+
+which will also explain what each of them does.
+
+You can also run checks or commands not directly related to tests - for instance::
+
+    tox -e codestyle
+
+will run checks using the flake8 tool.
+
+``pytest``
+==========
+
+The test suite can also be run directly from the native ``pytest`` command, which is generally faster than using tox for iterative development.
+In this case, it is important for developers to be aware that they must manually rebuild any extensions by running::
+
+    pip install -e .[test]
+
+before running the test with pytest with::
+
+    pytest
+
+To run all the test in the ``hvpy`` package, you can use::
+
+    pytest -c hvpy
+
+you can also run specific test functions with::
+
+    pytest -c hvpy -k test_function
