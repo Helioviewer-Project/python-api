@@ -59,7 +59,7 @@ Building Documentation
 
 .. note::
 
-    Building the documentation is in general not necessary unless you are
+    Building the documentation is not necessary unless you are
     writing new documentation or do not have internet access, because
     the latest versions of hvpy's documentation should be available
     at `hvpy.readthedocs.io <https://hvpy.readthedocs.io/>`__.
