@@ -82,12 +82,10 @@ installing ``hvpy`` with pip::
 
     pip install -e '.[docs]'
 
-.. Note::
-    The ``pip`` install methods above do not include `Graphviz
-    <http://www.graphviz.org>`_.  If you do not install this package separately
-    then the documentation build process will produce a very large number of
-    lengthy warnings (which can obscure bona fide warnings) and also not
-    generate inheritance graphs.
+.. note::
+
+    This does not include `Graphviz <http://www.graphviz.org>`__. 
+    If you do not install this package separately then the documentation build process will produce a very large number of lengthy warnings (which can obscure bona fide warnings) and also not generate inheritance graphs.
 
 .. _hvpy-doc-building:
 
