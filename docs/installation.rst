@@ -70,21 +70,9 @@ Dependencies
 Building the documentation requires the ``hvpy`` source code and some additional packages.
 The easiest way to build the documentation is to use `tox <https://tox.readthedocs.io/en/latest/>`__ as detailed in :ref:`hvpy-doc-building`.
 
-On the other hand, if you wish to call Sphinx manually to build the
-documentation, you will need to make sure that dependencies are
-installed. If you use conda, the easiest way to install the dependencies is
-with::
-
-    conda install -c conda-forge sphinx-book-theme sphinx-autodoc-typehints sphinx-automodapi
-
-Without conda, you install the dependencies by specifying ``[docs]`` when
-installing ``hvpy`` with pip::
-
-    pip install -e '.[docs]'
-
 .. note::
 
-    This does not include `Graphviz <http://www.graphviz.org>`__. 
+    This does not include `Graphviz <http://www.graphviz.org>`__.
     If you do not install this package separately then the documentation build process will produce a very large number of lengthy warnings (which can obscure bona fide warnings) and also not generate inheritance graphs.
 
 .. _hvpy-doc-building:
@@ -115,11 +103,3 @@ e.g.::
     pip install -e .[docs]
 
 before changing to the ``docs`` directory.
-
-
-Reporting Issues or Requesting Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As mentioned above, building the documentation depends on a number of Sphinx extensions and other packages.
-Since it is not always possible to know which package is causing issues or would need to have a new feature implemented, you can open an issue in the official `hvpy repository <https://github.com/Helioviewer-Project/python-api/issues>`__.
-However, if you wish, you can also open issues in the `helioviewer API repository <https://github.com/Helioviewer-Project/api/issues>`__.
