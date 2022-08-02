@@ -4,6 +4,12 @@
 Developer's Guide
 *****************
 
+Developers who wish to contribute to this package can fork the main `GitHub repository <https://github.com/Helioviewer-Project/python-api>`__.
+
+.. note::
+    When you install the dependencies, you need to install the development version of the package.
+    See the :ref:`obtaining_the_source` section for details.
+
 Building Documentation
 ----------------------
 
@@ -65,13 +71,6 @@ There are currently two different ways to invoke ``hvpy`` tests.
 Each method invokes `pytest`_ to run the tests but offers different options when calling.
 To run the tests, you will need to make sure you have the `pytest`_ package installed.
 
-In addition to running the ``hvpy`` tests, these methods can also be called
-so that they check Python source code for `PEP8 compliance
-<https://www.python.org/dev/peps/pep-0008/>`_.
-All of the PEP8 testing options require the `pytest-pep8 plugin
-<https://pypi.org/project/pytest-pep8>`_, which must be installed
-separately.
-
 ``tox``
 =======
 
@@ -94,7 +93,7 @@ You can also run checks or commands not directly related to tests - for instance
 
     tox -e codestyle
 
-will run checks using the flake8 tool.
+will run checks on the code style using precommit hooks.
 
 ``pytest``
 ==========
@@ -114,4 +113,4 @@ To run all the test in the ``hvpy`` package, you can use::
 
 you can also run specific test functions with::
 
-    pytest -k test_function
+    pytest -c hvpy -k test_function
