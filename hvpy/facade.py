@@ -300,6 +300,7 @@ def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
     params = downloadScreenshotInputParameters(id=id)
     return execute_api_call(input_parameters=params)
 
+
 @add_shared_docstring(queueMovieInputParameters)
 def queueMovie(
     startTime: datetime,
