@@ -4,21 +4,17 @@
 Developer's Guide
 *****************
 
-Developers who wish to contribute to this package can fork the main `GitHub repository <https://github.com/Helioviewer-Project/python-api>`__.
+People who wish to contribute to this package should fork the `GitHub repository <https://github.com/Helioviewer-Project/python-api>`__.
 
-.. note::
-    When you install the dependencies, you need to install the development version of the package.
-    See the :ref:`obtaining_the_source` section for details.
+You need to install the development version of the package in order to make and test changes.
+See the :ref:`obtaining_the_source` section for details.
 
 Building Documentation
 ----------------------
 
 .. note::
 
-    Building the documentation is not necessary unless you are
-    writing new documentation or do not have internet access, because
-    the latest versions of ``hvpy``'s documentation should be available
-    at `hvpy.readthedocs.io <https://hvpy.readthedocs.io/>`__.
+    Building the documentation is not necessary unless you are writing new documentation or do not have internet access, because the latest versions of ``hvpy``'s should be available at `hvpy.readthedocs.io <https://hvpy.readthedocs.io/>`__.
 
 Dependencies
 ^^^^^^^^^^^^
@@ -68,8 +64,6 @@ Running Tests
 ^^^^^^^^^^^^^
 
 There are currently two different ways to invoke ``hvpy`` tests.
-Each method invokes `pytest`_ to run the tests but offers different options when calling.
-To run the tests, you will need to make sure you have the `pytest`_ package installed.
 
 ``tox``
 =======
