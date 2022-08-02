@@ -3,7 +3,7 @@ from hvpy.io import HvpyParameters, OutputType
 
 class getStatusInputParameters(HvpyParameters):
     """
-    handles the input parameters of the getStatus API.
+    Handles the input parameters of the ``getStatus`` API.
 
     {Shared}
     References

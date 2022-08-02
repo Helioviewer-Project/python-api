@@ -8,19 +8,21 @@ from hvpy.utils import convert_date_to_isoformat
 
 class getJP2ImageInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getJP2Image API.
+    Handles the input parameters of the ``getJP2Image`` API.
 
     Attributes
     ----------
     {Shared}
-    date : datetime.datetime
-        Desired date/time of the JP2 image.
-    sourceId : int
+    date
+        Desired datetime of the JP2 image.
+    sourceId
         Unique image datasource identifier.
-    jpip : bool, optional
-        Returns a JPIP URI instead of the binary data of the image if set to `True`, defaults to `False`.
-    json : bool, optional
-        Returns the JSON if set to `True`, defaults to `False`.
+    jpip
+        Returns a JPIP URI instead of the binary data of the image if set to True.
+        Default is `False`, optional.
+    json
+        Optionally, returns the JSON if set to `True`.
+        Default is `False`, optional.
 
     References
     ----------

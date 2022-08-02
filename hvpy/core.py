@@ -13,9 +13,9 @@ def parse_response(response: requests.Response, output_type: OutputType) -> Unio
 
     Parameters
     ----------
-    response : requests.Response
+    response
         The response from the API call.
-    output_type : hvpy.io.OutputType
+    output_type
         The output type.
 
     Returns
@@ -39,7 +39,7 @@ def execute_api_call(input_parameters: HvpyParameters) -> Union[bytes, str, Dict
 
     Parameters
     ----------
-    input_parameters : hvpy.io.HvpyParameters
+    input_parameters
         The input parameters.
 
     Returns
