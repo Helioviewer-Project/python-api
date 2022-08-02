@@ -340,6 +340,16 @@ def queueMovie(
     {Insert}
     Examples
     --------
+    >>> from hvpy import queueMovie
+    >>> queueMovie(
+    ...     startTime=datetime(2022, 7, 21, 12, 12, 12),
+    ...     endTime=datetime(2022, 7, 22, 12, 12, 12),
+    ...     layers="[12,7,22],[13,7,11]",
+    ...     events="[AR,HMI_HARP;SPoCA,1],[CH,all,1]",
+    ...     eventsLabels=False,
+    ...     imageScale=2.44,
+    ... )
+    {'id': ...}
     """
     params = queueMovieInputParameters(
         startTime=startTime,

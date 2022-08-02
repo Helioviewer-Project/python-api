@@ -6,7 +6,7 @@ from hvpy import queueMovie
 from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
 
 
-def test_queue():
+def test_json_response():
     response = queueMovie(
         startTime=datetime(2022, 7, 20, 12, 12, 12),
         endTime=datetime(2022, 7, 21, 12, 12, 12),
