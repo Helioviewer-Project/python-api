@@ -95,11 +95,3 @@ Note that this uses the installed version of ``hvpy``, so if you want to make su
     pip install -e ".[docs]"
 
 before changing to the ``docs`` directory.
-
-Contributing
-------------
-
-People who wish to contribute to this package should fork the `GitHub repository <https://github.com/Helioviewer-Project/python-api>`__.
-
-You need to install the development version of the package in order to make and test changes.
-See the :ref:`obtaining_the_source` section for details.
