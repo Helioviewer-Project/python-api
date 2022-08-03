@@ -28,10 +28,10 @@ class queueMovieInputParameters(HvpyParameters):
         Image scale in arcseconds per pixel.
     format
         Movie format (mp4, webm, flv).
-        Default value is `mp4`, optional.
+        Default value is "mp4", optional.
     frameRate
         Movie frames per second.
-        Default value is `15` frames per second, optional.
+        Default value is 15 frames per second, optional.
     maxFrames
         Maximum number of frames in the movie, can be capped by the server.
         Default value is `None`, optional.
@@ -86,7 +86,7 @@ class queueMovieInputParameters(HvpyParameters):
         Default value is `None`, optional.
     size
         Scale video to preset size.
-        Default value is `0`, optional.
+        Default value is 0, optional.
     movieIcons
         Display other user generated movies on the video.
         Default value is `None`, optional.

@@ -1,4 +1,4 @@
-from typing import Any, Union, Callable
+from typing import Any, Callable
 from datetime import datetime
 
 __all__ = ["add_shared_docstring", "convert_date_to_isoformat", "convert_date_to_unix"]
@@ -15,13 +15,12 @@ def add_shared_docstring(input_class) -> Callable[[Any], Any]:
     return decorator
 
 
-def convert_date_to_isoformat(v: datetime) -> Union[str, None]:
+def convert_date_to_isoformat(v: datetime) -> str:
     """
     Converts the date from a datetime object to a string in the ISO format.
     """
-    if v:
+    if v is not None:
         return v.isoformat() + "Z"
-    return None
 
 
 def convert_date_to_unix(v: list) -> str:
