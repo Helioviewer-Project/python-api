@@ -2,4 +2,4 @@
 User Guide
 **********
 
-This is how you install and use ``hvpy``.
+This user guide provides a walkthrough of the major features in the ``hvpy`` package.
