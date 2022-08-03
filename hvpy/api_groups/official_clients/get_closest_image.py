@@ -9,17 +9,18 @@ from hvpy.utils import convert_date_to_isoformat
 
 class getClosestImageInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getClosestImage API.
+    Handles the input parameters of the ``getClosestImage`` API.
 
     Attributes
     ----------
     {Shared}
-    date : datetime.datetime
+    date
         Date and time of the image.
-    sourceId : int
+    sourceId
         Unique image datasource identifier.
-    callback : str, optional
-        Wrap the response object in a function call of your choosing.
+    callback
+        Optionally, wrap the response object in a function call of your choosing.
+        Default is `None` (no wrapping), optional.
 
     References
     ----------

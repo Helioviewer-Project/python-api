@@ -9,23 +9,26 @@ from hvpy.utils import convert_date_to_unix
 
 class getJPXClosestToMidPointInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getJPXClosestToMidPoint API.
+    Handles the input parameters of the ``getJPXClosestToMidPoint`` API.
 
     Attributes
     ----------
     {Shared}
-    startTimes : datetime.datetime
-        Comma separated timestamps for the beginning of the JPX movie data.
-    endTimes : datetime.datetime
-        Comma separated timestamps for the end of the JPX movie data.
-    sourceId : int
+    startTimes
+        A list of datetimes for the beginning of the JPX movie data.
+    endTimes
+        A list of datetimes for the end of the JPX movie data.
+    sourceId
         Unique image datasource identifier.
-    linked : bool, optional
+    linked
         Generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
-    verbose : bool, optional
-        If set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
-    jpip : bool, optional
-        Optionally return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
+        Default is `True`, optional.
+    verbose
+        If set, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
+        Default is `False`, optional.
+    jpip
+        Return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if ``verbose`` is set to `True`).
+        Default is `False`, optional.
 
     References
     ----------

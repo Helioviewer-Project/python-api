@@ -5,17 +5,20 @@ from hvpy.io import HvpyParameters, OutputType
 
 class getDataSourcesInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getDataSources API.
+    Handles the input parameters of the ``getDataSources`` API.
 
     Attributes
     ----------
     {Shared}
-    verbose : bool, optional
-        Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client, default is False.
-    enable : str, optional
-        Comma-separated list of observatories to enable.
-    callback : str, optional
-        Wrap the response object in a function call of your choosing.
+    verbose
+        Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client.
+        Default is `False`, optional.
+    enable
+        Optionally, comma-separated list of observatories to enable.
+        Default is `None` (all observatories are enabled), optional.
+    callback
+        Optionally, wrap the response object in a function call of your choosing.
+        Default is `None` (no wrapping), optional.
 
     References
     ----------

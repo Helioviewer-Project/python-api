@@ -9,25 +9,31 @@ from hvpy.utils import convert_date_to_isoformat
 
 class getJPXInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the getJPX API.
+    Handles the input parameters of the ``getJPX`` API.
 
     Attributes
     ----------
     {Shared}
-    startTime : datetime.datetime
-        Date/Time for the beginning of the JPX movie data.
-    endTime : datetime.datetime
-        Date/Time for the end of the JPX movie data.
-    sourceId : int
+    startTime
+        Datetime for the beginning of the JPX movie data.
+    endTime
+        Datetime for the end of the JPX movie data.
+    sourceId
         Unique image datasource identifier.
-    linked : bool, optional
+    linked
         Generate a linked JPX file containing image pointers instead of data for each individual frame in the series.
-    verbose : bool, optional
-        If set to true, the JSON response will include timestamps for each frame in the resulting movie and any warning messages associated with the request, in addition to the JPX movie file URI.
-    jpip : bool, optional
-        Optionally return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if verbose is set to true).
-    cadence : int, optional
+        Default is `True`, optional.
+    verbose
+        if set to `True`, the JSON response will include timestamps for each frame in the resulting movie
+        and any warning messages associated with the request.
+        In addition to the JPX movie file URI.
+        Default is `False`, optional.
+    jpip
+        Return a JPIP URI string instead of the binary data of the movie itself, or instead of an HTTP URI in the JSON response (if ``verbose`` is set to `True`).
+        Default is `False`, optional.
+    cadence
         The desired amount of time (in seconds) between each frame in the movie.
+        Default is `None` (maximum cadence), optional.
 
     References
     ----------
