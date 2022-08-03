@@ -3,13 +3,13 @@ from hvpy.io import HvpyParameters, OutputType
 
 class downloadScreenshotInputParameters(HvpyParameters):
     """
-    Handles the input parameters of the downloadScreenshot API.
+    Handles the input parameters of the ``downloadScreenshot`` API.
 
     Attributes
     ----------
     {Shared}
-    id: int
-        Unique screenshot identifier (provided by the response to a takeScreenshot request).
+    id
+        Unique screenshot identifier (provided by the response to a ``takeScreenshot`` request).
 
     References
     ----------

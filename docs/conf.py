@@ -15,6 +15,7 @@ release = __version__
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx_autodoc_typehints",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx.ext.coverage",
@@ -62,6 +63,11 @@ intersphinx_mapping = {
 }
 
 # -- Options for HTML output ---------------------------------------------------
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-from sunpy_sphinx_theme.conf import *  # NOQA
+# The theme to use for HTML and HTML Help pages.
+html_theme = "sphinx_book_theme"
+html_theme_options = {
+    "repository_url": "https://github.com/Helioviewer-Project/python-api/",
+    "use_repository_button": True,
+    "extra_navbar": "",
+}
+html_title = "hvpy"
