@@ -7,9 +7,9 @@
 .. toctree::
    :maxdepth: 2
 
+   installation
    guide
    api
-   installation
    dev_guide
 
 Reporting Issues or Requesting Features
