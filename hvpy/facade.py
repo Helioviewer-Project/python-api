@@ -15,6 +15,7 @@ __all__ = [
     "getDataSources",
     "takeScreenshot",
     "downloadScreenshot",
+    "queueMovie",
 ]
 
 
@@ -297,4 +298,87 @@ def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
     b'...'
     """
     params = downloadScreenshotInputParameters(id=id)
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(queueMovieInputParameters)
+def queueMovie(
+    startTime: datetime,
+    endTime: datetime,
+    layers: str,
+    events: str,
+    eventsLabels: bool,
+    imageScale: float,
+    format: Optional[str] = "mp4",
+    frameRate: Optional[str] = "15",
+    maxFrames: Optional[str] = None,
+    scale: Optional[bool] = None,
+    scaleType: Optional[str] = None,
+    scaleX: Optional[float] = None,
+    scaleY: Optional[float] = None,
+    movieLength: Optional[float] = None,
+    watermark: Optional[bool] = True,
+    width: Optional[str] = None,
+    height: Optional[str] = None,
+    x0: Optional[str] = None,
+    y0: Optional[str] = None,
+    x1: Optional[str] = None,
+    y1: Optional[str] = None,
+    x2: Optional[str] = None,
+    y2: Optional[str] = None,
+    callback: Optional[str] = None,
+    size: Optional[int] = None,
+    movieIcons: Optional[int] = None,
+    followViewport: Optional[int] = None,
+    reqObservationDate: Optional[datetime] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Queue a movie for download from the helioviewer.org API.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import queueMovie
+    >>> queueMovie(
+    ...     startTime=datetime(2022, 7, 21, 12, 12, 12),
+    ...     endTime=datetime(2022, 7, 22, 12, 12, 12),
+    ...     layers="[12,7,22],[13,7,11]",
+    ...     events="[AR,HMI_HARP;SPoCA,1],[CH,all,1]",
+    ...     eventsLabels=False,
+    ...     imageScale=2.44,
+    ... )
+    {'id': ...}
+    """
+    params = queueMovieInputParameters(
+        startTime=startTime,
+        endTime=endTime,
+        layers=layers,
+        events=events,
+        eventsLabels=eventsLabels,
+        imageScale=imageScale,
+        format=format,
+        frameRate=frameRate,
+        maxFrames=maxFrames,
+        scale=scale,
+        scaleType=scaleType,
+        scaleX=scaleX,
+        scaleY=scaleY,
+        movieLength=movieLength,
+        watermark=watermark,
+        width=width,
+        height=height,
+        x0=x0,
+        y0=y0,
+        x1=x1,
+        y1=y1,
+        x2=x2,
+        y2=y2,
+        callback=callback,
+        size=size,
+        movieIcons=movieIcons,
+        followViewport=followViewport,
+        reqObservationDate=reqObservationDate,
+    )
     return execute_api_call(input_parameters=params)

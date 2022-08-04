@@ -19,7 +19,8 @@ def convert_date_to_isoformat(v: datetime) -> str:
     """
     Converts the date from a datetime object to a string in the ISO format.
     """
-    return v.isoformat() + "Z"
+    if v is not None:
+        return v.isoformat() + "Z"
 
 
 def convert_date_to_unix(v: list) -> str:
