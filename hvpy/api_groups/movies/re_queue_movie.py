@@ -14,7 +14,7 @@ class reQueueMovieInputParameters(HvpyParameters):
         Unique movie identifier, returned as a response by the ``queueMovie`` endpoint request.
     force
         Boolean to force the re-queueing of the movie.
-        Defaults to ``False``, optional.
+        Defaults to `False`, optional.
 
     References
     ----------
