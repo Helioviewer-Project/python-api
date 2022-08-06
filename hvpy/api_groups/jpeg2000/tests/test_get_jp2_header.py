@@ -22,4 +22,4 @@ def test_error_handling():
 
 def test_url_property():
     params = getJP2HeaderInputParameters(id=9838343)
-    assert params.url == "https://api.helioviewer.org/v2/getJP2Header/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getJP2Header/"

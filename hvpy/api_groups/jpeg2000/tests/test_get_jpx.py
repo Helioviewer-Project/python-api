@@ -72,4 +72,4 @@ def test_url_property():
     params = getJPXInputParameters(
         startTime=datetime(2014, 1, 1, 0, 0, 0), endTime=datetime(2014, 1, 1, 0, 45, 0), sourceId=14
     )
-    assert params.url == "https://api.helioviewer.org/v2/getJPX/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getJPX/"

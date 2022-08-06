@@ -26,4 +26,4 @@ def test_error_handling():
 
 def test_url_property():
     params = getClosestImageInputParameters(date=datetime(2014, 1, 1, 23, 59, 59), sourceId=14)
-    assert params.url == "https://api.helioviewer.org/v2/getClosestImage/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getClosestImage/"

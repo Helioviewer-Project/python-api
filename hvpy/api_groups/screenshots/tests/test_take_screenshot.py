@@ -43,7 +43,7 @@ def test_url_property():
         x0=0,
         y0=0,
     )
-    assert params.url == "https://api.helioviewer.org/v2/takeScreenshot/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/takeScreenshot/"
 
 
 def test_error_handling():

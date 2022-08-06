@@ -153,7 +153,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     --------
     >>> from hvpy import getStatus
     >>> getStatus()
-    {'AIA': {...}, 'COSMO': {...}, 'EIT': {...}, 'HMI': {...}, 'LASCO': {...}, 'MDI': {...}, 'SECCHI': {...}, 'SWAP': {...}, 'SXT': {...}, 'XRT': {...}}
+    {'AIA': ..., 'COSMO': ..., 'EUI': ..., 'HMI': ..., 'LASCO': ..., 'SECCHI': ..., 'SWAP': ..., 'XRT': ...}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)
@@ -181,7 +181,7 @@ def getClosestImage(
     ...     date=datetime(2014,1,1,23,59,59),
     ...     sourceId=14,
     ... )
-    {'id': '32271665', 'date': '2014-01-02 00:00:03', 'name': 'AIA 335', 'scale': 0.5899606831770233, 'width': 4096, 'height': 4096, 'refPixelX': 2048.5, 'refPixelY': 2048.5, 'sunCenterOffsetParams': [], 'layeringOrder': 1}
+    {'id': '...', 'date': '...', 'name': '...', ...}
     """
     params = getClosestImageInputParameters(date=date, sourceId=sourceId, callback=callback)
     return execute_api_call(input_parameters=params)

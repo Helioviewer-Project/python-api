@@ -9,4 +9,4 @@ def test_getStatusInputParameters():
 
 def test_url_property():
     params = getStatusInputParameters()
-    assert params.url == "https://api.helioviewer.org/v2/getStatus/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getStatus/"

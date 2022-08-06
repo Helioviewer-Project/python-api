@@ -49,4 +49,4 @@ def test_error_handling():
 
 def test_url_property():
     params = getJPXClosestToMidPointInputParameters(startTimes=startTimes, endTimes=endTimes, sourceId=14)
-    assert params.url == "https://api.helioviewer.org/v2/getJPXClosestToMidPoint/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getJPXClosestToMidPoint/"

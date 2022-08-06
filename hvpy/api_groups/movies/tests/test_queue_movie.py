@@ -41,4 +41,4 @@ def test_url_property():
         eventsLabels=False,
         imageScale=1,
     )
-    assert params.url == "https://api.helioviewer.org/v2/queueMovie/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/queueMovie/"
