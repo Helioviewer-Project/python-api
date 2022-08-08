@@ -3,6 +3,7 @@ import pytest
 from hvpy import reQueueMovie
 from hvpy.api_groups.movies.re_queue_movie import reQueueMovieInputParameters
 
+
 # Skipping since reQueueMovie will fail while the requested
 # movie is being processed by Helioviewer. The test suite
 # will call this for each python version that's tested.
