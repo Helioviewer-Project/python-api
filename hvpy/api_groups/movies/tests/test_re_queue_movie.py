@@ -3,7 +3,12 @@ import pytest
 from hvpy import reQueueMovie
 from hvpy.api_groups.movies.re_queue_movie import reQueueMovieInputParameters
 
-
+# Skipping since reQueueMovie will fail while the requested
+# movie is being processed by Helioviewer. The test suite
+# will call this for each python version that's tested.
+# The first call will work, but following calls will fail
+# with the API saying "Movie is already being processed"
+@pytest.mark.skip(reason="Cannot be called multiple times in a test suite. All calls after the 1st will fail.")
 def test_json_response():
     response = reQueueMovie(id="gxRN5", force=True)
     assert response["id"] is not None
