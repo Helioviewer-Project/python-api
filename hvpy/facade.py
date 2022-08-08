@@ -399,8 +399,8 @@ def reQueueMovie(
     {Insert}
     Examples
     --------
-    >>> from hvpy import reQueueMovie
-    >>> reQueueMovie(id="gxRN5", force=True)
+    >>> from hvpy import reQueueMovie        # doctest: +SKIP
+    >>> reQueueMovie(id="gxRN5", force=True) # doctest: +SKIP
     {'id': 'gxRN5', 'eta': 274, 'queue': 0, 'token': '...'}
     """
     params = reQueueMovieInputParameters(
