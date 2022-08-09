@@ -1,16 +1,21 @@
 import pytest
 
-from hvpy import getJP2Header
+from hvpy import getJP2Header, set_api_url
 from hvpy.api_groups.jpeg2000.get_jp2_header import getJP2HeaderInputParameters
 
 
 def test_getJP2HeaderInputParameters():
-    response = getJP2Header(id=9838343)
+    # Because the API is testing the beta version,
+    # the URL is set to the beta version in the first test case.
+    # All the following test cases uses this URL.
+    set_api_url("https://api.beta.helioviewer.org/v2/")
+
+    response = getJP2Header(id=7654321)
     assert isinstance(response, str)
     assert response.startswith("<?xml")
     assert response.endswith("</meta>")
 
-    response = getJP2Header(id=9838343, callback="my_callback")
+    response = getJP2Header(id=7654321, callback="my_callback")
     assert isinstance(response, str)
     assert response.startswith("my_callback(")
 

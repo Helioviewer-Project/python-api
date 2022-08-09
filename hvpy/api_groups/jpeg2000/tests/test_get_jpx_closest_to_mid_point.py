@@ -5,8 +5,8 @@ import pytest
 from hvpy import getJPXClosestToMidPoint
 from hvpy.api_groups.jpeg2000.get_jpx_closest_to_mid_point import getJPXClosestToMidPointInputParameters
 
-startTimes = [datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3), datetime(2014, 1, 1, 4, 5, 5)]
-endTimes = [datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3), datetime(2014, 1, 1, 4, 54, 5)]
+startTimes = [datetime(2022, 7, 24, 0, 0, 0), datetime(2022, 7, 24, 2, 3, 3)]
+endTimes = [datetime(2022, 7, 25, 0, 45, 0), datetime(2022, 7, 25, 2, 33, 3)]
 
 
 def test_raw_response():

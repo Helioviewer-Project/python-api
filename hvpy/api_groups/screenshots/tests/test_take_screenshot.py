@@ -8,9 +8,9 @@ from hvpy.api_groups.screenshots.take_screenshot import takeScreenshotInputParam
 
 def test_json_response():
     response = takeScreenshot(
-        date=datetime(2014, 1, 1, 23, 59, 59),
+        date=datetime.today(),
         imageScale=2.4204409,
-        layers="[3,1,100]",
+        layers="[10,1,100]",
         width=1920,
         height=1200,
         x0=0,
@@ -22,9 +22,9 @@ def test_json_response():
 def test_raw_response():
     response = takeScreenshot(
         display=True,
-        date=datetime(2014, 1, 1, 23, 59, 59),
+        date=datetime.today(),
         imageScale=2.4204409,
-        layers="[3,1,100]",
+        layers="[10,1,100]",
         width=1920,
         height=1200,
         x0=0,
@@ -35,7 +35,7 @@ def test_raw_response():
 
 def test_url_property():
     params = takeScreenshotInputParameters(
-        date=datetime(2014, 1, 1, 23, 59, 59),
+        date=datetime.today(),
         imageScale=2.4204409,
         layers="[3,1,100]",
         width=1920,

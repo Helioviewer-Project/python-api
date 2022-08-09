@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytest
 
@@ -8,8 +8,8 @@ from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
 
 def test_raw_response():
     response = getJPX(
-        startTime=datetime(2014, 1, 1, 0, 0, 0),
-        endTime=datetime(2014, 1, 1, 0, 45, 0),
+        startTime=datetime.today() - timedelta(days=16),
+        endTime=datetime.today() - timedelta(days=15),
         sourceId=14,
         linked=False,
         verbose=False,
@@ -21,8 +21,8 @@ def test_raw_response():
 
 def test_str_response():
     response = getJPX(
-        startTime=datetime(2014, 1, 1, 0, 0, 0),
-        endTime=datetime(2014, 1, 1, 0, 45, 0),
+        startTime=datetime.today() - timedelta(days=16),
+        endTime=datetime.today() - timedelta(days=15),
         sourceId=14,
         linked=False,
         verbose=False,
@@ -35,8 +35,8 @@ def test_str_response():
 
 def test_json_response():
     response = getJPX(
-        startTime=datetime(2014, 1, 1, 0, 0, 0),
-        endTime=datetime(2014, 1, 1, 0, 45, 0),
+        startTime=datetime.today() - timedelta(days=16),
+        endTime=datetime.today() - timedelta(days=15),
         sourceId=14,
         linked=False,
         verbose=True,
@@ -47,8 +47,8 @@ def test_json_response():
     assert response["uri"].startswith("jpip://")
 
     response = getJPX(
-        startTime=datetime(2014, 1, 1, 0, 0, 0),
-        endTime=datetime(2014, 1, 1, 0, 45, 0),
+        startTime=datetime.today() - timedelta(days=16),
+        endTime=datetime.today() - timedelta(days=15),
         sourceId=14,
         linked=False,
         verbose=True,

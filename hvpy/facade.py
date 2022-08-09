@@ -35,8 +35,8 @@ def getJP2Image(
     Examples
     --------
     >>> from hvpy import getJP2Image
-    >>> getJP2Image(date=datetime(2019,1,1), sourceId=1, jpip=True)
-    'jpip://helioviewer.org:8090/EIT/2013/08/07/195/2013_08_07__01_13_50_146__SOHO_EIT_EIT_195.jp2'
+    >>> getJP2Image(date=datetime(2014,1,1), sourceId=14, jpip=True)
+    'jpip://...'
     """
     params = getJP2ImageInputParameters(date=date, sourceId=sourceId, jpip=jpip, json=json)
     return execute_api_call(input_parameters=params)
@@ -57,7 +57,7 @@ def getJP2Header(
     Examples
     --------
     >>> from hvpy import getJP2Header
-    >>> getJP2Header(id=9838343,callback="xml_header")
+    >>> getJP2Header(id=7654321,callback="xml_header")
     'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits><SIMPLE>1</SIMPLE><BITPIX>16</BITPIX>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
@@ -85,13 +85,13 @@ def getJPXClosestToMidPoint(
     >>> from hvpy import getJPXClosestToMidPoint
     >>> from datetime import datetime
     >>> getJPXClosestToMidPoint(
-    ...     startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)],
-    ...     endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)],
+    ...     startTimes=[datetime(2022, 7, 24, 0, 0, 0), datetime(2022, 7, 24, 2, 3, 3)],
+    ...     endTimes=[datetime(2022, 7, 25, 0, 45, 0), datetime(2022, 7, 25, 2, 33, 3)],
     ...     sourceId=14,
     ...     linked=False,
     ...     jpip=True
     ... )
-    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
+    'jpip://beta.helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
         startTimes=startTimes,
@@ -124,9 +124,12 @@ def getJPX(
     Examples
     --------
     >>> from hvpy import getJPX
-    >>> from datetime import datetime
-    >>> getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0),endTime=datetime(2014, 1, 1, 0, 45, 0),sourceId=14,jpip=True)
-    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_F2014-01-01T00.00.00Z_T2014-01-01T00.45.00ZL.jpx'
+    >>> from datetime import datetime, timedelta
+    >>> getJPX(startTime=datetime.today() - timedelta(days=16),
+    ...        endTime=datetime.today() - timedelta(days=15),
+    ...        sourceId=14,
+    ...        jpip=True)
+    'jpip://beta.helioviewer.org:8090/movies/...'
     """
     params = getJPXInputParameters(
         startTime=startTime,
@@ -249,7 +252,7 @@ def takeScreenshot(
     >>> takeScreenshot(
     ...     date=datetime(2014, 1, 1, 23, 59, 59),
     ...     imageScale=2.44,
-    ...     layers="[3,1,100]",
+    ...     layers="[10,1,100]",
     ...     x0=0,
     ...     y0=0,
     ...     width=1920,
