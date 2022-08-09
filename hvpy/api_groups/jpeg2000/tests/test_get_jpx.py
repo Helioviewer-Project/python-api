@@ -8,8 +8,8 @@ from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
 
 def test_raw_response():
     response = getJPX(
-        startTime=datetime.today() - timedelta(days=16),
-        endTime=datetime.today() - timedelta(days=15),
+        startTime=datetime.today() - timedelta(days=1),
+        endTime=datetime.today(),
         sourceId=14,
         linked=False,
         verbose=False,

@@ -25,4 +25,4 @@ def test_error_handling():
 
 def test_url_property():
     params = reQueueMovieInputParameters(id="gxRN5")
-    assert params.url == "https://api.helioviewer.org/v2/reQueueMovie/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/reQueueMovie/"

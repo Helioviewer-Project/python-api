@@ -126,9 +126,9 @@ def getJPX(
     Examples
     --------
     >>> from hvpy import getJPX
-    >>> from datetime import datetime, timedelta
-    >>> getJPX(startTime=datetime.today() - timedelta(days=16),
-    ...        endTime=datetime.today() - timedelta(days=15),
+    >>> from datetime import datetime
+    >>> getJPX(startTime=datetime(2022, 7, 25, 11),
+    ...        endTime=datetime(2022, 7, 26, 11),
     ...        sourceId=14,
     ...        jpip=True)
     'jpip://beta.helioviewer.org:8090/movies/...'
@@ -430,8 +430,8 @@ def getMovieStatus(
     Examples
     --------
     >>> from hvpy import getMovieStatus
-    >>> getMovieStatus(id="VXvX5", format="mp4")
-    {'frameRate': 15, 'numFrames': 300, 'startDate': '2014-02-03 20:26:16', 'status': 2, 'endDate': '2014-02-05 20:16:40', 'width': 846, 'height': 820, 'title': 'SDO AIA 1600 (2014-02-03 20:26:16 - 20:16:40 UTC)', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
+    >>> getMovieStatus(id="h2n6n", format="mp4")
+    {'frameRate': ..., 'numFrames': ..., 'startDate': '...', 'status': ..., 'endDate': '...', 'width': ..., 'height': ..., 'title': '...', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
     """
     params = getMovieStatusInputParameters(
         id=id,
