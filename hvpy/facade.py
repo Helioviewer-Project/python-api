@@ -16,6 +16,8 @@ __all__ = [
     "takeScreenshot",
     "downloadScreenshot",
     "queueMovie",
+    "reQueueMovie",
+    "getMovieStatus",
 ]
 
 
@@ -383,5 +385,59 @@ def queueMovie(
         movieIcons=movieIcons,
         followViewport=followViewport,
         reqObservationDate=reqObservationDate,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(reQueueMovieInputParameters)
+def reQueueMovie(
+    id: str,
+    force: Optional[bool] = False,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Re-generate a custom movie that is no longer cached on the server.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import reQueueMovie        # doctest: +SKIP
+    >>> reQueueMovie(id="gxRN5", force=True) # doctest: +SKIP
+    {'id': 'gxRN5', 'eta': 274, 'queue': 0, 'token': '...'}
+    """
+    params = reQueueMovieInputParameters(
+        id=id,
+        force=force,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(getMovieStatusInputParameters)
+def getMovieStatus(
+    id: str,
+    format: str,
+    verbose: Optional[bool] = False,
+    callback: Optional[str] = None,
+    token: Optional[str] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Get the status of a movie.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import getMovieStatus
+    >>> getMovieStatus(id="VXvX5", format="mp4")
+    {'frameRate': 15, 'numFrames': 300, 'startDate': '2014-02-03 20:26:16', 'status': 2, 'endDate': '2014-02-05 20:16:40', 'width': 846, 'height': 820, 'title': 'SDO AIA 1600 (2014-02-03 20:26:16 - 20:16:40 UTC)', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
+    """
+    params = getMovieStatusInputParameters(
+        id=id,
+        format=format,
+        verbose=verbose,
+        callback=callback,
+        token=token,
     )
     return execute_api_call(input_parameters=params)
