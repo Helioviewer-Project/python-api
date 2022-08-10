@@ -1,12 +1,12 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytest
 
 from hvpy import getJPXClosestToMidPoint
 from hvpy.api_groups.jpeg2000.get_jpx_closest_to_mid_point import getJPXClosestToMidPointInputParameters
 
-startTimes = [datetime(2022, 7, 24, 0, 0, 0), datetime(2022, 7, 24, 2, 3, 3)]
-endTimes = [datetime(2022, 7, 25, 0, 45, 0), datetime(2022, 7, 25, 2, 33, 3)]
+startTimes = [datetime.today() - timedelta(days=16), datetime.today() - timedelta(days=16, hours=1, minutes=30)]
+endTimes = [datetime.today() - timedelta(days=15), datetime.today() - timedelta(days=15, hours=1, minutes=30)]
 
 
 def test_raw_response():
