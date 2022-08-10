@@ -6,7 +6,17 @@ from hvpy import getJPX
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
 
 
-def test_raw_response():
+@pytest.fixture
+def start_time():
+    return datetime.today() - timedelta(days=16)
+
+
+@pytest.fixture
+def end_time():
+    return datetime.today() - timedelta(days=15)
+
+
+def test_raw_response(start_time, end_time):
     response = getJPX(
         startTime=datetime.today() - timedelta(days=1),
         endTime=datetime.today(),
@@ -19,10 +29,10 @@ def test_raw_response():
     assert isinstance(response, bytes)
 
 
-def test_str_response():
+def test_str_response(start_time, end_time):
     response = getJPX(
-        startTime=datetime.today() - timedelta(days=16),
-        endTime=datetime.today() - timedelta(days=15),
+        startTime=start_time,
+        endTime=end_time,
         sourceId=14,
         linked=False,
         verbose=False,
@@ -33,10 +43,10 @@ def test_str_response():
     assert response.startswith("jpip://")
 
 
-def test_json_response():
+def test_json_response(start_time, end_time):
     response = getJPX(
-        startTime=datetime.today() - timedelta(days=16),
-        endTime=datetime.today() - timedelta(days=15),
+        startTime=start_time,
+        endTime=end_time,
         sourceId=14,
         linked=False,
         verbose=True,
@@ -47,8 +57,8 @@ def test_json_response():
     assert response["uri"].startswith("jpip://")
 
     response = getJPX(
-        startTime=datetime.today() - timedelta(days=16),
-        endTime=datetime.today() - timedelta(days=15),
+        startTime=start_time,
+        endTime=end_time,
         sourceId=14,
         linked=False,
         verbose=True,
@@ -59,17 +69,19 @@ def test_json_response():
     assert response["uri"].startswith("https://")
 
 
-def test_error_handling():
+def test_error_handling(start_time, end_time):
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'startTime'"):
-        getJPX(endTime=datetime(2014, 1, 1, 0, 45, 0), sourceId=14)
+        getJPX(endTime=end_time, sourceId=14)
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'endTime'"):
-        getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0), sourceId=14)
+        getJPX(startTime=start_time, sourceId=14)
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'sourceId'"):
-        getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0), endTime=datetime(2014, 1, 1, 0, 45, 0))
+        getJPX(startTime=start_time, endTime=end_time)
 
 
-def test_url_property():
+def test_url_property(start_time, end_time):
     params = getJPXInputParameters(
-        startTime=datetime(2014, 1, 1, 0, 0, 0), endTime=datetime(2014, 1, 1, 0, 45, 0), sourceId=14
+        startTime=start_time,
+        endTime=end_time,
+        sourceId=14,
     )
     assert params.url == "https://api.beta.helioviewer.org/v2/getJPX/"

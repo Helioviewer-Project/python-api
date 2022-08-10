@@ -45,7 +45,7 @@ will run checks on the code style using precommit hooks.
 ==========
 
 .. warning::
-    Merging of the PR #55, it is expected that the ``pytest`` is going to fail. This is beacuse the ``pytest`` functions is testing the beta version of the API.
+    Before running the tests we need to set environment variables ``HELIOVIEWER_API_URL`` to ``https://api.beta.helioviewer.org/v2/``.
 
 The test suite can also be run directly from the native ``pytest`` command, which is generally faster than using tox for iterative development.
 In this case, it is important for developers to be aware that they must manually rebuild any extensions by running::
