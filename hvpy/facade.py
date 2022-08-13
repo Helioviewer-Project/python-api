@@ -208,7 +208,7 @@ def getDataSources(
     --------
     >>> from hvpy import getDataSources
     >>> getDataSources()
-    {'SDO': {'HMI': {'continuum': {'sourceId': 18, 'nickname': 'HMI Int', 'layeringOrder': 1, 'start': ..., 'end': ..., 'uiLabels': [{'label': 'Observatory', 'name': 'SDO'}, {'label': 'Instrument', 'name': 'HMI'}, {'label': 'Measurement', 'name': 'continuum'}]}, ...}
+    {'GOES-R': {'SUVI': {...: {'sourceId': ..., 'nickname': 'GOES-R SUVI 94', 'layeringOrder': 1, 'start': ..., 'end': ..., 'uiLabels': [{'label': 'Observatory', 'name': 'GOES-R'}, {'label': 'Detector', 'name': 'SUVI'}, ...}
     """
     params = getDataSourcesInputParameters(
         verbose=verbose,

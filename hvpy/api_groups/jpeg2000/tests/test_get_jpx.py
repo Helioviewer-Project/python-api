@@ -1,30 +1,18 @@
-from datetime import datetime, timedelta
-
 import pytest
 
 from hvpy import getJPX
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
 
 
-@pytest.fixture
-def start_time():
-    return datetime.today() - timedelta(days=16)
-
-
-@pytest.fixture
-def end_time():
-    return datetime.today() - timedelta(days=15)
-
-
 def test_raw_response(start_time, end_time):
     response = getJPX(
-        startTime=datetime.today() - timedelta(days=1),
-        endTime=datetime.today(),
+        startTime=start_time,
+        endTime=end_time,
         sourceId=14,
         linked=False,
         verbose=False,
         jpip=False,
-        cadence=None,
+        cadence=60,
     )
     assert isinstance(response, bytes)
 
@@ -37,7 +25,7 @@ def test_str_response(start_time, end_time):
         linked=False,
         verbose=False,
         jpip=True,
-        cadence=None,
+        cadence=60,
     )
     assert isinstance(response, str)
     assert response.startswith("jpip://")
@@ -51,7 +39,7 @@ def test_json_response(start_time, end_time):
         linked=False,
         verbose=True,
         jpip=True,
-        cadence=None,
+        cadence=60,
     )
     assert isinstance(response, dict)
     assert response["uri"].startswith("jpip://")
@@ -63,7 +51,7 @@ def test_json_response(start_time, end_time):
         linked=False,
         verbose=True,
         jpip=False,
-        cadence=None,
+        cadence=60,
     )
     assert isinstance(response, dict)
     assert response["uri"].startswith("https://")
