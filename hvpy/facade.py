@@ -37,7 +37,8 @@ def getJP2Image(
     Examples
     --------
     >>> from hvpy import getJP2Image
-    >>> getJP2Image(date=datetime(2014,1,1), sourceId=14, jpip=True)
+    >>> from datetime import datetime, timedelta
+    >>> getJP2Image(date=datetime.today(), sourceId=14, jpip=True)
     'jpip://...'
     """
     params = getJP2ImageInputParameters(date=date, sourceId=sourceId, jpip=jpip, json=json)
@@ -85,10 +86,10 @@ def getJPXClosestToMidPoint(
     Examples
     --------
     >>> from hvpy import getJPXClosestToMidPoint
-    >>> from datetime import datetime
+    >>> from datetime import datetime, timedelta
     >>> getJPXClosestToMidPoint(
-    ...     startTimes=[datetime(2022, 7, 24, 0, 0, 0), datetime(2022, 7, 24, 2, 3, 3)],
-    ...     endTimes=[datetime(2022, 7, 25, 0, 45, 0), datetime(2022, 7, 25, 2, 33, 3)],
+    ...     startTimes=[datetime.today() - timedelta(days=15, minutes=5), datetime.today() - timedelta(days=16, minutes=5)],
+    ...     endTimes=[datetime.today() - timedelta(days=15), datetime.today() - timedelta(days=16)],
     ...     sourceId=14,
     ...     linked=False,
     ...     jpip=True
@@ -126,11 +127,14 @@ def getJPX(
     Examples
     --------
     >>> from hvpy import getJPX
-    >>> from datetime import datetime
-    >>> getJPX(startTime=datetime(2022, 7, 25, 11),
-    ...        endTime=datetime(2022, 7, 26, 11),
+    >>> from datetime import datetime, timedelta
+    >>> getJPX(startTime=datetime.today() - timedelta(days=15, minutes=5),
+    ...        endTime=datetime.today() - timedelta(days=15),
     ...        sourceId=14,
-    ...        jpip=True)
+    ...        linked=False,
+    ...        jpip=True,
+    ...        verbose=False,
+    ...        cadence=60)
     'jpip://beta.helioviewer.org:8090/movies/...'
     """
     params = getJPXInputParameters(
@@ -183,7 +187,7 @@ def getClosestImage(
     >>> from datetime import datetime
     >>> from hvpy import getClosestImage
     >>> getClosestImage(
-    ...     date=datetime(2014,1,1,23,59,59),
+    ...     date=datetime.today(),
     ...     sourceId=14,
     ... )
     {'id': '...', 'date': '...', 'name': '...', ...}
@@ -252,7 +256,7 @@ def takeScreenshot(
     >>> from hvpy import takeScreenshot
     >>> from datetime import datetime
     >>> takeScreenshot(
-    ...     date=datetime(2014, 1, 1, 23, 59, 59),
+    ...     date=datetime.today(),
     ...     imageScale=2.44,
     ...     layers="[10,1,100]",
     ...     x0=0,
@@ -346,9 +350,10 @@ def queueMovie(
     Examples
     --------
     >>> from hvpy import queueMovie
+    >>> from datetime import datetime, timedelta
     >>> queueMovie(
-    ...     startTime=datetime(2022, 7, 21, 12, 12, 12),
-    ...     endTime=datetime(2022, 7, 22, 12, 12, 12),
+    ...     startTime=datetime.today() - timedelta(days=15, minutes=5),
+    ...     endTime=datetime.today() - timedelta(days=15),
     ...     layers="[12,7,22],[13,7,11]",
     ...     events="[AR,HMI_HARP;SPoCA,1],[CH,all,1]",
     ...     eventsLabels=False,
