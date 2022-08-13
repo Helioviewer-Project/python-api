@@ -37,8 +37,9 @@ def getJP2Image(
     Examples
     --------
     >>> from hvpy import getJP2Image
-    >>> getJP2Image(date=datetime(2019,1,1), sourceId=1, jpip=True)
-    'jpip://helioviewer.org:8090/EIT/2013/08/07/195/2013_08_07__01_13_50_146__SOHO_EIT_EIT_195.jp2'
+    >>> from datetime import datetime, timedelta
+    >>> getJP2Image(date=datetime.today(), sourceId=14, jpip=True)
+    'jpip://...'
     """
     params = getJP2ImageInputParameters(date=date, sourceId=sourceId, jpip=jpip, json=json)
     return execute_api_call(input_parameters=params)
@@ -59,7 +60,7 @@ def getJP2Header(
     Examples
     --------
     >>> from hvpy import getJP2Header
-    >>> getJP2Header(id=9838343,callback="xml_header")
+    >>> getJP2Header(id=7654321,callback="xml_header")
     'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits><SIMPLE>1</SIMPLE><BITPIX>16</BITPIX>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
@@ -85,15 +86,15 @@ def getJPXClosestToMidPoint(
     Examples
     --------
     >>> from hvpy import getJPXClosestToMidPoint
-    >>> from datetime import datetime
+    >>> from datetime import datetime, timedelta
     >>> getJPXClosestToMidPoint(
-    ...     startTimes=[datetime(2014, 1, 1, 0, 0, 0), datetime(2014, 1, 1, 2, 3, 3)],
-    ...     endTimes=[datetime(2014, 1, 1, 0, 45, 0), datetime(2014, 1, 1, 2, 33, 3)],
+    ...     startTimes=[datetime.today() - timedelta(days=15, minutes=5), datetime.today() - timedelta(days=16, minutes=5)],
+    ...     endTimes=[datetime.today() - timedelta(days=15), datetime.today() - timedelta(days=16)],
     ...     sourceId=14,
     ...     linked=False,
     ...     jpip=True
     ... )
-    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
+    'jpip://beta.helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
         startTimes=startTimes,
@@ -126,9 +127,15 @@ def getJPX(
     Examples
     --------
     >>> from hvpy import getJPX
-    >>> from datetime import datetime
-    >>> getJPX(startTime=datetime(2014, 1, 1, 0, 0, 0),endTime=datetime(2014, 1, 1, 0, 45, 0),sourceId=14,jpip=True)
-    'jpip://helioviewer.org:8090/movies/SDO_AIA_335_F2014-01-01T00.00.00Z_T2014-01-01T00.45.00ZL.jpx'
+    >>> from datetime import datetime, timedelta
+    >>> getJPX(startTime=datetime.today() - timedelta(days=15, minutes=5),
+    ...        endTime=datetime.today() - timedelta(days=15),
+    ...        sourceId=14,
+    ...        linked=False,
+    ...        jpip=True,
+    ...        verbose=False,
+    ...        cadence=60)
+    'jpip://beta.helioviewer.org:8090/movies/...'
     """
     params = getJPXInputParameters(
         startTime=startTime,
@@ -155,7 +162,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     --------
     >>> from hvpy import getStatus
     >>> getStatus()
-    {'AIA': {...}, 'COSMO': {...}, 'EIT': {...}, 'HMI': {...}, 'LASCO': {...}, 'MDI': {...}, 'SECCHI': {...}, 'SWAP': {...}, 'SXT': {...}, 'XRT': {...}}
+    {'AIA': ..., 'COSMO': ..., 'EUI': ..., 'HMI': ..., 'LASCO': ..., 'SECCHI': ..., 'SWAP': ..., 'XRT': ...}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)
@@ -180,10 +187,10 @@ def getClosestImage(
     >>> from datetime import datetime
     >>> from hvpy import getClosestImage
     >>> getClosestImage(
-    ...     date=datetime(2014,1,1,23,59,59),
+    ...     date=datetime.today(),
     ...     sourceId=14,
     ... )
-    {'id': '32271665', 'date': '2014-01-02 00:00:03', 'name': 'AIA 335', 'scale': 0.5899606831770233, 'width': 4096, 'height': 4096, 'refPixelX': 2048.5, 'refPixelY': 2048.5, 'sunCenterOffsetParams': [], 'layeringOrder': 1}
+    {'id': '...', 'date': '...', 'name': '...', ...}
     """
     params = getClosestImageInputParameters(date=date, sourceId=sourceId, callback=callback)
     return execute_api_call(input_parameters=params)
@@ -205,7 +212,7 @@ def getDataSources(
     --------
     >>> from hvpy import getDataSources
     >>> getDataSources()
-    {'SDO': {'HMI': {'continuum': {'sourceId': 18, 'nickname': 'HMI Int', 'layeringOrder': 1, 'start': ..., 'end': ..., 'uiLabels': [{'label': 'Observatory', 'name': 'SDO'}, {'label': 'Instrument', 'name': 'HMI'}, {'label': 'Measurement', 'name': 'continuum'}]}, ...}
+    {'GOES-R': {'SUVI': {...: {'sourceId': ..., 'nickname': 'GOES-R SUVI 94', 'layeringOrder': 1, 'start': ..., 'end': ..., 'uiLabels': [{'label': 'Observatory', 'name': 'GOES-R'}, {'label': 'Detector', 'name': 'SUVI'}, ...}
     """
     params = getDataSourcesInputParameters(
         verbose=verbose,
@@ -249,9 +256,9 @@ def takeScreenshot(
     >>> from hvpy import takeScreenshot
     >>> from datetime import datetime
     >>> takeScreenshot(
-    ...     date=datetime(2014, 1, 1, 23, 59, 59),
+    ...     date=datetime.today(),
     ...     imageScale=2.44,
-    ...     layers="[3,1,100]",
+    ...     layers="[10,1,100]",
     ...     x0=0,
     ...     y0=0,
     ...     width=1920,
@@ -343,9 +350,10 @@ def queueMovie(
     Examples
     --------
     >>> from hvpy import queueMovie
+    >>> from datetime import datetime, timedelta
     >>> queueMovie(
-    ...     startTime=datetime(2022, 7, 21, 12, 12, 12),
-    ...     endTime=datetime(2022, 7, 22, 12, 12, 12),
+    ...     startTime=datetime.today() - timedelta(days=15, minutes=5),
+    ...     endTime=datetime.today() - timedelta(days=15),
     ...     layers="[12,7,22],[13,7,11]",
     ...     events="[AR,HMI_HARP;SPoCA,1],[CH,all,1]",
     ...     eventsLabels=False,
@@ -427,8 +435,8 @@ def getMovieStatus(
     Examples
     --------
     >>> from hvpy import getMovieStatus
-    >>> getMovieStatus(id="VXvX5", format="mp4")
-    {'frameRate': 15, 'numFrames': 300, 'startDate': '2014-02-03 20:26:16', 'status': 2, 'endDate': '2014-02-05 20:16:40', 'width': 846, 'height': 820, 'title': 'SDO AIA 1600 (2014-02-03 20:26:16 - 20:16:40 UTC)', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
+    >>> getMovieStatus(id="h2n6n", format="mp4")
+    {'frameRate': ..., 'numFrames': ..., 'startDate': '...', 'status': ..., 'endDate': '...', 'width': ..., 'height': ..., 'title': '...', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
     """
     params = getMovieStatusInputParameters(
         id=id,

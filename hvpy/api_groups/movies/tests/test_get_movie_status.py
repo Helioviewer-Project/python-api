@@ -6,7 +6,7 @@ from hvpy.api_groups.movies.get_movie_status import getMovieStatusInputParameter
 
 def test_json_response():
     response = getMovieStatus(
-        id="VXvX5",
+        id="h2n6n",
         format="mp4",
     )
     assert response["url"] is not None
@@ -15,7 +15,7 @@ def test_json_response():
 
 def test_str_response():
     response = getMovieStatus(
-        id="VXvX5",
+        id="h2n6n",
         format="mp4",
         callback="myCallback",
     )
@@ -45,4 +45,4 @@ def test_url_property():
         id="VXvX5",
         format="mp4",
     )
-    assert params.url == "https://api.helioviewer.org/v2/getMovieStatus/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/getMovieStatus/"

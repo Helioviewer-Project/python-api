@@ -44,6 +44,16 @@ will run checks on the code style using precommit hooks.
 ``pytest``
 ==========
 
+.. note::
+
+    We run the test suite with the beta version of the Helioviewer API.
+    So if you run **pytest** without it, the tests will fail.
+    This is set automatically when you use **tox**.
+
+    There are two ways to change this.
+    1. Set the environment variable ``HELIOVIEWER_API_URL`` to ``https://api.beta.helioviewer.org/v2/``.
+    2. Add ``HELIOVIEWER_API_URL="https://api.beta.helioviewer.org/v2/"`` to the command line when you run **pytest**.
+
 The test suite can also be run directly from the native ``pytest`` command, which is generally faster than using tox for iterative development.
 In this case, it is important for developers to be aware that they must manually rebuild any extensions by running::
 

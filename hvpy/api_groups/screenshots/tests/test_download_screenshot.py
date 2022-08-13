@@ -11,7 +11,7 @@ def test_raw_response():
 
 def test_url_property():
     params = downloadScreenshotInputParameters(id=3240748)
-    assert params.url == "https://api.helioviewer.org/v2/downloadScreenshot/"
+    assert params.url == "https://api.beta.helioviewer.org/v2/downloadScreenshot/"
 
 
 def test_error_handling():
