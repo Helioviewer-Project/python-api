@@ -453,7 +453,7 @@ def getMovieStatus(
 def downloadMovie(
     id: str,
     format: str,
-    hq: Optional[bool] = False,
+    hq: bool = False,
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
     Download a custom movie that was generated using the ``queueMovie`` API
