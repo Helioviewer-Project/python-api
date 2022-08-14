@@ -18,6 +18,7 @@ __all__ = [
     "queueMovie",
     "reQueueMovie",
     "getMovieStatus",
+    "downloadMovie",
 ]
 
 
@@ -444,5 +445,32 @@ def getMovieStatus(
         verbose=verbose,
         callback=callback,
         token=token,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(downloadMovieInputParameters)
+def downloadMovie(
+    id: str,
+    format: str,
+    hq: Optional[bool] = False,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Download a custom movie that was generated using the ``queueMovie`` API
+    endpoint.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import downloadMovie
+    >>> downloadMovie(id="h2n6n", format="mp4")
+    b'...'
+    """
+    params = downloadMovieInputParameters(
+        id=id,
+        format=format,
+        hq=hq,
     )
     return execute_api_call(input_parameters=params)

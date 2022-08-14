@@ -10,6 +10,7 @@ from hvpy.api_groups.official_clients.get_closest_image import getClosestImageIn
 from hvpy.api_groups.official_clients.get_data_sources import getDataSourcesInputParameters
 from hvpy.api_groups.screenshots.download_screenshot import downloadScreenshotInputParameters
 from hvpy.api_groups.screenshots.take_screenshot import takeScreenshotInputParameters
+from .api_groups.movies.download_movie import downloadMovieInputParameters
 
 __all__ = [
     "getJP2ImageInputParameters",
@@ -24,4 +25,5 @@ __all__ = [
     "queueMovieInputParameters",
     "reQueueMovieInputParameters",
     "getMovieStatusInputParameters",
+    "downloadMovieInputParameters",
 ]
