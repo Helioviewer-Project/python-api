@@ -11,9 +11,9 @@ class downloadMovieInputParameters(HvpyParameters):
     id
         Unique movie identifier, returned as a response by the ``queueMovie`` endpoint request.
     format
-        Movie Format (mp4, webm, or flv).
+        Movie Format ("mp4", "webm", or "flv").
     hq
-        Download a higher-quality movie file (valid for .mp4 movies only, ignored otherwise).
+        Download a higher-quality movie file (valid for "mp4" movies only, ignored otherwise).
         Defaults to `False`, optional.
 
     References
