@@ -22,7 +22,7 @@ def test_str_response():
     assert response.startswith("myCallback(")
 
 
-def test_error_hanpytestdling():
+def test_error_handling():
     with pytest.raises(TypeError, match="missing 1 required positional argument: 'id'"):
         getMovieStatus(
             format="mp4",
