@@ -19,6 +19,8 @@ __all__ = [
     "reQueueMovie",
     "getMovieStatus",
     "downloadMovie",
+    "getNewsFeed",
+    "shortenURL",
 ]
 
 
@@ -472,5 +474,51 @@ def downloadMovie(
         id=id,
         format=format,
         hq=hq,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(getNewsFeedInputParameters)
+def getNewsFeed(
+    callback: Optional[str] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Get the XML RSS feed of the official Helioviewer Project Blog.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import getNewsFeed
+    >>> getNewsFeed()
+    '<?xml version="1.0" encoding="utf-8"?><feed xmlns="..." >...</summary></entry></feed>'
+    """
+    params = getNewsFeedInputParameters(
+        callback=callback,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(shortenURLInputParameters)
+def shortenURL(
+    queryString: str,
+    callback: Optional[str] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Shorten a Helioviewer.org URL with the bit.ly URL shortening web service.
+
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
+    >>> from hvpy import shortenURL
+    >>> shortenURL(queryString="https://api.helioviewer.org/v2/queueMovie/?startTime=2010-03-01T12:12:12Z&endTime=2010-03-04T12:12:12Z")
+    {'status_code': ..., 'status_txt': 'OK', 'data': {'long_url': ..., 'url': ...}}
+    """
+    params = shortenURLInputParameters(
+        queryString=queryString,
+        callback=callback,
     )
     return execute_api_call(input_parameters=params)
