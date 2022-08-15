@@ -21,6 +21,7 @@ __all__ = [
     "downloadMovie",
     "getNewsFeed",
     "shortenURL",
+    "getTile",
 ]
 
 
@@ -520,5 +521,44 @@ def shortenURL(
     params = shortenURLInputParameters(
         queryString=queryString,
         callback=callback,
+    )
+    return execute_api_call(input_parameters=params)
+
+
+@add_shared_docstring(getTileInputParameters)
+def getTile(
+    id: int,
+    x: int,
+    y: int,
+    imageScale: int,
+    difference: Optional[int] = None,
+    diffCount: Optional[int] = None,
+    diffTime: Optional[int] = None,
+    baseDiffTime: Optional[datetime] = None,
+) -> Union[bytes, str, Dict[str, Any]]:
+    """
+    Request a single image tile to be used in the Helioviewer.org Viewport.
+    Tiles are 512x512 pixel PNG images, generated for a given image scale from
+    the intermediary JPEG2000 image files.
+
+    Use the getClosestImage API endpoint to obtain the desired image identifier for the id parameter.
+
+    >>> from hvpy import getTile
+    >>> getTile(id=36275490,
+    ...         x=-1,
+    ...         y=-1,
+    ...         imageScale=2,
+    ...         )
+    b'...'
+    """
+    params = getTileInputParameters(
+        id=id,
+        x=x,
+        y=y,
+        imageScale=imageScale,
+        difference=difference,
+        diffCount=diffCount,
+        diffTime=diffTime,
+        baseDiffTime=baseDiffTime,
     )
     return execute_api_call(input_parameters=params)

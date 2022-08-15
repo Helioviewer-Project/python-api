@@ -12,6 +12,7 @@ from hvpy.api_groups.movies.re_queue_movie import reQueueMovieInputParameters
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
 from hvpy.api_groups.official_clients.get_data_sources import getDataSourcesInputParameters
 from hvpy.api_groups.screenshots.download_screenshot import downloadScreenshotInputParameters
+from hvpy.api_groups.screenshots.get_tile import getTileInputParameters
 from hvpy.api_groups.screenshots.take_screenshot import takeScreenshotInputParameters
 
 __all__ = [
@@ -30,4 +31,5 @@ __all__ = [
     "downloadMovieInputParameters",
     "getNewsFeedInputParameters",
     "shortenURLInputParameters",
+    "getTileInputParameters",
 ]
