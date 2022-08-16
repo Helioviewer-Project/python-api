@@ -543,6 +543,11 @@ def getTile(
 
     Use the getClosestImage API endpoint to obtain the desired image identifier for the id parameter.
 
+    Parameters
+    ----------
+    {Insert}
+    Examples
+    --------
     >>> from hvpy import getTile
     >>> getTile(id=36275490,
     ...         x=-1,
