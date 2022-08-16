@@ -8,8 +8,6 @@ def test_string_response():
     )
     assert isinstance(response, dict)
 
-    print(response)
-
     response = shortenURL(
         queryString="https://api.helioviewer.org/v2/queueMovie/?startTime=2010-03-01T12:12:12Z&endTime=2010-03-04T12:12:12Z",
         callback="test",
