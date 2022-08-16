@@ -1,3 +1,5 @@
+from hvpy.api_groups.communications.get_news_feed import getNewsFeedInputParameters
+from hvpy.api_groups.communications.shorten_url import shortenURLInputParameters
 from hvpy.api_groups.jpeg2000.get_jp2_header import getJP2HeaderInputParameters
 from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
@@ -26,4 +28,6 @@ __all__ = [
     "reQueueMovieInputParameters",
     "getMovieStatusInputParameters",
     "downloadMovieInputParameters",
+    "getNewsFeedInputParameters",
+    "shortenURLInputParameters",
 ]
