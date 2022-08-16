@@ -25,8 +25,8 @@ class getTileInputParameters(HvpyParameters):
     difference
         Specify image type difference.
         0 - Display regular image
-        0 - Running difference image
-        0 - Base difference image
+        1 - Running difference image
+        2 - Base difference image
     diffCount
         Used to display Running difference image. Work with “diffTime” parameter and set amount of time to use in time period.
     diffTime
