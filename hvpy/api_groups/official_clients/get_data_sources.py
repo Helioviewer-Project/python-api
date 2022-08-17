@@ -14,10 +14,10 @@ class getDataSourcesInputParameters(HvpyParameters):
         Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client.
         Default is `False`, optional.
     enable
-        Optionally, comma-separated list of observatories to enable.
+        Comma-separated list of observatories to enable.
         Default is `None` (all observatories are enabled), optional.
     callback
-        Optionally, wrap the response object in a function call of your choosing.
+        Wrap the response object in a function call of your choosing.
         Default is `None` (no wrapping), optional.
 
     References

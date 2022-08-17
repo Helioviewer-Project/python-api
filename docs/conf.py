@@ -14,22 +14,22 @@ release = __version__
 # -- General configuration ---------------------------------------------------
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "sphinx_autodoc_typehints",
-    "sphinx.ext.intersphinx",
-    "sphinx.ext.todo",
     "sphinx.ext.coverage",
-    "sphinx.ext.inheritance_diagram",
-    "sphinx.ext.viewcode",
     "sphinx.ext.doctest",
+    "sphinx.ext.inheritance_diagram",
+    "sphinx.ext.intersphinx",
     "sphinx.ext.mathjax",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
     "sphinx_automodapi.automodapi",
     "sphinx_automodapi.smart_resolver",
+    "sphinx_autodoc_typehints",
 ]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 source_suffix = ".rst"
 master_doc = "index"
-
+default_role = "obj"
 # Enable nitpicky mode, which forces links to be non-broken
 nitpicky = True
 # This is not used. See docs/nitpick-exceptions file for the actual listing.
@@ -42,20 +42,10 @@ for line in open("nitpick-exceptions"):
     nitpick_ignore.append((dtype, target))
 
 # -- Options for intersphinx extension -----------------------------------------
-# Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    "python": (
-        "https://docs.python.org/3/",
-        (None, "http://www.astropy.org/astropy-data/intersphinx/python3.inv"),
-    ),
-    "numpy": (
-        "https://numpy.org/doc/stable/",
-        (None, "http://www.astropy.org/astropy-data/intersphinx/numpy.inv"),
-    ),
-    "scipy": (
-        "https://docs.scipy.org/doc/scipy/reference/",
-        (None, "http://www.astropy.org/astropy-data/intersphinx/scipy.inv"),
-    ),
+    "python": ("https://docs.python.org/3/", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy/reference/", None),
     "matplotlib": ("https://matplotlib.org/stable", None),
     "aiapy": ("https://aiapy.readthedocs.io/en/stable/", None),
     "astropy": ("https://docs.astropy.org/en/stable/", None),

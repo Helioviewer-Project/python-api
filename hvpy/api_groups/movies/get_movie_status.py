@@ -15,14 +15,14 @@ class getMovieStatusInputParameters(HvpyParameters):
     format
         Movie format.
     verbose
-        Optionally include extra metadata in the response.
-        Defaults to `False`.
+        Include extra metadata in the response.
+        Defaults to `False`, optional.
     callback
         Wrap the response object in a function call of your choosing.
         Default is `None` (no wrapping), optional.
     token
         API token.
-        Defaults to `None`.
+        Defaults to `None`, optional.
 
     References
     ----------
