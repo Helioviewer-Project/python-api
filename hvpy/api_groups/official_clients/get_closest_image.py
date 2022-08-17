@@ -15,11 +15,11 @@ class getClosestImageInputParameters(HvpyParameters):
     ----------
     {Shared}
     date
-        Date and time of the image.
+        Datetime of the image.
     sourceId
         Unique image datasource identifier.
     callback
-        Optionally, wrap the response object in a function call of your choosing.
+        Wrap the response object in a function call of your choosing.
         Default is `None` (no wrapping), optional.
 
     References

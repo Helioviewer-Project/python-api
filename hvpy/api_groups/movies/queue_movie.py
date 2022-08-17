@@ -27,7 +27,7 @@ class queueMovieInputParameters(HvpyParameters):
     imageScale
         Image scale in arcseconds per pixel.
     format
-        Movie format (mp4, webm, flv).
+        Movie format ("mp4", "webm", "flv").
         Default value is "mp4", optional.
     frameRate
         Movie frames per second.
@@ -48,38 +48,39 @@ class queueMovieInputParameters(HvpyParameters):
         Vertical offset of the image scale indicator in arcseconds with respect to the center of the Sun.
         Default value is `None`, optional.
     movieLength
-        movie length in seconds.
+        Movie length in seconds.
         Default value is `None`, optional.
     watermark
-        Optionally overlay a Helioviewer.org watermark image.
+        Overlay a Helioviewer.org watermark image.
         Default value is `True`, optional.
     width
-        Width of the field of view in pixels. (Used in conjunction width `x0`,`y0`, and height).
+        Width of the field of view in pixels. (Used in conjunction with ``x0``, ``y0``, and ``height``).
         Default value is `None`, optional.
     height
-        Height of the field of view in pixels. (Used in conjunction width `x0`,`y0`, and width).
+        Height of the field of view in pixels. (Used in conjunction with ``x0``, ``y0``, and ``width``).
         Default value is `None`, optional.
     x0
-        The horizontal offset of the center of the field of view from the center of the Sun. Used in conjunction with `y0`, width, and height.
+        The horizontal offset of the center of the field of view from the center of the Sun.
+        Used in conjunction with ``y0``, ``width``, and ``height``.
         Default value is `None`, optional.
     y0
-        The vertical offset of the center of the field of view from the center of the Sun. Used in conjunction with `x0`, width, and height.
+        The vertical offset of the center of the field of view from the center of the Sun. Used in conjunction with ``x0``, width, and height.
         Default value is `None`, optional.
     x1
         The horizontal offset of the top-left corner of the field of view with respect to the center of the Sun (in arcseconds).
-        Used in conjunction with `y1`, `x2`, and `y2`.
+        Used in conjunction with ``y1``, ``x2``, and ``y2``.
         Default value is `None`, optional.
     y1
         The vertical offset of the top-left corner of the field of view with respect to the center of the Sun (in arcseconds).
-        Used in conjunction with `x1`, `x2`, and `y2`.
+        Used in conjunction with ``x1``, ``x2``, and ``y2``.
         Default value is `None`, optional.
     x2
         The horizontal offset of the bottom-right corner of the field of view with respect to the center of the Sun (in arcseconds).
-        Used in conjunction with `x1`, `y1`, and `y2`.
+        Used in conjunction with ``x1``, ``y1``, and ``y2``.
         Default value is `None`, optional.
     y2
         The vertical offset of the bottom-right corner of the field of view with respect to the center of the Sun (in arcseconds).
-        Used in conjunction with `x1`, `y1`, and `x2`.
+        Used in conjunction with ``x1``, ``y1``, and ``x2``.
         Default value is `None`, optional.
     callback
         Wrap the response object in a function call of your choosing.
