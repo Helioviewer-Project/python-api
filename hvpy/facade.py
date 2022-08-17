@@ -541,7 +541,7 @@ def getTile(
     Tiles are 512x512 pixel PNG images, generated for a given image scale from
     the intermediary JPEG2000 image files.
 
-    Use the getClosestImage API endpoint to obtain the desired image identifier for the id parameter.
+    Use the ``getClosestImage`` API endpoint to obtain the desired image identifier for the id parameter.
 
     Parameters
     ----------
