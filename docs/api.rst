@@ -10,3 +10,5 @@ API Reference
 
 .. automodapi:: hvpy.parameters
    :allowed-package-names: hvpy.api_groups
+
+.. automodapi:: hvpy.datasources
