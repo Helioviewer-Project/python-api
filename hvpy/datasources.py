@@ -190,7 +190,7 @@ class DataSources(Enum):
 
     XRT_AL_MED_AL_MESH = 38
     """
-
+    Hinode instrument XRT Al-med/Al-mesh.
     """
 
     XRT_AL_MED_AL_THICK = 39
@@ -420,22 +420,22 @@ class DataSources(Enum):
 
     EUI_FSI_174 = 84
     """
-
+    Solar Orbiter instrument FSI, measurement 174.
     """
 
     EUI_FSI_304 = 85
     """
-
+    Solar Orbiter instrument FSI, measurement 304.
     """
 
     EUI_HRI_174 = 86
     """
-
+    Solar Orbiter instrument HRI, measurement 174.
     """
 
     EUI_HRI_1216 = 87
     """
-
+    Solar Orbiter instrument HRI, measurement 1216.
     """
 
     XRT_ANY_ANY = 10001
