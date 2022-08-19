@@ -1,24 +1,26 @@
-from hvpy.datasources import DataSources
+from hvpy import DataSources, getDataSources
 
 
 def test_datasources():
-    assert DataSources.EIT_171.name == "EIT_171"
-    assert DataSources.EIT_171.value == 0
 
-    assert DataSources.EIT_195.name == "EIT_195"
-    assert DataSources.EIT_195.value == 1
+    source_id_list = list()
+    res = getDataSources()
 
-    assert DataSources.EIT_284.name == "EIT_284"
-    assert DataSources.EIT_284.value == 2
+    for name, observ in res.items():
+        # TRACE only has measurements and is thus nested once
+        if name == "TRACE":
+            for instr, params in observ.items():
+                source_id_list.append(params["sourceId"])
+        else:
+            for inst, detect in observ.items():
+                for wavelength, params in detect.items():
+                    if "sourceId" in params:
+                        source_id_list.append(params["sourceId"])
+                    else:
+                        for wave, adict in params.items():
+                            source_id_list.append(adict["sourceId"])
 
-    assert DataSources.EIT_304.name == "EIT_304"
-    assert DataSources.EIT_304.value == 3
+    data_sources_list = [source_id.value for source_id in DataSources]
 
-    assert DataSources.LASCO_C2.name == "LASCO_C2"
-    assert DataSources.LASCO_C2.value == 4
-
-    assert DataSources.LASCO_C3.name == "LASCO_C3"
-    assert DataSources.LASCO_C3.value == 5
-
-    assert DataSources.MDI_MAG.name == "MDI_MAG"
-    assert DataSources.MDI_MAG.value == 6
+    for source_id in source_id_list:
+        assert source_id in data_sources_list
