@@ -3,6 +3,7 @@ API Reference
 *************
 
 .. automodapi:: hvpy
+   :no-inheritance-diagram:
 
 .. automodapi:: hvpy.core
 
