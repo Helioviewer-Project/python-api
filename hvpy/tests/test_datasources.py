@@ -2,7 +2,6 @@ from hvpy import DataSources, getDataSources
 
 
 def test_datasources():
-
     source_id_list = list()
     res = getDataSources()
 
