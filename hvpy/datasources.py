@@ -438,6 +438,36 @@ class DataSources(Enum):
     Solar Orbiter instrument HRI, measurement 1216.
     """
 
+    SUVI_94 = 88
+    """
+    GOES-R instrument SUVI, measurement 94.
+    """
+
+    SUVI_131 = 89
+    """
+    GOES-R instrument SUVI, measurement 131.
+    """
+
+    SUVI_171 = 90
+    """
+    GOES-R instrument SUVI, measurement 171.
+    """
+
+    SUVI_195 = 91
+    """
+    GOES-R instrument SUVI, measurement 195.
+    """
+
+    SUVI_284 = 92
+    """
+    GOES-R instrument SUVI, measurement 284.
+    """
+
+    SUVI_304 = 93
+    """
+    GOES-R instrument SUVI, measurement 304.
+    """
+
     XRT_ANY_ANY = 10001
     """
     Hinode instrument XRT any/any.
