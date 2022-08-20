@@ -23,12 +23,9 @@ def find_nested_keys(obj: dict, key: Any, out: list):
 
 
 def test_datasources():
-    source_id_list = list()
-    enum_value_list = [s_id.value for s_id in DataSources]
-
+    source_ids = []
+    enum_values = [s_id.value for s_id in DataSources]
     response = getDataSources()
-
-    find_nested_keys(response, "sourceId", source_id_list)
-
-    for source_id in source_id_list:
-        assert source_id in enum_value_list
+    find_nested_keys(response, "sourceId", source_ids)
+    for source_id in source_ids:
+        assert source_id in enum_values
