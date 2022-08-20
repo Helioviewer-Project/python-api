@@ -1,25 +1,24 @@
 from hvpy import DataSources, getDataSources
 
+sids = list()
+
+
+def find_key(obj, key):
+    if key in obj:
+        sids.append(obj[key])
+    else:
+        for k, v in obj.items():
+            if isinstance(v, dict):
+                find_key(v, key)
+            else:
+                continue
+
 
 def test_datasources():
-    source_id_list = list()
+    enum_value_list = [s_id.value for s_id in DataSources]
     res = getDataSources()
 
-    for name, observ in res.items():
-        # TRACE only has measurements and is thus nested once
-        if name == "TRACE":
-            for instr, params in observ.items():
-                source_id_list.append(params["sourceId"])
-        else:
-            for inst, detect in observ.items():
-                for wavelength, params in detect.items():
-                    if "sourceId" in params:
-                        source_id_list.append(params["sourceId"])
-                    else:
-                        for wave, adict in params.items():
-                            source_id_list.append(adict["sourceId"])
+    find_key(res, "sourceId")
 
-    data_sources_list = [source_id.value for source_id in DataSources]
-
-    for source_id in source_id_list:
-        assert source_id in data_sources_list
+    for sid in sids:
+        assert sid in enum_value_list
