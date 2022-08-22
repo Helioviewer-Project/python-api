@@ -18,4 +18,4 @@ API Reference
 
 .. automodapi:: hvpy.utils
    :no-inheritance-diagram:
-   :members: create_layer
+   :members: create_layers
