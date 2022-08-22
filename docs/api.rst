@@ -15,3 +15,7 @@ API Reference
 
 .. automodapi:: hvpy.datasources
    :no-inheritance-diagram:
+
+.. automodapi:: hvpy.utils
+   :no-inheritance-diagram:
+   :members: create_layer
