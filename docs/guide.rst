@@ -88,4 +88,3 @@ Miscellaneous Helpers
 For example, since many API endpoints return raw data like images or videos,
 we've implemented a simple save_file (TODO: Update ref) to save
 this binary data to disk.
-
