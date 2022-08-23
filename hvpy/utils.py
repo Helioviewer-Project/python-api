@@ -1,7 +1,7 @@
 from typing import Any, Union, Callable
 from datetime import datetime
 
-from hvpy.datasources import DataSources
+from hvpy.datasource import DataSource
 
 __all__ = [
     "convert_date_to_isoformat",
@@ -37,19 +37,19 @@ def convert_date_to_unix(v: list) -> str:
     return ",".join([str(int(datetime.timestamp(d))) for d in v])
 
 
-def _to_datasource(val: Union[int, DataSources]) -> DataSources:
+def _to_datasource(val: Union[int, DataSource]) -> DataSource:
     """
-    Validates the input and converts it to a DataSources enum.
+    Validates the input and converts it to a DataSource enum.
     """
-    if isinstance(val, int) and val in [x.value for x in DataSources]:
-        return DataSources(val)
-    elif isinstance(val, DataSources):
+    if isinstance(val, int) and val in [x.value for x in DataSource]:
+        return DataSource(val)
+    elif isinstance(val, DataSource):
         return val
     else:
-        raise ValueError(f"{val} is not a valid DataSources")
+        raise ValueError(f"{val} is not a valid DataSource")
 
 
-def _create_layer_string(source_id: DataSources, opacity: int) -> str:
+def _create_layer_string(source_id: DataSource, opacity: int) -> str:
     """
     Generates a string of the form "[source_id,1,opacity]" for a layer.
     """

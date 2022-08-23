@@ -1,6 +1,6 @@
 from typing import Any
 
-from hvpy import DataSources, getDataSources
+from hvpy import DataSource, getDataSources
 
 
 def find_nested_keys(obj: dict, key: Any, out: list):
@@ -24,7 +24,7 @@ def find_nested_keys(obj: dict, key: Any, out: list):
 
 def test_datasources():
     source_ids = []
-    enum_values = [s_id.value for s_id in DataSources]
+    enum_values = [s_id.value for s_id in DataSource]
     response = getDataSources()
     find_nested_keys(response, "sourceId", source_ids)
     for source_id in source_ids:

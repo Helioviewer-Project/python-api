@@ -1,9 +1,9 @@
 from enum import Enum
 
-__all__ = ["DataSources"]
+__all__ = ["DataSource"]
 
 
-class DataSources(Enum):
+class DataSource(Enum):
     """
     Enum for datasources hosted by the Helioviewer Project.
     """
