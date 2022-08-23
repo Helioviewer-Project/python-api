@@ -1,7 +1,7 @@
 from typing import Any, Union, Callable
 from datetime import datetime
 
-from hvpy.datasources import DataSource
+from hvpy.datasource import DataSource
 
 __all__ = [
     "convert_date_to_isoformat",
