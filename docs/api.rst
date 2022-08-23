@@ -15,3 +15,5 @@ API Reference
 
 .. automodapi:: hvpy.datasources
    :no-inheritance-diagram:
+
+.. automodapi:: hvpy.utils

@@ -3,7 +3,7 @@ from datetime import datetime
 
 from hvpy.core import execute_api_call
 from hvpy.parameters import *
-from hvpy.utils import add_shared_docstring
+from hvpy.utils import _add_shared_docstring
 
 __all__ = [
     "getJP2Image",
@@ -25,7 +25,7 @@ __all__ = [
 ]
 
 
-@add_shared_docstring(getJP2ImageInputParameters)
+@_add_shared_docstring(getJP2ImageInputParameters)
 def getJP2Image(
     date: datetime,
     sourceId: int,
@@ -49,7 +49,7 @@ def getJP2Image(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getJP2HeaderInputParameters)
+@_add_shared_docstring(getJP2HeaderInputParameters)
 def getJP2Header(
     id: int,
     callback: Optional[str] = None,
@@ -71,7 +71,7 @@ def getJP2Header(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getJPXClosestToMidPointInputParameters)
+@_add_shared_docstring(getJPXClosestToMidPointInputParameters)
 def getJPXClosestToMidPoint(
     startTimes: List[datetime],
     endTimes: List[datetime],
@@ -111,7 +111,7 @@ def getJPXClosestToMidPoint(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getJPXInputParameters)
+@_add_shared_docstring(getJPXInputParameters)
 def getJPX(
     startTime: List[datetime],
     endTime: List[datetime],
@@ -153,7 +153,7 @@ def getJPX(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getStatusInputParameters)
+@_add_shared_docstring(getStatusInputParameters)
 def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     """
     Returns information about how far behind the latest available JPEG2000
@@ -172,7 +172,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getClosestImageInputParameters)
+@_add_shared_docstring(getClosestImageInputParameters)
 def getClosestImage(
     date: datetime,
     sourceId: int,
@@ -200,7 +200,7 @@ def getClosestImage(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getDataSourcesInputParameters)
+@_add_shared_docstring(getDataSourcesInputParameters)
 def getDataSources(
     verbose: Optional[bool] = False,
     enable: Optional[str] = None,
@@ -226,7 +226,7 @@ def getDataSources(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(takeScreenshotInputParameters)
+@_add_shared_docstring(takeScreenshotInputParameters)
 def takeScreenshot(
     date: datetime,
     imageScale: float,
@@ -295,7 +295,7 @@ def takeScreenshot(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(downloadScreenshotInputParameters)
+@_add_shared_docstring(downloadScreenshotInputParameters)
 def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
     """
     Download a custom screenshot that was generated using the
@@ -314,7 +314,7 @@ def downloadScreenshot(id: int) -> Union[bytes, str, Dict[str, Any]]:
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(queueMovieInputParameters)
+@_add_shared_docstring(queueMovieInputParameters)
 def queueMovie(
     startTime: datetime,
     endTime: datetime,
@@ -398,7 +398,7 @@ def queueMovie(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(reQueueMovieInputParameters)
+@_add_shared_docstring(reQueueMovieInputParameters)
 def reQueueMovie(
     id: str,
     force: Optional[bool] = False,
@@ -422,7 +422,7 @@ def reQueueMovie(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getMovieStatusInputParameters)
+@_add_shared_docstring(getMovieStatusInputParameters)
 def getMovieStatus(
     id: str,
     format: str,
@@ -452,7 +452,7 @@ def getMovieStatus(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(downloadMovieInputParameters)
+@_add_shared_docstring(downloadMovieInputParameters)
 def downloadMovie(
     id: str,
     format: str,
@@ -479,7 +479,7 @@ def downloadMovie(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getNewsFeedInputParameters)
+@_add_shared_docstring(getNewsFeedInputParameters)
 def getNewsFeed(
     callback: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
@@ -501,7 +501,7 @@ def getNewsFeed(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(shortenURLInputParameters)
+@_add_shared_docstring(shortenURLInputParameters)
 def shortenURL(
     queryString: str,
     callback: Optional[str] = None,
@@ -525,7 +525,7 @@ def shortenURL(
     return execute_api_call(input_parameters=params)
 
 
-@add_shared_docstring(getTileInputParameters)
+@_add_shared_docstring(getTileInputParameters)
 def getTile(
     id: int,
     x: int,
