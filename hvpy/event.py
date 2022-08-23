@@ -5,7 +5,7 @@ __all__ = ["EventType"]
 
 class EventType(Enum):
     """
-    Enum for event types.
+    Enum for the event types supported by Helioviewer.
     """
 
     ACTIVE_REGION = "AR"
