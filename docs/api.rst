@@ -13,7 +13,7 @@ API Reference
 .. automodapi:: hvpy.parameters
    :allowed-package-names: hvpy.api_groups
 
-.. automodapi:: hvpy.datasources
+.. automodapi:: hvpy.datasource
    :no-inheritance-diagram:
 
 .. automodapi:: hvpy.utils
