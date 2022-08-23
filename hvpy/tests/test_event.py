@@ -26,4 +26,3 @@ helioviewer_event_types = {
 
 def test_event_types():
     assert [x.value for x in EventType] == list(helioviewer_event_types.values())
-    print(list(helioviewer_event_types.values()))
