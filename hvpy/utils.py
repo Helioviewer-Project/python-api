@@ -4,14 +4,13 @@ from datetime import datetime
 from hvpy.datasources import DataSources
 
 __all__ = [
-    "add_shared_docstring",
     "convert_date_to_isoformat",
     "convert_date_to_unix",
     "create_layers",
 ]
 
 
-def add_shared_docstring(input_class) -> Callable[[Any], Any]:
+def _add_shared_docstring(input_class) -> Callable[[Any], Any]:
     def decorator(func):
         if "{Shared}" in input_class.__doc__:
             split_doc = input_class.__doc__.split("{Shared}")
@@ -55,7 +54,7 @@ def _create_layer_string(source_id: DataSources, opacity: int) -> str:
     Generates a string of the form "[source_id,1,opacity]" for a layer.
     """
     if not 0 <= opacity <= 100:
-        raise ValueError(f"opacity: {opacity} must be between 0 and 100")
+        raise ValueError(f"opacity ({opacity}) must be between 0 and 100")
     else:
         return f"[{source_id.value},1,{opacity}]"
 
@@ -67,7 +66,7 @@ def create_layers(layer: list) -> str:
     Parameters
     ----------
     layer
-        A list of tuples of the form (source_id, opacity).
+        A list of tuples of the form (``source_id``, ``opacity``).
 
     Examples
     --------
