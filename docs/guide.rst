@@ -29,9 +29,9 @@ In general, there are 3 types of results you can expect from the API:
 
 In ``hvpy`` these return types map to:
 
-1. bytearray
-2. str
-3. dict
+1. `bytearray`
+2. `str`
+3. `dict`
 
 Sometimes the return type will change dependending on the input parameters you specify.
 Make sure to review your input parameters carefully.
