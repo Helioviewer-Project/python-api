@@ -3,8 +3,7 @@ User Guide
 **********
 
 This guide provides a walkthrough of the major features in the ``hvpy`` package.
-``hvpy`` is a python wrapper for the `Helioviewer API <https://api.helioviewer.org/docs/v2/>`__.
-This is the same API that powers `helioviewer.org <https://helioviewer.org>`__.
+``hvpy`` is a python wrapper for the `Helioviewer API <https://api.helioviewer.org/docs/v2/>`__, which is the same API that powers `helioviewer.org <https://helioviewer.org>`__.
 
 Basic Usage
 -----------
