@@ -65,7 +65,7 @@ You simply specify a tuple with the source enum you want, and the opacity it sho
     from hvpy.utils import create_layers
     from hvpy.datasource import DataSource
 
-    layer_string = create_layers([(DataSource.AIA_304, 50), (DataSource.AIA_94, 50)]
+    layer_string = create_layers([(DataSource.AIA_304, 50), (DataSource.AIA_94, 50)])
     print(layer_string)
     "[13,1,50],[8,1,50]"
 
