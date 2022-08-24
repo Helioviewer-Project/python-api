@@ -5,20 +5,20 @@ User Guide
 Welcome to ``hvpy``!
 
 This guide provides a walkthrough of the major features in the ``hvpy`` package.
-``hvpy`` is a python wrapper for the `Helioviewer API <https://api.helioviewer.org/docs/v2/>`_.
-This is the same API that powers `helioviewer.org <https://helioviewer.org>`_.
+``hvpy`` is a python wrapper for the `Helioviewer API <https://api.helioviewer.org/docs/v2/>`__.
+This is the same API that powers `helioviewer.org <https://helioviewer.org>`__.
 
 Basic Usage
 -----------
 Each API endpoint has a function in ``hvpy`` that shares the same name and has the same input parameters.
-For example if you are looking at `getJP2Image <https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`_ in the Helioviewer documentation, you would execute this in ``hvpy`` with the following command:
+For example if you are looking at `getJP2Image <https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__ in the Helioviewer documentation, you would execute this in ``hvpy`` with the following command:
 .. code-block:: Python
 
     import hvpy
-    from hvpy.datasources import DataSources
+    from hvpy.datasource import DataSource
     from datetime import datetime
 
-    jp2 = hvpy.getJP2Image(datetime.now(), DataSources.AIA_94.value)
+    jp2 = hvpy.getJP2Image(datetime.now(), DataSource.AIA_94.value)
 
 Managing Return Types
 ---------------------
@@ -37,7 +37,7 @@ In ``hvpy`` these return types map to:
 
 Sometimes the return type will change dependending on the input parameters you specify.
 Make sure to review your input parameters carefully.
-The descriptions in both our :ref:`api-reference` and the `API Docs <https://api.helioviewer.org/docs/v2/>`_ will say whether certain parameters change the output type.
+The descriptions in both our :ref:`api-reference` and the `API Docs <https://api.helioviewer.org/docs/v2/>`__ will say whether certain parameters change the output type.
 
 Helper Functions
 ----------------
@@ -54,22 +54,24 @@ Datasource & Event Selection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Some API requests accept a list of datasources and events.
 These are in a very specific format.
-For example layering an AIA_94 and an AIA_304 image might look like "[13,1,50],[8,1,50]".
+For example layering an SDO/AIA 94 and an SDO/AIA 304 image might look like "[13,1,50],[8,1,50]".
 Since ``hvpy`` provides a one to one mapping, you would have to understand and create this string yourself.
 To do this, you would have to go figure out how helioviewer likes its layer strings, and find the IDs for each source.
 
 ``hvpy`` makes this easy by providing a function for you.
-hvpy.util.create_layers (TODO: update ref) will create this string for you.
+`hvpy.utils.create_layers` will create this string for you.
 You simply specify a tuple with the source enum you want, and the opacity it should have the end result.
 
 .. code-block:: Python
 
-    from hvpy.util import create_layers
-    from hvpy.datasources import DataSources
-    layer_string = create_layers([(DataSources.AIA_304, 50), (DataSources.AIA_94, 50)]
-    # layer_string = [13,1,50],[8,1,50]
+    from hvpy.utils import create_layers
+    from hvpy.datasource import DataSource
+    layer_string = create_layers([(DataSource.AIA_304, 50), (DataSource.AIA_94, 50)]
+    print(layer_string)
 
-There is a similar function for choosing events that you want to have displayed in hvpy.util.create_events (TODO: Update ref)
+    "[13,1,50],[8,1,50]"
+
+There is a similar function for choosing events that you want to have displayed in hvpy.utils.create_events (TODO: Update ref)
 
 Miscellaneous Helpers
 ^^^^^^^^^^^^^^^^^^^^^
