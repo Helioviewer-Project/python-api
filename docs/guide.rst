@@ -10,6 +10,7 @@ Basic Usage
 -----------
 Each API endpoint has a function in ``hvpy`` that shares the same name and has the same input parameters.
 For example if you are looking at `getJP2Image <https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getjp2image>`__ in the Helioviewer documentation, you would execute this in ``hvpy`` with the following command:
+
 .. code-block:: Python
 
     import hvpy
