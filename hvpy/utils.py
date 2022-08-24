@@ -109,8 +109,8 @@ def create_events(event: list) -> str:
 
     Examples
     --------
-    >>> from hvpy import create_event_string, EventType
-    >>> create_event_string([(EventType.ACTIVE_REGION), (EventType.ERUPTION)])
+    >>> from hvpy import create_events, EventType
+    >>> create_events([(EventType.ACTIVE_REGION), (EventType.ERUPTION)])
     '[AR,all,1],[ER,all,1]'
     """
     return ",".join([_create_events_string(_to_event_type(e)) for e in event])
