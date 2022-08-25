@@ -37,8 +37,7 @@ def test_create_layers_string():
 
 
 def test_to_event_type():
-    assert _to_event_type("AR") == EventType.ACTIVE_REGION
-    assert _to_event_type(EventType.ACTIVE_REGION) == EventType.ACTIVE_REGION
+    assert _to_event_type(EventType.ACTIVE_REGION) == _to_event_type("AR") == EventType.ACTIVE_REGION
 
 
 def test_create_events():
