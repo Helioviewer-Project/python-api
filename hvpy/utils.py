@@ -118,11 +118,11 @@ def create_events(event: list) -> str:
     """
     buff = ""
     try:
-        if not isinstance(event[0], str):  # If unpacking results in a tuple.
-            for e, frm in event:
+        if not isinstance(event[0], str):  # if event is a list of tuples
+            for e, frm in event:  # If unpacking results in a tuple.
                 buff += _create_events_string(_to_event_type(e), frm) + ","
-        else:  # if unpacking results in a string. (e.g. "AR")
-            for e in event:
+        else:
+            for e in event:  # if unpacking results in a string. (e.g. "AR")
                 buff += _create_events_string(_to_event_type(e)) + ","
     except TypeError:
         for e in event:  # If unpacking directly results in a EventType object.
