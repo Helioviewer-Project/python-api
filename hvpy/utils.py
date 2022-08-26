@@ -117,14 +117,12 @@ def create_events(event: list) -> str:
     '[AR,all,1],[ER,SPoCA;NOAA_SWPC_Observer,1]'
     """
     buff = ""
-    try:
-        if not isinstance(event[0], str):  # if event is a list of tuples
-            for e, frm in event:  # If unpacking results in a tuple.
-                buff += _create_events_string(_to_event_type(e), frm) + ","
-        else:
-            for e in event:  # if unpacking results in a string. (e.g. "AR")
-                buff += _create_events_string(_to_event_type(e)) + ","
-    except TypeError:
-        for e in event:  # If unpacking directly results in a EventType object.
+    array = [e for e in event]
+    for e in array:
+        if isinstance(e, EventType) or isinstance(e, str):
             buff += _create_events_string(_to_event_type(e)) + ","
-    return buff[:-1]  # remove the last comma
+        elif isinstance(e, tuple) and len(e) == 2:
+            buff += _create_events_string(_to_event_type(e[0]), e[1]) + ","
+        else:
+            raise ValueError(f"{e} is not a valid EventType or tuple")
+    return buff[:-1]

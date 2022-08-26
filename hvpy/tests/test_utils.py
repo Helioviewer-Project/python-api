@@ -41,15 +41,25 @@ def test_to_event_type():
 
 
 def test_create_events():
-    assert create_events([(EventType.ACTIVE_REGION, "SPoCA;NOAA_SWPC_Observer")]) == "[AR,SPoCA;NOAA_SWPC_Observer,1]"
-    assert create_events([(EventType.ACTIVE_REGION)]) == "[AR,all,1]"
     assert create_events([("ER")]) == "[ER,all,1]"
-    with pytest.raises(ValueError, match="XYZ is not a valid EventType"):
-        create_events([("XYZ")])
+    assert create_events([(EventType.ACTIVE_REGION)]) == "[AR,all,1]"
+    assert create_events([(EventType.ACTIVE_REGION, "SPoCA;NOAA_SWPC_Observer")]) == "[AR,SPoCA;NOAA_SWPC_Observer,1]"
+    assert create_events([(EventType.ACTIVE_REGION), (EventType.CORONAL_DIMMING)]) == "[AR,all,1],[CD,all,1]"
+    assert (
+        create_events([(EventType.ACTIVE_REGION, "ZXCV"), (EventType.CORONAL_DIMMING, "ZXCV")])
+        == "[AR,ZXCV,1],[CD,ZXCV,1]"
+    )
+    assert create_events([(EventType.ACTIVE_REGION), (EventType.CORONAL_DIMMING, "ASDF")]) == "[AR,all,1],[CD,ASDF,1]"
+    assert create_events([(EventType.ACTIVE_REGION, "ASDF"), (EventType.CORONAL_DIMMING)]) == "[AR,ASDF,1],[CD,all,1]"
     assert (
         create_events([(EventType.ACTIVE_REGION, "SPoCA"), ("ER", "NOAA_SWPC_Observer")])
         == "[AR,SPoCA,1],[ER,NOAA_SWPC_Observer,1]"
     )
+    assert create_events([("AR", "SPoCA"), ("ER", "NOAA_SWPC_Observer")]) == "[AR,SPoCA,1],[ER,NOAA_SWPC_Observer,1]"
+    with pytest.raises(ValueError, match="XYZ is not a valid EventType"):
+        create_events([("XYZ")])
+    with pytest.raises(ValueError, match="not a valid EventType or tuple"):
+        create_events([("AR", "SPoCA", 123)])
 
 
 def test_create_events_string():
