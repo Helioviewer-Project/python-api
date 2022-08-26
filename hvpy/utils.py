@@ -1,4 +1,4 @@
-from typing import Any, Union, Callable
+from typing import Any, Union, Callable, Optional
 from datetime import datetime
 
 from hvpy.datasource import DataSource
@@ -91,11 +91,14 @@ def _to_event_type(val: Union[str, EventType]) -> EventType:
         raise ValueError(f"{val} is not a valid EventType")
 
 
-def _create_events_string(event_type: EventType) -> str:
+def _create_events_string(event_type: EventType, recognition_method: Optional[str] = "all") -> str:
     """
-    Generates a string of the form "[event_type,all,1]" for a event.
+    Generates a string of the form "[event_type,recognition_method,1]" for a
+    event.
     """
-    return f"[{event_type.value},all,1]"
+    if recognition_method is None:
+        recognition_method = "all"
+    return f"[{event_type.value},{recognition_method},1]"
 
 
 def create_events(event: list) -> str:
@@ -105,12 +108,23 @@ def create_events(event: list) -> str:
     Parameters
     ----------
     event
-        A list of tuples of the form (``event_type``).
+        A list of tuples of the form (``event_type``, ``recognition_methods``).
 
     Examples
     --------
     >>> from hvpy import create_events, EventType
-    >>> create_events([(EventType.ACTIVE_REGION), (EventType.ERUPTION)])
-    '[AR,all,1],[ER,all,1]'
+    >>> create_events([("AR"), ("ER", "SPoCA;NOAA_SWPC_Observer")])
+    '[AR,all,1],[ER,SPoCA;NOAA_SWPC_Observer,1]'
     """
-    return ",".join([_create_events_string(_to_event_type(e)) for e in event])
+    buff = ""
+    try:
+        if not isinstance(event[0], str):  # If unpacking results in a tuple.
+            for e, frm in event:
+                buff += _create_events_string(_to_event_type(e), frm) + ","
+        else:  # if unpacking results in a string. (e.g. "AR")
+            for e in event:
+                buff += _create_events_string(_to_event_type(e)) + ","
+    except TypeError:
+        for e in event:  # If unpacking directly results in a EventType object.
+            buff += _create_events_string(_to_event_type(e)) + ","
+    return buff[:-1]  # remove the last comma

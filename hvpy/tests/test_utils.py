@@ -42,10 +42,17 @@ def test_to_event_type():
 
 
 def test_create_events():
-    assert create_events([(EventType.ACTIVE_REGION), (EventType.ERUPTION)]) == "[AR,all,1],[ER,all,1]"
-    with pytest.raises(ValueError, match="STRING is not a valid EventType"):
-        create_events([(EventType.ACTIVE_REGION), (EventType.ERUPTION), ("STRING")])
+    assert create_events([(EventType.ACTIVE_REGION, "SPoCA;NOAA_SWPC_Observer")]) == "[AR,SPoCA;NOAA_SWPC_Observer,1]"
+    assert create_events([(EventType.ACTIVE_REGION)]) == "[AR,all,1]"
+    assert create_events([("ER")]) == "[ER,all,1]"
+    with pytest.raises(ValueError, match="XYZ is not a valid EventType"):
+        create_events([("XYZ")])
+    assert (
+        create_events([(EventType.ACTIVE_REGION, "SPoCA"), ("ER", "NOAA_SWPC_Observer")])
+        == "[AR,SPoCA,1],[ER,NOAA_SWPC_Observer,1]"
+    )
 
 
 def test_create_events_string():
     assert _create_events_string(EventType.ACTIVE_REGION) == "[AR,all,1]"
+    assert _create_events_string(EventType.ACTIVE_REGION, "xyz") == "[AR,xyz,1]"
