@@ -1,4 +1,4 @@
-from typing import Any, Union, Callable, Optional
+from typing import Any, List, Union, Callable
 from datetime import datetime
 
 from hvpy.datasource import DataSource
@@ -83,7 +83,8 @@ def _to_event_type(val: Union[str, EventType]) -> EventType:
     """
     Validates the input and converts it to a EventType enum.
     """
-    if isinstance(val, str) and val in [x.value for x in EventType]:
+    # This is an undocumented attribute of Enums
+    if isinstance(val, str) and val in EventType._value2member_map_:
         return EventType(val)
     elif isinstance(val, EventType):
         return val
@@ -91,38 +92,38 @@ def _to_event_type(val: Union[str, EventType]) -> EventType:
         raise ValueError(f"{val} is not a valid EventType")
 
 
-def _create_events_string(event_type: EventType, recognition_method: Optional[str] = "all") -> str:
+def _create_events_string(event_type: EventType, recognition_method: str = "all") -> str:
     """
     Generates a string of the form "[event_type,recognition_method,1]" for a
     event.
     """
-    if recognition_method is None:
-        recognition_method = "all"
     return f"[{event_type.value},{recognition_method},1]"
 
 
-def create_events(event: list) -> str:
+def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     """
     Creates a string of events separated by commas.
 
     Parameters
     ----------
-    event
-        A list of tuples of the form (``event_type``, ``recognition_methods``).
+    events
+        Either a list of tuples of the form (``event_type``, ``recognition_methods``),
+        or a list of `str` or `.EventType`, e.g., ``["AR", EventType.CORONAL_CAVITY]``
+        If ``recognition_methods`` is missing, it will use "ALL".
 
     Examples
     --------
-    >>> from hvpy import create_events, EventType
-    >>> create_events([("AR"), ("ER", "SPoCA;NOAA_SWPC_Observer")])
+    >>> from hvpy import create_events
+    >>> create_events(["AR", ("ER", "SPoCA;NOAA_SWPC_Observer")])
     '[AR,all,1],[ER,SPoCA;NOAA_SWPC_Observer,1]'
     """
-    buff = ""
-    array = [e for e in event]
-    for e in array:
-        if isinstance(e, EventType) or isinstance(e, str):
-            buff += _create_events_string(_to_event_type(e)) + ","
-        elif isinstance(e, tuple) and len(e) == 2:
-            buff += _create_events_string(_to_event_type(e[0]), e[1]) + ","
+    constructed_events = ""
+    for event in events:
+        if isinstance(event, (str, EventType)):
+            constructed_events += _create_events_string(_to_event_type(event)) + ","
+        elif isinstance(event, tuple) and len(event) == 2:
+            constructed_events += _create_events_string(_to_event_type(event[0]), event[1]) + ","
         else:
-            raise ValueError(f"{e} is not a valid EventType or tuple")
-    return buff[:-1]
+            raise ValueError(f"{event} is not a EventType or str or two-length tuple")
+    # Strips the final comma
+    return constructed_events[:-1]
