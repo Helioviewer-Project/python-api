@@ -107,8 +107,8 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     Parameters
     ----------
     events
-        Either a list of tuples of the form (``event_type``, ``recognition_methods``),
-        or a list of `str` or `.EventType`, e.g., ``["AR", EventType.CORONAL_CAVITY]``
+        Either a `list` of `tuple` of the form (``event_type``, ``recognition_methods``),
+        or a `list` of `str` or `~hvpy.EventType`, e.g., ``["AR", EventType.CORONAL_CAVITY]``
         If ``recognition_methods`` is missing, it will use "ALL".
 
     Examples
