@@ -1,12 +1,14 @@
-from typing import Any, Union, Callable
+from typing import Any, List, Union, Callable
 from datetime import datetime
 
 from hvpy.datasource import DataSource
+from hvpy.event import EventType
 
 __all__ = [
     "convert_date_to_isoformat",
     "convert_date_to_unix",
     "create_layers",
+    "create_events",
 ]
 
 
@@ -75,3 +77,53 @@ def create_layers(layer: list) -> str:
     '[3,1,50],[10,1,50]'
     """
     return ",".join([_create_layer_string(_to_datasource(s), o) for s, o in layer])
+
+
+def _to_event_type(val: Union[str, EventType]) -> EventType:
+    """
+    Validates the input and converts it to a EventType enum.
+    """
+    # This is an undocumented attribute of Enums
+    if isinstance(val, str) and val in EventType._value2member_map_:
+        return EventType(val)
+    elif isinstance(val, EventType):
+        return val
+    else:
+        raise ValueError(f"{val} is not a valid EventType")
+
+
+def _create_events_string(event_type: EventType, recognition_method: str = "all") -> str:
+    """
+    Generates a string of the form "[event_type,recognition_method,1]" for a
+    event.
+    """
+    return f"[{event_type.value},{recognition_method},1]"
+
+
+def create_events(events: List[Union[EventType, str, tuple]]) -> str:
+    """
+    Creates a string of events separated by commas.
+
+    Parameters
+    ----------
+    events
+        Either a `list` of `tuple` of the form (``event_type``, ``recognition_methods``),
+        or a `list` of `str` or `~hvpy.EventType`, e.g., ``["AR", EventType.CORONAL_CAVITY]``
+        If ``recognition_methods`` is missing, it will use "ALL".
+
+    Examples
+    --------
+    >>> from hvpy import create_events
+    >>> create_events(["AR", ("ER", "SPoCA;NOAA_SWPC_Observer")])
+    '[AR,all,1],[ER,SPoCA;NOAA_SWPC_Observer,1]'
+    """
+    constructed_events = ""
+    for event in events:
+        if isinstance(event, (str, EventType)):
+            constructed_events += _create_events_string(_to_event_type(event)) + ","
+        elif isinstance(event, tuple) and len(event) == 2:
+            constructed_events += _create_events_string(_to_event_type(event[0]), event[1]) + ","
+        else:
+            raise ValueError(f"{event} is not a EventType or str or two-length tuple")
+    # Strips the final comma
+    return constructed_events[:-1]
