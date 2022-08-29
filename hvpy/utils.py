@@ -9,6 +9,7 @@ __all__ = [
     "convert_date_to_unix",
     "create_layers",
     "create_events",
+    "save_file",
 ]
 
 
@@ -127,3 +128,11 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
             raise ValueError(f"{event} is not a EventType or str or two-length tuple")
     # Strips the final comma
     return constructed_events[:-1]
+
+
+def save_file(data: bytearray, filename: str) -> None:
+    """
+    Saves a file to the specified path.
+    """
+    with open(filename, "wb") as f:
+        f.write(data)
