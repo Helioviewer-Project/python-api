@@ -1,4 +1,5 @@
-from typing import Any, List, Union, Callable
+from typing import Any, List, Union, Callable, Optional
+from pathlib import Path
 from datetime import datetime
 
 from hvpy.datasource import DataSource
@@ -130,9 +131,24 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     return constructed_events[:-1]
 
 
-def save_file(data: bytearray, filename: str) -> None:
+def save_file(data: bytearray, filename: str, overwrite: Optional[bool] = False) -> None:
     """
     Saves a file to the specified path.
+
+    Parameters
+    ----------
+    data
+        The data to save.
+    filename
+        The path to save the file to.
+    overwrite
+        Whether to overwrite the file if it already exists.
+        Default is `False`, optional.
     """
-    with open(filename, "wb") as f:
-        f.write(data)
+    if Path(filename).exists():
+        if overwrite:
+            Path(filename).write_bytes(data)
+        else:
+            raise ValueError(f"{filename} already exists, use overwrite=True to overwrite")
+    else:
+        Path(filename).write_bytes(data)
