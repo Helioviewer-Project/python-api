@@ -1,6 +1,8 @@
+from datetime import datetime
+
 import pytest
 
-from hvpy import DataSource, EventType
+from hvpy import DataSource, EventType, takeScreenshot
 from hvpy.utils import (
     _create_events_string,
     _create_layer_string,
@@ -8,6 +10,7 @@ from hvpy.utils import (
     _to_event_type,
     create_events,
     create_layers,
+    save_file,
 )
 
 
@@ -65,3 +68,25 @@ def test_create_events():
 def test_create_events_string():
     assert _create_events_string(EventType.ACTIVE_REGION) == "[AR,all,1]"
     assert _create_events_string(EventType.ACTIVE_REGION, "xyz") == "[AR,xyz,1]"
+
+
+def test_save_file(tmp_path):
+    f1 = tmp_path / "test.png"
+    res = takeScreenshot(
+        date=datetime.today(),
+        imageScale=2.44,
+        layers="[10,1,100]",
+        x0=0,
+        y0=0,
+        width=1920,
+        height=1200,
+        display=True,
+    )
+    save_file(res, f1)
+    assert f1.exists()
+
+    with pytest.raises(ValueError, match="already exists"):
+        save_file(res, f1)
+
+    save_file(res, f1, overwrite=True)
+    assert f1.exists()
