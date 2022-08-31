@@ -145,6 +145,8 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
         Whether to overwrite the file if it already exists.
         Default is `False`.
     """
+    if isinstance(filename, str):
+        filename = Path(filename)
     if filename.exists() and not overwrite:
         raise ValueError(f"{filename} already exists. Use overwrite=True to overwrite.")
     filename.write_bytes(data)
