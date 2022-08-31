@@ -82,11 +82,11 @@ def test_save_file(tmp_path):
         height=1200,
         display=True,
     )
-    save_file(res, f1)
+    save_file(res, f1, overwrite=False)
     assert f1.exists()
 
     with pytest.raises(ValueError, match="already exists"):
-        save_file(res, f1)
+        save_file(res, f1, overwrite=False)
 
     save_file(res, f1, overwrite=True)
     assert f1.exists()

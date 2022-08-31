@@ -1,4 +1,4 @@
-from typing import Any, List, Union, Callable, Optional
+from typing import Any, List, Union, Callable
 from pathlib import Path
 from datetime import datetime
 
@@ -131,7 +131,7 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     return constructed_events[:-1]
 
 
-def save_file(data: bytearray, filename: str, overwrite: Optional[bool] = None) -> None:
+def save_file(data: bytearray, filename: Path, overwrite: bool = False) -> None:
     """
     Saves a file to the specified path.
 
@@ -143,11 +143,9 @@ def save_file(data: bytearray, filename: str, overwrite: Optional[bool] = None) 
         The path to save the file to.
     overwrite
         Whether to overwrite the file if it already exists.
-        Default is `False`, optional.
+        Default is `False`.
     """
-    if Path(filename).exists() and overwrite is None:
+    if filename.exists() and not overwrite:
         raise ValueError(f"{filename} already exists. Use overwrite=True to overwrite.")
-    elif Path(filename).exists() and overwrite is True:
-        Path(filename).write_bytes(data)
     else:
-        Path(filename).write_bytes(data)
+        filename.write_bytes(data)
