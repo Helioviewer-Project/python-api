@@ -1,7 +1,9 @@
-from typing import Any, List, Union, Callable
+from typing import Any, List, Union, Callable, Optional
 from pathlib import Path
 from datetime import datetime
 
+from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
+from hvpy.core import execute_api_call
 from hvpy.datasource import DataSource
 from hvpy.event import EventType
 
@@ -150,3 +152,75 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
     if filename.exists() and not overwrite:
         raise ValueError(f"{filename} already exists. Use overwrite=True to overwrite.")
     filename.write_bytes(data)
+
+
+@_add_shared_docstring(queueMovieInputParameters)
+def createMovie(
+    startTime: datetime,
+    endTime: datetime,
+    layers: str,
+    events: str,
+    eventsLabels: bool,
+    imageScale: float,
+    format: Optional[str] = "mp4",
+    frameRate: Optional[str] = "15",
+    maxFrames: Optional[str] = None,
+    scale: Optional[bool] = None,
+    scaleType: Optional[str] = None,
+    scaleX: Optional[float] = None,
+    scaleY: Optional[float] = None,
+    movieLength: Optional[float] = None,
+    watermark: Optional[bool] = True,
+    width: Optional[str] = None,
+    height: Optional[str] = None,
+    x0: Optional[str] = None,
+    y0: Optional[str] = None,
+    x1: Optional[str] = None,
+    y1: Optional[str] = None,
+    x2: Optional[str] = None,
+    y2: Optional[str] = None,
+    callback: Optional[str] = None,
+    size: Optional[int] = None,
+    movieIcons: Optional[int] = None,
+    followViewport: Optional[int] = None,
+    reqObservationDate: Optional[datetime] = None,
+):
+    """
+    Automatically creates a movie using the endpoint `queueMovie`,
+    `getMovieStatus` and `downloadMovie`.
+
+    Parameters
+    ----------
+    {Insert}
+    """
+    params = queueMovieInputParameters(
+        startTime=startTime,
+        endTime=endTime,
+        layers=layers,
+        events=events,
+        eventsLabels=eventsLabels,
+        imageScale=imageScale,
+        format=format,
+        frameRate=frameRate,
+        maxFrames=maxFrames,
+        scale=scale,
+        scaleType=scaleType,
+        scaleX=scaleX,
+        scaleY=scaleY,
+        movieLength=movieLength,
+        watermark=watermark,
+        width=width,
+        height=height,
+        x0=x0,
+        y0=y0,
+        x1=x1,
+        y1=y1,
+        x2=x2,
+        y2=y2,
+        callback=callback,
+        size=size,
+        movieIcons=movieIcons,
+        followViewport=followViewport,
+        reqObservationDate=reqObservationDate,
+    )
+    res = execute_api_call(input_parameters=params)
