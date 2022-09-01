@@ -1,4 +1,5 @@
 from typing import Any, List, Union, Callable
+from pathlib import Path
 from datetime import datetime
 
 from hvpy.datasource import DataSource
@@ -9,6 +10,7 @@ __all__ = [
     "convert_date_to_unix",
     "create_layers",
     "create_events",
+    "save_file",
 ]
 
 
@@ -127,3 +129,24 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
             raise ValueError(f"{event} is not a EventType or str or two-length tuple")
     # Strips the final comma
     return constructed_events[:-1]
+
+
+def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = False) -> None:
+    """
+    Saves a file to the specified path.
+
+    Parameters
+    ----------
+    data
+        The data to save.
+    filename
+        The path to save the file to.
+    overwrite
+        Whether to overwrite the file if it already exists.
+        Default is `False`.
+    """
+    if isinstance(filename, str):
+        filename = Path(filename)
+    if filename.exists() and not overwrite:
+        raise ValueError(f"{filename} already exists. Use overwrite=True to overwrite.")
+    filename.write_bytes(data)
