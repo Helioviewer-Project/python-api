@@ -20,9 +20,7 @@ def createMovie(
     events: str,
     eventsLabels: bool,
     imageScale: float,
-    format: str = "mp4",
-    overwrite: bool = False,
-    filename: Union[str, Path] = None,
+    format: Optional[str] = "mp4",
     frameRate: Optional[str] = "15",
     maxFrames: Optional[str] = None,
     scale: Optional[bool] = None,
@@ -44,6 +42,8 @@ def createMovie(
     movieIcons: Optional[int] = None,
     followViewport: Optional[int] = None,
     reqObservationDate: Optional[datetime] = None,
+    overwrite: bool = False,
+    filename: Union[str, Path] = None,
 ):
     """
     Automatically creates a movie using the endpoint `queueMovie`,
@@ -52,6 +52,11 @@ def createMovie(
     Parameters
     ----------
     {Insert}
+    overwrite
+        Whether to overwrite the file if it already exists.
+        Default is `False`.
+    filename
+        The path to save the file to.
     """
     params = queueMovieInputParameters(
         startTime=startTime,
