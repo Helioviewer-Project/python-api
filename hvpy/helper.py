@@ -1,10 +1,10 @@
+import time
 from typing import Union, Optional
 from pathlib import Path
 from datetime import datetime
 
-from hvpy import downloadMovie, getMovieStatus
+from hvpy import downloadMovie, getMovieStatus, queueMovie
 from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
-from hvpy.core import execute_api_call
 from hvpy.utils import _add_shared_docstring, save_file
 
 __all__ = [
@@ -44,7 +44,8 @@ def createMovie(
     reqObservationDate: Optional[datetime] = None,
     overwrite: bool = False,
     filename: Union[str, Path] = None,
-):
+    hq: bool = False,
+) -> Path:
     """
     Automatically creates a movie using the endpoint `queueMovie`,
     `getMovieStatus` and `downloadMovie`.
@@ -58,7 +59,7 @@ def createMovie(
     filename
         The path to save the file to.
     """
-    params = queueMovieInputParameters(
+    res = queueMovie(
         startTime=startTime,
         endTime=endTime,
         layers=layers,
@@ -88,11 +89,13 @@ def createMovie(
         followViewport=followViewport,
         reqObservationDate=reqObservationDate,
     )
-    res = execute_api_call(input_parameters=params)
     assert isinstance(res, dict)
 
-    if filename is None:
-        filename = f"{startTime.isoformat()}_{endTime.isoformat()}"
+    try:
+        if res["error"] is not None:
+            raise RuntimeError(res["error"])
+    except KeyError:
+        pass
 
     while True:
         status = getMovieStatus(
@@ -101,16 +104,28 @@ def createMovie(
             callback=callback,
             token=res["token"],
         )
+        time.sleep(1)
         if status["status"] == 2:
             break
 
     binary_data = downloadMovie(
         id=res["id"],
         format=format,
+        hq=hq,
     )
 
-    save_file(
-        data=binary_data,
-        filename=f"{filename}.{format}",
-        overwrite=overwrite,
-    )
+    if filename is None:
+        filename = f"{startTime.isoformat()}_{endTime.isoformat()}"
+
+    while True:
+        try:
+            save_file(
+                data=binary_data,
+                filename=f"{filename}.{format}",
+                overwrite=overwrite,
+            )
+            break
+        except FileExistsError:
+            filename = f"{filename}(1)"
+
+    return Path(f"{filename}.{format}")
