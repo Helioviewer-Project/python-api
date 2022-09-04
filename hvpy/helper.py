@@ -37,7 +37,6 @@ def createMovie(
     y1: Optional[str] = None,
     x2: Optional[str] = None,
     y2: Optional[str] = None,
-    callback: Optional[str] = None,
     size: Optional[int] = None,
     movieIcons: Optional[int] = None,
     followViewport: Optional[int] = None,
@@ -58,55 +57,32 @@ def createMovie(
         Default is `False`.
     filename
         The path to save the file to.
+        Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
     """
-    res = queueMovie(
-        startTime=startTime,
-        endTime=endTime,
-        layers=layers,
-        events=events,
-        eventsLabels=eventsLabels,
-        imageScale=imageScale,
-        format=format,
-        frameRate=frameRate,
-        maxFrames=maxFrames,
-        scale=scale,
-        scaleType=scaleType,
-        scaleX=scaleX,
-        scaleY=scaleY,
-        movieLength=movieLength,
-        watermark=watermark,
-        width=width,
-        height=height,
-        x0=x0,
-        y0=y0,
-        x1=x1,
-        y1=y1,
-        x2=x2,
-        y2=y2,
-        callback=callback,
-        size=size,
-        movieIcons=movieIcons,
-        followViewport=followViewport,
-        reqObservationDate=reqObservationDate,
-    )
-    assert isinstance(res, dict)
+    input_params = locals()
+    input_params.pop("overwrite")
+    input_params.pop("filename")
+    input_params.pop("hq")
 
-    try:
-        if res["error"] is not None:
-            raise RuntimeError(res["error"])
-    except KeyError:
-        pass
+    res = queueMovie(**input_params)
+
+    if res.get("error"):
+        raise RuntimeError(res["error"])
 
     while True:
         status = getMovieStatus(
             id=res["id"],
             format=format,
-            callback=callback,
             token=res["token"],
         )
-        time.sleep(1)
+        if status["status"] == 0:
+            continue
+        if status["status"] == 1:
+            time.sleep(5)
         if status["status"] == 2:
             break
+        if status["status"] == 3:
+            raise RuntimeError(status["error"])
 
     binary_data = downloadMovie(
         id=res["id"],
@@ -117,15 +93,10 @@ def createMovie(
     if filename is None:
         filename = f"{startTime.isoformat()}_{endTime.isoformat()}"
 
-    while True:
-        try:
-            save_file(
-                data=binary_data,
-                filename=f"{filename}.{format}",
-                overwrite=overwrite,
-            )
-            break
-        except FileExistsError:
-            filename = f"{filename}(1)"
+    save_file(
+        data=binary_data,
+        filename=f"{filename}.{format}",
+        overwrite=overwrite,
+    )
 
     return Path(f"{filename}.{format}")

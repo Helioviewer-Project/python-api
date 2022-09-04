@@ -1,3 +1,4 @@
+from pathlib import Path
 from datetime import datetime
 
 import pytest
@@ -17,6 +18,7 @@ def test_create_movie(start_time, end_time, tmp_path):
         imageScale=1,
         filename=f1,
     )
+    assert isinstance(result, Path)
     assert result.exists()
     assert result == tmp_path / "movie.mp4"
 
@@ -28,20 +30,9 @@ def test_create_movie(start_time, end_time, tmp_path):
         eventsLabels=True,
         imageScale=1,
         filename=f1,
-    )
-    assert result.exists()
-    assert result == tmp_path / "movie(1).mp4"
-
-    result = createMovie(
-        startTime=start_time,
-        endTime=end_time,
-        layers=create_layers([(DataSource.AIA_171, 100)]),
-        events=create_events(["AR"]),
-        eventsLabels=True,
-        imageScale=1,
-        filename=f1,
         overwrite=True,
     )
+    assert isinstance(result, Path)
     assert result.exists()
     assert result == tmp_path / "movie.mp4"
 
@@ -55,7 +46,9 @@ def test_create_movie_with_none_filename(start_time, end_time):
         eventsLabels=True,
         imageScale=1,
     )
+    assert isinstance(result, Path)
     assert result.exists()
+    result.unlink()  # clean up
 
 
 def test_error_handling(tmp_path):
