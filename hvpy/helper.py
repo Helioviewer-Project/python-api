@@ -60,6 +60,8 @@ def createMovie(
         Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
     """
     input_params = locals()
+    # These are used later on but we want to avoid passing
+    # them into queueMovie.
     input_params.pop("overwrite")
     input_params.pop("filename")
     input_params.pop("hq")
@@ -75,9 +77,7 @@ def createMovie(
             format=format,
             token=res["token"],
         )
-        if status["status"] == 0:
-            continue
-        if status["status"] == 1:
+        if status["status"] == 0 or status["status"] == 1:
             time.sleep(5)
         if status["status"] == 2:
             break
@@ -91,12 +91,14 @@ def createMovie(
     )
 
     if filename is None:
-        filename = f"{startTime.isoformat()}_{endTime.isoformat()}"
+        filename = f"{startTime.date()}_{endTime.date()}.{format}"
+    else:
+        filename = f"{filename}.{format}"
 
     save_file(
         data=binary_data,
-        filename=f"{filename}.{format}",
+        filename=filename,
         overwrite=overwrite,
     )
 
-    return Path(f"{filename}.{format}")
+    return Path(filename)
