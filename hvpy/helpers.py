@@ -79,7 +79,7 @@ def createMovie(
     ...     imageScale=1,
     ...     filename="my_movie",
     ... )
-    PosixPath('my_movie.mp4')
+    ...Path('my_movie.mp4')
     """
     input_params = locals()
     # These are used later on but we want to avoid passing
