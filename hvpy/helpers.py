@@ -65,6 +65,21 @@ def createMovie(
     timeout
         The timeout in minutes to wait for the movie to be created.
         Default is 5 minutes.
+
+    Examples
+    --------
+    >>> from hvpy import createMovie, DataSource, create_events, create_layers
+    >>> from datetime import datetime, timedelta
+    >>> createMovie(
+    ...     startTime=datetime.today() - timedelta(days=15, minutes=5),
+    ...     endTime=datetime.today() - timedelta(days=15),
+    ...     layers=create_layers([(DataSource.AIA_171, 100)]),
+    ...     events=create_events(["AR"]),
+    ...     eventsLabels=True,
+    ...     imageScale=1,
+    ...     filename="my_movie",
+    ... )
+    PosixPath('my_movie.mp4')
     """
     input_params = locals()
     # These are used later on but we want to avoid passing
