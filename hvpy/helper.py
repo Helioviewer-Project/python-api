@@ -3,8 +3,8 @@ from typing import Union, Optional
 from pathlib import Path
 from datetime import datetime
 
-from hvpy import downloadMovie, getMovieStatus, queueMovie
 from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
+from hvpy.facade import downloadMovie, getMovieStatus, queueMovie
 from hvpy.utils import _add_shared_docstring, save_file
 
 __all__ = [
@@ -47,8 +47,8 @@ def createMovie(
     timeout: float = 5,
 ) -> Path:
     """
-    Automatically creates a movie using the endpoint `queueMovie`,
-    `getMovieStatus` and `downloadMovie`.
+    Automatically creates a movie using `queueMovie`, `getMovieStatus` and
+    `downloadMovie` functions.
 
     Parameters
     ----------

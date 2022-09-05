@@ -3,8 +3,9 @@ from datetime import datetime
 
 import pytest
 
-from hvpy import create_events, create_layers, createMovie
 from hvpy.datasource import DataSource
+from hvpy.helper import createMovie
+from hvpy.utils import create_events, create_layers
 
 
 def test_create_movie(start_time, end_time, tmp_path):
