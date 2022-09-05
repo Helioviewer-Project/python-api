@@ -71,16 +71,19 @@ def createMovie(
     if res.get("error"):
         raise RuntimeError(res["error"])
 
+    timeout = time.time() + 60 * 5  # 5 minutes
     while True:
         status = getMovieStatus(
             id=res["id"],
             format=format,
             token=res["token"],
         )
-        if status["status"] == 0 or status["status"] == 1:
+        if status["status"] in [0, 1]:
             time.sleep(5)
         if status["status"] == 2:
             break
+        if time.time() > timeout:
+            raise RuntimeError("Exceeded timeout of 5 minutes.")
         if status["status"] == 3:
             raise RuntimeError(status["error"])
 
