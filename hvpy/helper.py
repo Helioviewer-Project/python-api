@@ -44,6 +44,7 @@ def createMovie(
     overwrite: bool = False,
     filename: Union[str, Path] = None,
     hq: bool = False,
+    timeout: float = 5,
 ) -> Path:
     """
     Automatically creates a movie using the endpoint `queueMovie`,
@@ -58,6 +59,12 @@ def createMovie(
     filename
         The path to save the file to.
         Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
+    hq
+        Download a higher-quality movie file (valid for "mp4" movies only, ignored otherwise).
+        Default is `False`, optional.
+    timeout
+        The timeout in minutes to wait for the movie to be created.
+        Default is 5 minutes.
     """
     input_params = locals()
     # These are used later on but we want to avoid passing
@@ -65,13 +72,14 @@ def createMovie(
     input_params.pop("overwrite")
     input_params.pop("filename")
     input_params.pop("hq")
+    input_params.pop("timeout")
 
     res = queueMovie(**input_params)
 
     if res.get("error"):
         raise RuntimeError(res["error"])
 
-    timeout = time.time() + 60 * 5  # 5 minutes
+    timeout_counter = time.time() + 60 * timeout  # Default 5 minutes
     while True:
         status = getMovieStatus(
             id=res["id"],
@@ -82,8 +90,8 @@ def createMovie(
             time.sleep(5)
         if status["status"] == 2:
             break
-        if time.time() > timeout:
-            raise RuntimeError("Exceeded timeout of 5 minutes.")
+        if time.time() > timeout_counter:
+            raise RuntimeError(f"Exceeded timeout of {timeout} minutes.")
         if status["status"] == 3:
             raise RuntimeError(status["error"])
 
