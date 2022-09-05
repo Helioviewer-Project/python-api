@@ -70,7 +70,7 @@ def createMovie(
     --------
     >>> from hvpy import createMovie, DataSource, create_events, create_layers
     >>> from datetime import datetime, timedelta
-    >>> createMovie(
+    >>> movie_location = createMovie(
     ...     startTime=datetime.today() - timedelta(days=15, minutes=5),
     ...     endTime=datetime.today() - timedelta(days=15),
     ...     layers=create_layers([(DataSource.AIA_171, 100)]),
@@ -79,7 +79,10 @@ def createMovie(
     ...     imageScale=1,
     ...     filename="my_movie",
     ... )
-    ...Path('my_movie.mp4')
+    >>> # This is to cleanup the file created from the example
+    >>> # you don't need to do this
+    >>> from pathlib import Path
+    >>> Path('my_movie.mp4').unlink()
     """
     input_params = locals()
     # These are used later on but we want to avoid passing
