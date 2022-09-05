@@ -4,11 +4,11 @@ from datetime import datetime
 import pytest
 
 from hvpy.datasource import DataSource
-from hvpy.helper import createMovie
+from hvpy.helpers import createMovie
 from hvpy.utils import create_events, create_layers
 
 
-def test_create_movie(start_time, end_time, tmp_path):
+def test_createMovie(start_time, end_time, tmp_path):
     f1 = tmp_path / "movie"
     result = createMovie(
         startTime=start_time,
@@ -38,7 +38,7 @@ def test_create_movie(start_time, end_time, tmp_path):
     assert result == tmp_path / "movie.mp4"
 
 
-def test_create_movie_with_none_filename(start_time, end_time):
+def test_createMovie_with_none_filename(start_time, end_time):
     result = createMovie(
         startTime=start_time,
         endTime=end_time,
@@ -52,7 +52,7 @@ def test_create_movie_with_none_filename(start_time, end_time):
     result.unlink()  # clean up
 
 
-def test_create_movie_timeout(start_time, end_time, tmp_path):
+def test_createMovie_timeout(start_time, end_time, tmp_path):
     f1 = tmp_path / "movie"
     with pytest.raises(RuntimeError):
         createMovie(
