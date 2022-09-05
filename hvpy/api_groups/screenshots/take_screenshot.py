@@ -11,9 +11,9 @@ class takeScreenshotInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``takeScreenshot`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     date
         Desired datetime of the image.
     imageScale
@@ -85,7 +85,8 @@ class takeScreenshotInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/screenshots.html#takescreenshot>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     date: datetime

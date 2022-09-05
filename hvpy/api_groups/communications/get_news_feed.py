@@ -7,9 +7,9 @@ class getNewsFeedInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``getNewsFeed`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     callback
         Wrap the response object in a function call of your choosing.
         Default is `None` (no wrapping), optional.
@@ -17,7 +17,8 @@ class getNewsFeedInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/web_site.html#getnewsfeed>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     callback: Optional[str] = None
