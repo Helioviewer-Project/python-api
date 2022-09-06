@@ -84,7 +84,7 @@ def test_save_file(tmp_path):
     )
     save_file(res, f1, overwrite=False)
     assert f1.exists()
-    with pytest.raises(ValueError, match="already exists"):
+    with pytest.raises(FileExistsError, match="already exists"):
         save_file(res, f1, overwrite=False)
     save_file(res, f1, overwrite=True)
     assert f1.exists()
