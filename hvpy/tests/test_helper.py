@@ -4,7 +4,7 @@ from datetime import datetime
 import pytest
 
 from hvpy.datasource import DataSource
-from hvpy.helpers import createMovie
+from hvpy.helpers import createMovie, createScreenshot
 from hvpy.utils import create_events, create_layers
 
 
@@ -93,3 +93,38 @@ def test_error_handling(tmp_path):
             imageScale=1,
             filename=f1,
         )
+
+
+def test_createScreenshot(date, tmp_path):
+    f1 = tmp_path / "screenshot"
+    result = createScreenshot(
+        date=date,
+        layers=create_layers([(DataSource.AIA_171, 100)]),
+        events=create_events(["AR"]),
+        imageScale=2.5,
+        x0=0,
+        y0=0,
+        width=4000,
+        height=4000,
+        filename=f1,
+    )
+    assert isinstance(result, Path)
+    assert result.exists()
+    assert result == tmp_path / "screenshot.png"
+    result.unlink()  # clean up
+
+
+def test_createScreenshot_with_none_filename(date):
+    result = createScreenshot(
+        date=date,
+        layers=create_layers([(DataSource.AIA_171, 100)]),
+        events=create_events(["AR"]),
+        imageScale=2.5,
+        x0=0,
+        y0=0,
+        width=4000,
+        height=4000,
+    )
+    assert isinstance(result, Path)
+    assert result.exists()
+    result.unlink()  # clean up

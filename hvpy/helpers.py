@@ -4,11 +4,13 @@ from pathlib import Path
 from datetime import datetime
 
 from hvpy.api_groups.movies.queue_movie import queueMovieInputParameters
-from hvpy.facade import downloadMovie, getMovieStatus, queueMovie
+from hvpy.api_groups.screenshots.take_screenshot import takeScreenshotInputParameters
+from hvpy.facade import downloadMovie, downloadScreenshot, getMovieStatus, queueMovie, takeScreenshot
 from hvpy.utils import _add_shared_docstring, save_file
 
 __all__ = [
     "createMovie",
+    "createScreenshot",
 ]
 
 
@@ -122,5 +124,85 @@ def createMovie(
         data=binary_data,
         filename=filename,
         overwrite=overwrite,
+    )
+    return Path(filename)
+
+
+@_add_shared_docstring(takeScreenshotInputParameters)
+def createScreenshot(
+    date: datetime,
+    imageScale: float,
+    layers: str,
+    events: Optional[str] = None,
+    eventLabels: Optional[bool] = False,
+    scale: Optional[bool] = False,
+    scaleType: Optional[str] = None,
+    scaleX: Optional[int] = None,
+    scaleY: Optional[int] = None,
+    width: Optional[str] = None,
+    height: Optional[str] = None,
+    x0: Optional[str] = None,
+    y0: Optional[str] = None,
+    x1: Optional[str] = None,
+    y1: Optional[str] = None,
+    x2: Optional[str] = None,
+    y2: Optional[str] = None,
+    watermark: Optional[bool] = False,
+    overwrite: bool = False,
+    filename: Union[str, Path] = None,
+) -> Path:
+    """
+    Automatically creates a screenshot using `takeScreenshot` functions.
+
+    Parameters
+    ----------
+    {Insert}
+    overwrite
+        Whether to overwrite the file if it already exists.
+        Default is `False`.
+    filename
+        The path to save the file to.
+        Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
+
+    Examples
+    --------
+    >>> from hvpy import createScreenshot, DataSource, create_events, create_layers, EventType
+    >>> from datetime import datetime, timedelta
+    >>> screenshot_location = createScreenshot(
+    ...     date=datetime.today() - timedelta(days=15),
+    ...     layers=create_layers([(DataSource.AIA_171, 100)]),
+    ...     events=create_events([EventType.ACTIVE_REGION]),
+    ...     eventLabels=True,
+    ...     imageScale=1,
+    ...     x0=0,
+    ...     y0=0,
+    ...     width=100,
+    ...     height=100,
+    ...     filename="my_screenshot",
+    ... )
+    >>> # This is to cleanup the file created from the example
+    >>> # you don't need to do this
+    >>> from pathlib import Path
+    >>> Path('my_screenshot.png').unlink()
+    """
+    input_params = locals()
+    # These are used later on but we want to avoid passing
+    # them into takeScreenshot.
+    input_params.pop("overwrite")
+    input_params.pop("filename")
+    res = takeScreenshot(**input_params)
+    if res.get("error"):
+        raise RuntimeError(res["error"])
+    binary_data = downloadScreenshot(
+        id=res["id"],
+    )
+    if filename is None:
+        filename = f"{date.strftime('%Y_%m_%d_%H_%M_%S')}.png"
+    else:
+        filename = f"{filename}.png"
+    save_file(
+        data=binary_data,
+        filename=filename,
+        overwrite=True,
     )
     return Path(filename)
