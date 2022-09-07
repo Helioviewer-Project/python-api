@@ -9,7 +9,7 @@ class getMovieStatusInputParameters(HvpyParameters):
 
     Attributes
     ----------
-    {Shared}
+    .. {Shared}
     id
         Unique movie identifier, returned as a response by the ``queueMovie`` endpoint request.
     format
@@ -27,7 +27,8 @@ class getMovieStatusInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/movies.html#id8>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     id: str

@@ -7,9 +7,9 @@ class shortenURLInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``shortenURL`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     queryString
         The URL-encoded query string.
     callback
@@ -19,7 +19,8 @@ class shortenURLInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/official_clients.html#shortenurl>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     queryString: str
