@@ -62,16 +62,16 @@ You simply specify a tuple with the source enum you want, and the opacity it sho
 
 .. code-block:: Python
 
-    from hvpy.utils import create_layers
-    from hvpy.datasource import DataSource
+    >> from hvpy.utils import create_layers
+    >> from hvpy.datasource import DataSource
 
-    layer_string = create_layers([(DataSource.AIA_304, 50), (DataSource.AIA_94, 50)])
-    print(layer_string)
+    >> layer_string = create_layers([(DataSource.AIA_304, 50), (DataSource.AIA_94, 50)])
+    >> print(layer_string)
     "[13,1,50],[8,1,50]"
 
-There is a similar function for choosing events that you want to have displayed in hvpy.utils.create_events (TODO: Update ref)
+There is a similar function for choosing events that you want to have displayed in `hvpy.utils.create_events`
 
 Miscellaneous Helpers
 ^^^^^^^^^^^^^^^^^^^^^
 ``hvpy`` also provides some miscellaneous helper functions.
-For example, since many API endpoints return raw data like images or videos, we've implemented a simple save_file (TODO: Update ref) to save this binary data to disk.
+For example, since many API endpoints return raw data like images or videos, we've implemented a simple `hvpy.utils.save_file` to save this binary data to disk.
