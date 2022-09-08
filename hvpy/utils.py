@@ -49,18 +49,8 @@ def _data_source_to_int(source: Union[int, DataSource]) -> int:
     ----------
     source
         The `~hvpy.DataSource` to convert.
-
-    Returns
-    -------
-    int
-        The integer representation of the `~hvpy.DataSource`.
     """
-    if isinstance(source, DataSource):
-        return source.value
-    elif isinstance(source, int) and source in [x.value for x in DataSource]:
-        return source
-    else:
-        raise ValueError(f"{source} is not a valid DataSource.")
+    return _to_datasource(source).value
 
 
 def _to_datasource(val: Union[int, DataSource]) -> DataSource:

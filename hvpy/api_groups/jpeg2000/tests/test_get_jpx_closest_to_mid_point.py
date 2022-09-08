@@ -7,14 +7,24 @@ from hvpy.datasource import DataSource
 
 def test_raw_response(start_times, end_times):
     response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=14, linked=False, verbose=False, jpip=False
+        startTimes=start_times,
+        endTimes=end_times,
+        sourceId=DataSource.AIA_335,
+        linked=False,
+        verbose=False,
+        jpip=False,
     )
     assert isinstance(response, bytes)
 
 
 def test_str_response(start_times, end_times):
     response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=14, linked=False, verbose=False, jpip=True
+        startTimes=start_times,
+        endTimes=end_times,
+        sourceId=14,
+        linked=False,
+        verbose=False,
+        jpip=True,
     )
     assert isinstance(response, str)
     assert response.startswith("jpip://")
@@ -22,13 +32,23 @@ def test_str_response(start_times, end_times):
 
 def test_json_response(start_times, end_times):
     response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=14, linked=False, verbose=True, jpip=True
+        startTimes=start_times,
+        endTimes=end_times,
+        sourceId=DataSource.AIA_335,
+        linked=False,
+        verbose=True,
+        jpip=True,
     )
     assert isinstance(response, dict)
     assert response["uri"].startswith("jpip://")
 
     response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=14, linked=False, verbose=True, jpip=False
+        startTimes=start_times,
+        endTimes=end_times,
+        sourceId=14,
+        linked=False,
+        verbose=True,
+        jpip=False,
     )
     assert isinstance(response, dict)
     assert response["uri"].startswith("https://")
@@ -46,32 +66,3 @@ def test_error_handling(start_times, end_times):
 def test_url_property(start_times, end_times):
     params = getJPXClosestToMidPointInputParameters(startTimes=start_times, endTimes=end_times, sourceId=14)
     assert params.url == "https://api.beta.helioviewer.org/v2/getJPXClosestToMidPoint/"
-
-
-def test_raw_response_with_datasource(start_times, end_times):
-    response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=DataSource.AIA_131, linked=False, verbose=False, jpip=False
-    )
-    assert isinstance(response, bytes)
-
-
-def test_str_response_with_datasource(start_times, end_times):
-    response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=DataSource.AIA_131, linked=False, verbose=False, jpip=True
-    )
-    assert isinstance(response, str)
-    assert response.startswith("jpip://")
-
-
-def test_json_response_with_datasource(start_times, end_times):
-    response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=DataSource.AIA_131, linked=False, verbose=True, jpip=True
-    )
-    assert isinstance(response, dict)
-    assert response["uri"].startswith("jpip://")
-
-    response = getJPXClosestToMidPoint(
-        startTimes=start_times, endTimes=end_times, sourceId=DataSource.AIA_131, linked=False, verbose=True, jpip=False
-    )
-    assert isinstance(response, dict)
-    assert response["uri"].startswith("https://")

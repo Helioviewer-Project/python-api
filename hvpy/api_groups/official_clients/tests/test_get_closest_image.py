@@ -6,23 +6,12 @@ from hvpy.datasource import DataSource
 
 
 def test_json_res(date):
-    response = getClosestImage(date=date, sourceId=14)
+    response = getClosestImage(date=date, sourceId=DataSource.AIA_335)
     assert isinstance(response, dict)
 
 
 def test_str_res(date):
     response = getClosestImage(date=date, sourceId=14, callback="callback")
-    assert isinstance(response, str)
-    assert response.startswith("callback")
-
-
-def test_json_res_with_datasource_enum(date):
-    response = getClosestImage(date=date, sourceId=DataSource.COR1_A)
-    assert isinstance(response, dict)
-
-
-def test_str_res_with_datasource_enum(date):
-    response = getClosestImage(date=date, sourceId=DataSource.COR1_A, callback="callback")
     assert isinstance(response, str)
     assert response.startswith("callback")
 
