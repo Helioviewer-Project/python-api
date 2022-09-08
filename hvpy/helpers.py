@@ -134,8 +134,8 @@ def createScreenshot(
     imageScale: float,
     layers: str,
     events: Optional[str] = None,
-    eventLabels: Optional[bool] = False,
-    scale: Optional[bool] = False,
+    eventLabels: bool = False,
+    scale: bool = False,
     scaleType: Optional[str] = None,
     scaleX: Optional[int] = None,
     scaleY: Optional[int] = None,
@@ -149,7 +149,7 @@ def createScreenshot(
     y2: Optional[str] = None,
     watermark: Optional[bool] = False,
     overwrite: bool = False,
-    filename: Union[str, Path] = None,
+    filename: Optional[Union[str, Path]] = None,
 ) -> Path:
     """
     Automatically creates a screenshot using `takeScreenshot`,
