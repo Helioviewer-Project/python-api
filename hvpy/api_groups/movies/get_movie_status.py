@@ -33,7 +33,7 @@ class getMovieStatusInputParameters(HvpyParameters):
 
     id: str
     format: str
-    verbose: Optional[bool] = False
+    verbose: bool = False
     callback: Optional[str] = None
     token: Optional[str] = None
 

@@ -1,5 +1,3 @@
-from typing import Optional
-
 from hvpy.io import HvpyParameters, OutputType
 
 
@@ -24,7 +22,7 @@ class reQueueMovieInputParameters(HvpyParameters):
     """
 
     id: str
-    force: Optional[bool] = False
+    force: bool = False
 
     def get_output_type(self) -> OutputType:
         """

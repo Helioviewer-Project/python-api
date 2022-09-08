@@ -49,7 +49,7 @@ def test_createMovie_with_none_filename(start_time, end_time):
     )
     assert isinstance(result, Path)
     assert result.exists()
-    result.unlink()  # clean up
+    result.unlink()
 
 
 def test_createMovie_timeout(start_time, end_time, tmp_path):
