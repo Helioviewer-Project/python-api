@@ -93,8 +93,8 @@ class takeScreenshotInputParameters(HvpyParameters):
     imageScale: float
     layers: str
     events: Optional[str] = None
-    eventLabels: Optional[bool] = False
-    scale: Optional[bool] = False
+    eventLabels: bool = False
+    scale: bool = False
     scaleType: Optional[str] = None
     scaleX: Optional[int] = None
     scaleY: Optional[int] = None
@@ -106,8 +106,8 @@ class takeScreenshotInputParameters(HvpyParameters):
     y1: Optional[str] = None
     x2: Optional[str] = None
     y2: Optional[str] = None
-    display: Optional[bool] = False
-    watermark: Optional[bool] = False
+    display: bool = False
+    watermark: bool = False
     callback: Optional[str] = None
     _date_vaidator = validator("date", allow_reuse=True)(convert_date_to_isoformat)
 

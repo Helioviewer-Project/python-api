@@ -27,7 +27,7 @@ class getDataSourcesInputParameters(HvpyParameters):
     .. {Shared}
     """
 
-    verbose: Optional[bool] = False
+    verbose: bool = False
     enable: Optional[str] = None
     callback: Optional[str] = None
 

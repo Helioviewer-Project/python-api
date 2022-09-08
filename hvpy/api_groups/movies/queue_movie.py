@@ -112,15 +112,15 @@ class queueMovieInputParameters(HvpyParameters):
     events: str
     eventsLabels: bool
     imageScale: float
-    format: Optional[str] = "mp4"
-    frameRate: Optional[str] = "15"
+    format: str = "mp4"
+    frameRate: str = "15"
     maxFrames: Optional[str] = None
     scale: Optional[bool] = None
     scaleType: Optional[str] = None
     scaleX: Optional[float] = None
     scaleY: Optional[float] = None
     movieLength: Optional[float] = None
-    watermark: Optional[bool] = True
+    watermark: bool = True
     width: Optional[str] = None
     height: Optional[str] = None
     x0: Optional[str] = None
@@ -130,7 +130,7 @@ class queueMovieInputParameters(HvpyParameters):
     x2: Optional[str] = None
     y2: Optional[str] = None
     callback: Optional[str] = None
-    size: Optional[int] = 0
+    size: int = 0
     movieIcons: Optional[int] = None
     followViewport: Optional[int] = None
     reqObservationDate: Optional[datetime] = None

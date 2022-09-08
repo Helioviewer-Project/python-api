@@ -202,7 +202,7 @@ def getClosestImage(
 
 @_add_shared_docstring(getDataSourcesInputParameters)
 def getDataSources(
-    verbose: Optional[bool] = False,
+    verbose: bool = False,
     enable: Optional[str] = None,
     callback: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
@@ -232,8 +232,8 @@ def takeScreenshot(
     imageScale: float,
     layers: str,
     events: Optional[str] = None,
-    eventLabels: Optional[bool] = False,
-    scale: Optional[bool] = False,
+    eventLabels: bool = False,
+    scale: bool = False,
     scaleType: Optional[str] = None,
     scaleX: Optional[int] = None,
     scaleY: Optional[int] = None,
@@ -245,8 +245,8 @@ def takeScreenshot(
     y1: Optional[str] = None,
     x2: Optional[str] = None,
     y2: Optional[str] = None,
-    display: Optional[bool] = False,
-    watermark: Optional[bool] = False,
+    display: bool = False,
+    watermark: bool = False,
     callback: Optional[str] = None,
 ):
     """
@@ -322,15 +322,15 @@ def queueMovie(
     events: str,
     eventsLabels: bool,
     imageScale: float,
-    format: Optional[str] = "mp4",
-    frameRate: Optional[str] = "15",
+    format: str = "mp4",
+    frameRate: str = "15",
     maxFrames: Optional[str] = None,
     scale: Optional[bool] = None,
     scaleType: Optional[str] = None,
     scaleX: Optional[float] = None,
     scaleY: Optional[float] = None,
     movieLength: Optional[float] = None,
-    watermark: Optional[bool] = True,
+    watermark: bool = True,
     width: Optional[str] = None,
     height: Optional[str] = None,
     x0: Optional[str] = None,
@@ -340,7 +340,7 @@ def queueMovie(
     x2: Optional[str] = None,
     y2: Optional[str] = None,
     callback: Optional[str] = None,
-    size: Optional[int] = None,
+    size: int = 0,
     movieIcons: Optional[int] = None,
     followViewport: Optional[int] = None,
     reqObservationDate: Optional[datetime] = None,
@@ -401,7 +401,7 @@ def queueMovie(
 @_add_shared_docstring(reQueueMovieInputParameters)
 def reQueueMovie(
     id: str,
-    force: Optional[bool] = False,
+    force: bool = False,
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
     Re-generate a custom movie that is no longer cached on the server.
@@ -426,7 +426,7 @@ def reQueueMovie(
 def getMovieStatus(
     id: str,
     format: str,
-    verbose: Optional[bool] = False,
+    verbose: bool = False,
     callback: Optional[str] = None,
     token: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
