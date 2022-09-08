@@ -157,13 +157,13 @@ def createScreenshot(
 
     Parameters
     ----------
-    {Insert}
     overwrite
         Whether to overwrite the file if it already exists.
         Default is `False`.
     filename
         The path to save the file to.
         Optional, will default to ``f"{res['id']}_{date.date()}.png"``.
+    {Insert}
 
     Examples
     --------
