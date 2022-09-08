@@ -147,7 +147,7 @@ def createScreenshot(
     y1: Optional[str] = None,
     x2: Optional[str] = None,
     y2: Optional[str] = None,
-    watermark: Optional[bool] = False,
+    watermark: bool = False,
     overwrite: bool = False,
     filename: Optional[Union[str, Path]] = None,
 ) -> Path:
