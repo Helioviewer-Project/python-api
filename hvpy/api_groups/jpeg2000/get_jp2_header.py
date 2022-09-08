@@ -1,6 +1,10 @@
-from typing import Optional
+from typing import Union, Optional
 
+from pydantic import validator
+
+from hvpy.datasource import DataSource
 from hvpy.io import HvpyParameters, OutputType
+from hvpy.utils import _data_source_to_int
 
 
 class getJP2HeaderInputParameters(HvpyParameters):
@@ -22,8 +26,9 @@ class getJP2HeaderInputParameters(HvpyParameters):
     {Shared}
     """
 
-    id: int
+    id: Union[int, DataSource]
     callback: Optional[str] = None
+    _id_validator = validator("id", allow_reuse=True)(_data_source_to_int)
 
     def get_output_type(self) -> OutputType:
         """
