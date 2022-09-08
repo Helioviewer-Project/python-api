@@ -7,9 +7,9 @@ class getDataSourcesInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``getDataSources`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     verbose
         Output the hierarchical list of available datasources in a format that is compatible with the JHelioviewer desktop client.
         Default is `False`, optional.
@@ -23,10 +23,11 @@ class getDataSourcesInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/official_clients.html#getdatasources>`__
-    {Shared}
+
+    .. {Shared}
     """
 
-    verbose: Optional[bool] = False
+    verbose: bool = False
     enable: Optional[str] = None
     callback: Optional[str] = None
 

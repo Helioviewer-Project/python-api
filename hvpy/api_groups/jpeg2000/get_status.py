@@ -5,11 +5,12 @@ class getStatusInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``getStatus`` API.
 
-    {Shared}
+    .. {Shared}
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/jpeg2000.html#getstatus>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     def get_output_type(self) -> OutputType:

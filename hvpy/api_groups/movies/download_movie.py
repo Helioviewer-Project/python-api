@@ -5,9 +5,9 @@ class downloadMovieInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``downloadMovie`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     id
         Unique movie identifier, returned as a response by the ``queueMovie`` endpoint request.
     format
@@ -19,7 +19,8 @@ class downloadMovieInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/movies.html#id9>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     id: str
