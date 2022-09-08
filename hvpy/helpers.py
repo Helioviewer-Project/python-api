@@ -54,7 +54,6 @@ def createMovie(
 
     Parameters
     ----------
-    {Insert}
     overwrite
         Whether to overwrite the file if it already exists.
         Default is `False`.
@@ -67,6 +66,7 @@ def createMovie(
     timeout
         The timeout in minutes to wait for the movie to be created.
         Default is 5 minutes.
+    {Insert}
 
     Examples
     --------

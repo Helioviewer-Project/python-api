@@ -11,9 +11,9 @@ class queueMovieInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``queueMovie`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     startTime
         Datetime of the first frame of the movie.
     endTime
@@ -102,7 +102,8 @@ class queueMovieInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/movies.html#queuemovie>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     startTime: datetime

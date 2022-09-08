@@ -11,9 +11,9 @@ class getClosestImageInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``getClosestImage`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     date
         Datetime of the image.
     sourceId
@@ -25,7 +25,8 @@ class getClosestImageInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/official_clients.html#getclosestimage>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     date: datetime
