@@ -52,7 +52,7 @@ def getJP2Image(
 
 @_add_shared_docstring(getJP2HeaderInputParameters)
 def getJP2Header(
-    id: Union[int, DataSource],
+    id: int,
     callback: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
