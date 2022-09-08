@@ -111,7 +111,6 @@ def test_createScreenshot(date, tmp_path):
     assert isinstance(result, Path)
     assert result.exists()
     assert result == tmp_path / "screenshot.png"
-    result.unlink()  # clean up
 
 
 def test_createScreenshot_with_none_filename(date):

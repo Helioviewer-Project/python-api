@@ -59,7 +59,7 @@ def createMovie(
         Default is `False`.
     filename
         The path to save the file to.
-        Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
+        Optional, will default to ``f"{res['id']}_{startTime.date()}_{endTime.date()}.{format}"``.
     hq
         Download a higher-quality movie file (valid for "mp4" movies only, ignored otherwise).
         Default is `False`, optional.
@@ -152,7 +152,8 @@ def createScreenshot(
     filename: Union[str, Path] = None,
 ) -> Path:
     """
-    Automatically creates a screenshot using `takeScreenshot` functions.
+    Automatically creates a screenshot using `takeScreenshot`,
+    `downloadScreenshot` functions.
 
     Parameters
     ----------
@@ -162,7 +163,7 @@ def createScreenshot(
         Default is `False`.
     filename
         The path to save the file to.
-        Optional, will default to ``f"{starttime}_{endtime}.{format}"``.
+        Optional, will default to ``f"{res['id']}_{date.date()}.png"``.
 
     Examples
     --------
@@ -197,12 +198,12 @@ def createScreenshot(
         id=res["id"],
     )
     if filename is None:
-        filename = f"{date.strftime('%Y_%m_%d_%H_%M_%S')}.png"
+        filename = f"{res['id']}_{date.date()}.png"
     else:
         filename = f"{filename}.png"
     save_file(
         data=binary_data,
         filename=filename,
-        overwrite=True,
+        overwrite=overwrite,
     )
     return Path(filename)
