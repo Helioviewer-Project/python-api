@@ -11,9 +11,9 @@ class getTileInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``getTile`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     id
         Unique image identifier.
     x
@@ -52,7 +52,8 @@ class getTileInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/official_clients.html#gettile>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     id: int

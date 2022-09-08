@@ -13,13 +13,21 @@ __all__ = [
     "save_file",
 ]
 
+SHARED_FORMAT = "    .. {Shared}\n"
+ATTRIBUTE_HEADER = "Attributes\n    ----------\n"
+
 
 def _add_shared_docstring(input_class) -> Callable[[Any], Any]:
+    """
+    This will add the part of a documentation string that is covered by a ``..
+
+    {Shared}`` and remove the Attributes heading.
+    """
+
     def decorator(func):
-        if "{Shared}" in input_class.__doc__:
-            split_doc = input_class.__doc__.split("{Shared}")
-            func.__doc__ = func.__doc__.replace("{Insert}", split_doc[1])
-            input_class.__doc__ = input_class.__doc__.replace("{Shared}", "")
+        if SHARED_FORMAT in input_class.__doc__:
+            split_doc = input_class.__doc__.split(SHARED_FORMAT)
+            func.__doc__ = func.__doc__.replace("{Insert}", split_doc[1].replace(ATTRIBUTE_HEADER, "").lstrip())
         return func
 
     return decorator

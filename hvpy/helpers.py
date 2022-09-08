@@ -20,15 +20,15 @@ def createMovie(
     events: str,
     eventsLabels: bool,
     imageScale: float,
-    format: Optional[str] = "mp4",
-    frameRate: Optional[str] = "15",
+    format: str = "mp4",
+    frameRate: str = "15",
     maxFrames: Optional[str] = None,
     scale: Optional[bool] = None,
     scaleType: Optional[str] = None,
     scaleX: Optional[float] = None,
     scaleY: Optional[float] = None,
     movieLength: Optional[float] = None,
-    watermark: Optional[bool] = True,
+    watermark: bool = True,
     width: Optional[str] = None,
     height: Optional[str] = None,
     x0: Optional[str] = None,
@@ -37,12 +37,12 @@ def createMovie(
     y1: Optional[str] = None,
     x2: Optional[str] = None,
     y2: Optional[str] = None,
-    size: Optional[int] = None,
+    size: int = 0,
     movieIcons: Optional[int] = None,
     followViewport: Optional[int] = None,
     reqObservationDate: Optional[datetime] = None,
     overwrite: bool = False,
-    filename: Union[str, Path] = None,
+    filename: Optional[Union[str, Path]] = None,
     hq: bool = False,
     timeout: float = 5,
 ) -> Path:
@@ -52,7 +52,6 @@ def createMovie(
 
     Parameters
     ----------
-    {Insert}
     overwrite
         Whether to overwrite the file if it already exists.
         Default is `False`.
@@ -65,6 +64,7 @@ def createMovie(
     timeout
         The timeout in minutes to wait for the movie to be created.
         Default is 5 minutes.
+    {Insert}
 
     Examples
     --------
@@ -87,10 +87,10 @@ def createMovie(
     input_params = locals()
     # These are used later on but we want to avoid passing
     # them into queueMovie.
-    input_params.pop("overwrite")
-    input_params.pop("filename")
-    input_params.pop("hq")
-    input_params.pop("timeout")
+    overwrite = input_params.pop("overwrite")
+    filename = input_params.pop("filename")
+    hq = input_params.pop("hq")
+    timeout = input_params.pop("timeout")
     res = queueMovie(**input_params)
     if res.get("error"):
         raise RuntimeError(res["error"])

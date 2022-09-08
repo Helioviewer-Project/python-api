@@ -1,5 +1,3 @@
-from typing import Optional
-
 from hvpy.io import HvpyParameters, OutputType
 
 
@@ -7,9 +5,9 @@ class reQueueMovieInputParameters(HvpyParameters):
     """
     Handles the input parameters of the ``reQueueMovie`` API.
 
+    .. {Shared}
     Attributes
     ----------
-    {Shared}
     id
         Unique movie identifier, returned as a response by the ``queueMovie`` endpoint request.
     force
@@ -19,11 +17,12 @@ class reQueueMovieInputParameters(HvpyParameters):
     References
     ----------
     * `<https://api.helioviewer.org/docs/v2/api/api_groups/movies.html#id2>`__
-    {Shared}
+
+    .. {Shared}
     """
 
     id: str
-    force: Optional[bool] = False
+    force: bool = False
 
     def get_output_type(self) -> OutputType:
         """
