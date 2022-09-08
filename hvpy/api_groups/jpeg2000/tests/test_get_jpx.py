@@ -2,6 +2,7 @@ import pytest
 
 from hvpy import getJPX
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_raw_response(start_time, end_time):
@@ -48,6 +49,59 @@ def test_json_response(start_time, end_time):
         startTime=start_time,
         endTime=end_time,
         sourceId=14,
+        linked=False,
+        verbose=True,
+        jpip=False,
+        cadence=60,
+    )
+    assert isinstance(response, dict)
+    assert response["uri"].startswith("https://")
+
+
+def test_raw_response_with_datasource_enum(start_time, end_time):
+    response = getJPX(
+        startTime=start_time,
+        endTime=end_time,
+        sourceId=DataSource.COR1_A,
+        linked=False,
+        verbose=False,
+        jpip=False,
+        cadence=60,
+    )
+    assert isinstance(response, bytes)
+
+
+def test_str_response_with_datasource_enum(start_time, end_time):
+    response = getJPX(
+        startTime=start_time,
+        endTime=end_time,
+        sourceId=DataSource.COR1_A,
+        linked=False,
+        verbose=False,
+        jpip=True,
+        cadence=60,
+    )
+    assert isinstance(response, str)
+    assert response.startswith("jpip://")
+
+
+def test_json_response_with_datasource_enum(start_time, end_time):
+    response = getJPX(
+        startTime=start_time,
+        endTime=end_time,
+        sourceId=DataSource.COR1_A,
+        linked=False,
+        verbose=True,
+        jpip=True,
+        cadence=60,
+    )
+    assert isinstance(response, dict)
+    assert response["uri"].startswith("jpip://")
+
+    response = getJPX(
+        startTime=start_time,
+        endTime=end_time,
+        sourceId=DataSource.COR1_A,
         linked=False,
         verbose=True,
         jpip=False,

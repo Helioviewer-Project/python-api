@@ -2,6 +2,7 @@ import pytest
 
 from hvpy import getJP2Image
 from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_str_response(date):
@@ -41,3 +42,10 @@ def test_url_property(date):
     params = {"date": date, "sourceId": 14, "jpip": True, "json": True}
     params = getJP2ImageInputParameters(**params)
     assert params.url == "https://api.beta.helioviewer.org/v2/getJP2Image/"
+
+
+def test_getJP2Image_with_datasource_enum(date):
+    response = getJP2Image(date=date, sourceId=DataSource.COR1_A, jpip=True, json=True)
+    assert isinstance(response, dict)
+    assert "uri" in response
+    assert response["uri"].startswith("jpip://")

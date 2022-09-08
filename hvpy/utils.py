@@ -57,7 +57,10 @@ def _data_source_to_int(source: Union[int, DataSource]) -> int:
     """
     if isinstance(source, DataSource):
         return source.value
-    return source
+    elif isinstance(source, int) and source in [x.value for x in DataSource]:
+        return source
+    else:
+        raise ValueError(f"{source} is not a valid DataSource.")
 
 
 def _to_datasource(val: Union[int, DataSource]) -> DataSource:

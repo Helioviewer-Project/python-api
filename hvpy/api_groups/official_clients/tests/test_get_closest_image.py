@@ -2,6 +2,7 @@ import pytest
 
 from hvpy import getClosestImage
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_json_res(date):
@@ -11,6 +12,17 @@ def test_json_res(date):
 
 def test_str_res(date):
     response = getClosestImage(date=date, sourceId=14, callback="callback")
+    assert isinstance(response, str)
+    assert response.startswith("callback")
+
+
+def test_json_res_with_datasource_enum(date):
+    response = getClosestImage(date=date, sourceId=DataSource.COR1_A)
+    assert isinstance(response, dict)
+
+
+def test_str_res_with_datasource_enum(date):
+    response = getClosestImage(date=date, sourceId=DataSource.COR1_A, callback="callback")
     assert isinstance(response, str)
     assert response.startswith("callback")
 
