@@ -49,6 +49,18 @@ def convert_date_to_unix(v: list) -> str:
     return ",".join([str(int(datetime.timestamp(d))) for d in v])
 
 
+def _data_source_to_int(source: Union[int, DataSource]) -> int:
+    """
+    Converts a `~hvpy.DataSource` to an integer.
+
+    Parameters
+    ----------
+    source
+        The `~hvpy.DataSource` to convert.
+    """
+    return _to_datasource(source).value
+
+
 def _to_datasource(val: Union[int, DataSource]) -> DataSource:
     """
     Validates the input and converts it to a DataSource enum.

@@ -2,6 +2,7 @@ from typing import Any, Dict, List, Union, Optional
 from datetime import datetime
 
 from hvpy.core import execute_api_call
+from hvpy.datasource import DataSource
 from hvpy.parameters import *
 from hvpy.utils import _add_shared_docstring
 
@@ -28,7 +29,7 @@ __all__ = [
 @_add_shared_docstring(getJP2ImageInputParameters)
 def getJP2Image(
     date: datetime,
-    sourceId: int,
+    sourceId: Union[int, DataSource],
     jpip: bool = False,
     json: bool = False,
 ) -> Union[bytes, str, Dict[str, Any]]:
@@ -75,7 +76,7 @@ def getJP2Header(
 def getJPXClosestToMidPoint(
     startTimes: List[datetime],
     endTimes: List[datetime],
-    sourceId: int,
+    sourceId: Union[int, DataSource],
     linked: bool = True,
     verbose: bool = False,
     jpip: bool = False,
@@ -115,7 +116,7 @@ def getJPXClosestToMidPoint(
 def getJPX(
     startTime: List[datetime],
     endTime: List[datetime],
-    sourceId: int,
+    sourceId: Union[int, DataSource],
     linked: bool = True,
     verbose: bool = False,
     jpip: bool = False,
@@ -175,7 +176,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
 @_add_shared_docstring(getClosestImageInputParameters)
 def getClosestImage(
     date: datetime,
-    sourceId: int,
+    sourceId: Union[int, DataSource],
     callback: Optional[str] = None,
 ) -> Union[bytes, str, Dict[str, Any]]:
     """
@@ -424,7 +425,7 @@ def reQueueMovie(
 
 @_add_shared_docstring(getMovieStatusInputParameters)
 def getMovieStatus(
-    id: str,
+    id: Union[int, DataSource],
     format: str,
     verbose: bool = False,
     callback: Optional[str] = None,
@@ -454,7 +455,7 @@ def getMovieStatus(
 
 @_add_shared_docstring(downloadMovieInputParameters)
 def downloadMovie(
-    id: str,
+    id: Union[int, DataSource],
     format: str,
     hq: bool = False,
 ) -> Union[bytes, str, Dict[str, Any]]:
@@ -527,7 +528,7 @@ def shortenURL(
 
 @_add_shared_docstring(getTileInputParameters)
 def getTile(
-    id: int,
+    id: Union[int, DataSource],
     x: int,
     y: int,
     imageScale: int,

@@ -2,10 +2,11 @@ import pytest
 
 from hvpy import getJP2Image
 from hvpy.api_groups.jpeg2000.get_jp2_image import getJP2ImageInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_str_response(date):
-    response = getJP2Image(date=date, sourceId=14, jpip=True, json=False)
+    response = getJP2Image(date=date, sourceId=DataSource.AIA_335, jpip=True, json=False)
     assert isinstance(response, str)
     assert response.startswith("jpip://")
 
@@ -18,7 +19,7 @@ def test_json_response(date):
 
 
 def test_raw_response(date):
-    response = getJP2Image(date=date, sourceId=14, jpip=False, json=False)
+    response = getJP2Image(date=date, sourceId=DataSource.AIA_335, jpip=False, json=False)
     assert isinstance(response, bytes)
 
 
@@ -28,7 +29,7 @@ def test_raw_response_with_json(date):
 
 
 def test_default_response(date):
-    response = getJP2Image(date=date, sourceId=14)
+    response = getJP2Image(date=date, sourceId=DataSource.AIA_335)
     assert isinstance(response, bytes)
 
 

@@ -1,10 +1,11 @@
-from typing import List
+from typing import List, Union
 from datetime import datetime
 
 from pydantic import validator
 
+from hvpy.datasource import DataSource
 from hvpy.io import HvpyParameters, OutputType
-from hvpy.utils import convert_date_to_unix
+from hvpy.utils import _data_source_to_int, convert_date_to_unix
 
 
 class getJPXClosestToMidPointInputParameters(HvpyParameters):
@@ -39,11 +40,12 @@ class getJPXClosestToMidPointInputParameters(HvpyParameters):
 
     startTimes: List[datetime]
     endTimes: List[datetime]
-    sourceId: int
+    sourceId: Union[int, DataSource]
     linked: bool = True
     verbose: bool = False
     jpip: bool = False
     _date_validator = validator("startTimes", "endTimes", allow_reuse=True)(convert_date_to_unix)
+    _source_id_validator = validator("sourceId", allow_reuse=True)(_data_source_to_int)
 
     def get_output_type(self) -> OutputType:
         """

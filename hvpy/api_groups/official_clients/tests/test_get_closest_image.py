@@ -2,10 +2,11 @@ import pytest
 
 from hvpy import getClosestImage
 from hvpy.api_groups.official_clients.get_closest_image import getClosestImageInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_json_res(date):
-    response = getClosestImage(date=date, sourceId=14)
+    response = getClosestImage(date=date, sourceId=DataSource.AIA_335)
     assert isinstance(response, dict)
 
 

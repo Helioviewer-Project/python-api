@@ -1,9 +1,11 @@
+from typing import Union
 from datetime import datetime
 
 from pydantic import Field, validator
 
+from hvpy.datasource import DataSource
 from hvpy.io import HvpyParameters, OutputType
-from hvpy.utils import convert_date_to_isoformat
+from hvpy.utils import _data_source_to_int, convert_date_to_isoformat
 
 
 class getJP2ImageInputParameters(HvpyParameters):
@@ -32,10 +34,11 @@ class getJP2ImageInputParameters(HvpyParameters):
     """
 
     date: datetime
-    sourceId: int
+    sourceId: Union[int, DataSource]
     jpip: bool = False
     Json: bool = Field(False, alias="json")
     _date_validator = validator("date", allow_reuse=True)(convert_date_to_isoformat)
+    _source_id_validator = validator("sourceId", allow_reuse=True)(_data_source_to_int)
 
     def get_output_type(self) -> OutputType:
         """

@@ -2,13 +2,14 @@ import pytest
 
 from hvpy import getJPX
 from hvpy.api_groups.jpeg2000.get_jpx import getJPXInputParameters
+from hvpy.datasource import DataSource
 
 
 def test_raw_response(start_time, end_time):
     response = getJPX(
         startTime=start_time,
         endTime=end_time,
-        sourceId=14,
+        sourceId=DataSource.AIA_335,
         linked=False,
         verbose=False,
         jpip=False,
@@ -21,7 +22,7 @@ def test_str_response(start_time, end_time):
     response = getJPX(
         startTime=start_time,
         endTime=end_time,
-        sourceId=14,
+        sourceId=DataSource.AIA_335,
         linked=False,
         verbose=False,
         jpip=True,
