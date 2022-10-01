@@ -59,7 +59,7 @@ def createMovie(
         Default is `False`.
     filename
         The path to save the file to.
-        Optional, will default to ``f"{res['id']}_{startTime.date()}_{endTime.date()}.{format}"``.
+        Optional, will default to ``f"{res['title']}.{format}"``.
     hq
         Download a higher-quality movie file (valid for "mp4" movies only, ignored otherwise).
         Default is `False`, optional.
@@ -94,12 +94,13 @@ def createMovie(
     hq = input_params.pop("hq")
     timeout = input_params.pop("timeout")
     res = queueMovie(**input_params)
+    id = res["id"]
     if res.get("error"):
         raise RuntimeError(res["error"])
     timeout_counter = time.time() + 60 * timeout  # Default 5 minutes
     while True:
         status = getMovieStatus(
-            id=res["id"],
+            id=id,
             format=format,
             token=res["token"],
         )
@@ -112,12 +113,15 @@ def createMovie(
         if status["status"] == 3:
             raise RuntimeError(status["error"])
     binary_data = downloadMovie(
-        id=res["id"],
+        id=id,
         format=format,
         hq=hq,
     )
     if filename is None:
-        filename = f"{res['id']}_{startTime.date()}_{endTime.date()}.{format}"
+        title = getMovieStatus(id=id, format=format, token=res["token"],)[
+            "title"
+        ].replace(" ", "_")
+        filename = f"{title}.{format}"
     else:
         filename = f"{filename}.{format}"
     save_file(
