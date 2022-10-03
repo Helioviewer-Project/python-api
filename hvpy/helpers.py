@@ -104,6 +104,11 @@ def createMovie(
             format=format,
             token=res["token"],
         )
+        if filename is None:
+            title = status["title"].replace(" ", "_")
+            filename = f"{title}.{format}"
+        else:
+            filename = f"{filename}.{format}"
         if status["status"] in [0, 1]:
             time.sleep(3)
         if status["status"] == 2:
@@ -117,13 +122,6 @@ def createMovie(
         format=format,
         hq=hq,
     )
-    if filename is None:
-        title = getMovieStatus(id=id, format=format, token=res["token"],)[
-            "title"
-        ].replace(" ", "_")
-        filename = f"{title}.{format}"
-    else:
-        filename = f"{filename}.{format}"
     save_file(
         data=binary_data,
         filename=filename,
