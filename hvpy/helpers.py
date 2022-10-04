@@ -94,14 +94,13 @@ def createMovie(
     hq = input_params.pop("hq")
     timeout = input_params.pop("timeout")
     res = queueMovie(**input_params)
-    id = res["id"]
     if res.get("error"):
         raise RuntimeError(res["error"])
     timeout_counter = time.time() + 60 * timeout  # Default 5 minutes
     title = ""
     while True:
         status = getMovieStatus(
-            id=id,
+            id=res["id"],
             format=format,
             token=res["token"],
         )
@@ -116,14 +115,14 @@ def createMovie(
         if status["status"] == 3:
             raise RuntimeError(status["error"])
     binary_data = downloadMovie(
-        id=id,
+        id=res["id"],
         format=format,
         hq=hq,
     )
-    if filename is not None:
-        filename = f"{filename}.{format}"
-    else:
+    if filename is None:
         filename = f"{title}.{format}"
+    else:
+        filename = f"{filename}.{format}"
     save_file(
         data=binary_data,
         filename=filename,
