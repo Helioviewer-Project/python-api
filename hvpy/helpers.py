@@ -98,17 +98,15 @@ def createMovie(
     if res.get("error"):
         raise RuntimeError(res["error"])
     timeout_counter = time.time() + 60 * timeout  # Default 5 minutes
+    title = ""
     while True:
         status = getMovieStatus(
             id=id,
             format=format,
             token=res["token"],
         )
-        if filename is None:
-            title = status["title"].replace(" ", "_")
-            filename = f"{title}.{format}"
-        else:
-            filename = f"{filename}.{format}"
+        if status.get("title"):
+            title = status["title"]
         if status["status"] in [0, 1]:
             time.sleep(3)
         if status["status"] == 2:
@@ -122,6 +120,10 @@ def createMovie(
         format=format,
         hq=hq,
     )
+    if filename is not None:
+        filename = f"{filename}.{format}"
+    else:
+        filename = f"{title}.{format}"
     save_file(
         data=binary_data,
         filename=filename,
