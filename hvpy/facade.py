@@ -66,7 +66,7 @@ def getJP2Header(
     --------
     >>> from hvpy import getJP2Header
     >>> getJP2Header(id=7654321,callback="xml_header")
-    'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits><SIMPLE>1</SIMPLE><BITPIX>16</BITPIX>...')'
+    'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
     return execute_api_call(input_parameters=params)
