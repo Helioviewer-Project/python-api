@@ -104,11 +104,10 @@ def createMovie(
             format=format,
             token=res["token"],
         )
-        if status.get("title"):
-            title = status["title"]
         if status["status"] in [0, 1]:
             time.sleep(3)
         if status["status"] == 2:
+            title = status["title"]
             break
         if time.time() > timeout_counter:
             raise RuntimeError(f"Exceeded timeout of {timeout} minutes.")
