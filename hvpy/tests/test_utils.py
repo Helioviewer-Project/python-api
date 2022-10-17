@@ -1,3 +1,4 @@
+from pathlib import Path
 from datetime import datetime
 
 import pytest
@@ -92,3 +93,42 @@ def test_save_file(tmp_path):
     f2 = tmp_path / "test2.png"
     save_file(res, str(f2), overwrite=False)
     assert f2.exists()
+
+
+def test_save_file_cleans(tmp_path):
+    # Clean the filename for Windows filepaths
+    filename = tmp_path / ":test.png"
+    clean_filename = str(filename).replace(":", "_")
+    res = takeScreenshot(
+        date=datetime.today(),
+        imageScale=2.44,
+        layers="[10,1,100]",
+        x0=0,
+        y0=0,
+        width=1920,
+        height=1200,
+        display=True,
+    )
+    save_file(res, str(filename))
+    assert not filename.exists()
+    assert Path(clean_filename).exists()
+
+
+def test_save_file_expands():
+    # Check that ~/ expands
+    filename = "~/:test.png"
+    clean_filename = str(filename).replace(":", "_")
+    res = takeScreenshot(
+        date=datetime.today(),
+        imageScale=2.44,
+        layers="[10,1,100]",
+        x0=0,
+        y0=0,
+        width=1920,
+        height=1200,
+        display=True,
+    )
+    save_file(res, filename)
+    assert not Path(filename).exists()
+    assert Path(clean_filename).expanduser().exists()
+    Path(clean_filename).expanduser().unlink()

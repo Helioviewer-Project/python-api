@@ -1,3 +1,5 @@
+import os
+import re
 from typing import Any, List, Union, Callable
 from pathlib import Path
 from datetime import datetime
@@ -165,8 +167,11 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
         Whether to overwrite the file if it already exists.
         Default is `False`.
     """
-    if isinstance(filename, str):
-        filename = Path(filename)
+    filename = Path(filename).expanduser().resolve().absolute()
+    filepath, filename = os.path.split(filename)
+    # Sanitize the filename - Only works for strings
+    filename = re.sub(r"[^\w\-_\. ]", "_", filename)
+    filename = Path(filepath) / Path(filename)
     if filename.exists() and not overwrite:
         raise FileExistsError(f"{filename} already exists. Use overwrite=True to overwrite.")
     filename.write_bytes(data)
