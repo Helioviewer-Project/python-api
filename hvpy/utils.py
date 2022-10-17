@@ -153,7 +153,7 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     return constructed_events[:-1]
 
 
-def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = False) -> None:
+def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = False) -> Path:
     """
     Saves a file to the specified path.
 
@@ -166,6 +166,11 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
     overwrite
         Whether to overwrite the file if it already exists.
         Default is `False`.
+
+    Returns
+    -------
+    `~pathlib.Path`
+        The path to the saved file.
     """
     filename = Path(filename).expanduser().resolve().absolute()
     filepath, filename = os.path.split(filename)
@@ -175,3 +180,4 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
     if filename.exists() and not overwrite:
         raise FileExistsError(f"{filename} already exists. Use overwrite=True to overwrite.")
     filename.write_bytes(data)
+    return filename

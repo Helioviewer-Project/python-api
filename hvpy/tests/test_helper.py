@@ -38,7 +38,7 @@ def test_createMovie(start_time, end_time, tmp_path):
     assert result == tmp_path / "movie.mp4"
 
 
-def test_createMovie_with_none_filename(start_time, end_time):
+def test_createMovie_with_no_filename(start_time, end_time):
     result = createMovie(
         startTime=start_time,
         endTime=end_time,

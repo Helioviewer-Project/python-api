@@ -122,12 +122,12 @@ def createMovie(
         filename = f"{title}.{format}"
     else:
         filename = f"{filename}.{format}"
-    save_file(
+    filename = save_file(
         data=binary_data,
         filename=filename,
         overwrite=overwrite,
     )
-    return Path(filename)
+    return filename
 
 
 @_add_shared_docstring(takeScreenshotInputParameters)
@@ -203,9 +203,9 @@ def createScreenshot(
         filename = f"{res['id']}_{date.date()}.png"
     else:
         filename = f"{filename}.png"
-    save_file(
+    filename = save_file(
         data=binary_data,
         filename=filename,
         overwrite=overwrite,
     )
-    return Path(filename)
+    return filename
