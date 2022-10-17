@@ -30,3 +30,8 @@ You need to install the development version of the package in order to make and 
 See the :ref:`obtaining_the_source` section for details.
 
 You may also want to familiarize yourself with the :ref:`dev_guide` for ``hvpy``.
+
+Changelog
+---------
+
+The changelog for ``hvpy`` is available on the `GitHub releases page <https://github.com/Helioviewer-Project/python-api/releases>`__.
