@@ -72,7 +72,7 @@ def test_create_events_string():
 
 
 def test_save_file(tmp_path):
-    f1 = tmp_path / "test.png"
+    filename = tmp_path / "test.png"
     res = takeScreenshot(
         date=datetime.today(),
         imageScale=2.44,
@@ -83,22 +83,17 @@ def test_save_file(tmp_path):
         height=1200,
         display=True,
     )
-    save_file(res, f1, overwrite=False)
-    assert f1.exists()
+    saved_file = save_file(res, filename, overwrite=False)
+    assert saved_file == filename
     with pytest.raises(FileExistsError, match="already exists"):
-        save_file(res, f1, overwrite=False)
-    save_file(res, f1, overwrite=True)
-    assert f1.exists()
-
-    f2 = tmp_path / "test2.png"
-    save_file(res, str(f2), overwrite=False)
-    assert f2.exists()
+        save_file(res, filename, overwrite=False)
+    save_file(res, filename, overwrite=True)
 
 
 def test_save_file_cleans(tmp_path):
     # Clean the filename for Windows filepaths
     filename = tmp_path / ":test.png"
-    clean_filename = str(filename).replace(":", "_")
+    clean_filename = str(filename).replace(":test.png", "_test.png")
     res = takeScreenshot(
         date=datetime.today(),
         imageScale=2.44,
@@ -109,9 +104,9 @@ def test_save_file_cleans(tmp_path):
         height=1200,
         display=True,
     )
-    save_file(res, str(filename))
+    saved_file = save_file(res, str(filename))
     assert not filename.exists()
-    assert Path(clean_filename).exists()
+    assert saved_file == Path(clean_filename)
 
 
 def test_save_file_expands():
@@ -128,7 +123,7 @@ def test_save_file_expands():
         height=1200,
         display=True,
     )
-    save_file(res, filename)
+    saved_file = save_file(res, filename)
+    saved_file.unlink()
     assert not Path(filename).exists()
-    assert Path(clean_filename).expanduser().exists()
-    Path(clean_filename).expanduser().unlink()
+    assert saved_file == Path(clean_filename).expanduser().resolve()
