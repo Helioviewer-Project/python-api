@@ -1,3 +1,5 @@
+import os
+import re
 from typing import Any, List, Union, Callable
 from pathlib import Path
 from datetime import datetime
@@ -151,7 +153,7 @@ def create_events(events: List[Union[EventType, str, tuple]]) -> str:
     return constructed_events[:-1]
 
 
-def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = False) -> None:
+def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = False) -> Path:
     """
     Saves a file to the specified path.
 
@@ -164,9 +166,18 @@ def save_file(data: bytearray, filename: Union[Path, str], overwrite: bool = Fal
     overwrite
         Whether to overwrite the file if it already exists.
         Default is `False`.
+
+    Returns
+    -------
+    `~pathlib.Path`
+        The path to the saved file.
     """
-    if isinstance(filename, str):
-        filename = Path(filename)
+    filepath, filename = os.path.split(filename)
+    filename = re.sub(r"[^\w\-_\. ]", "_", filename)
+    filename = Path(filepath) / Path(filename)
+    filename = Path(filename).expanduser().resolve().absolute()
+    # Sanitize the filename - Only works for strings
     if filename.exists() and not overwrite:
         raise FileExistsError(f"{filename} already exists. Use overwrite=True to overwrite.")
     filename.write_bytes(data)
+    return filename
