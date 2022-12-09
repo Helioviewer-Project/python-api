@@ -438,32 +438,32 @@ class DataSource(Enum):
     Solar Orbiter instrument HRI, measurement 1216.
     """
 
-    SUVI_94 = 88
+    SUVI_94 = 2000
     """
     GOES-R instrument SUVI, measurement 94.
     """
 
-    SUVI_131 = 89
+    SUVI_131 = 2001
     """
     GOES-R instrument SUVI, measurement 131.
     """
 
-    SUVI_171 = 90
+    SUVI_171 = 2002
     """
     GOES-R instrument SUVI, measurement 171.
     """
 
-    SUVI_195 = 91
+    SUVI_195 = 2003
     """
     GOES-R instrument SUVI, measurement 195.
     """
 
-    SUVI_284 = 92
+    SUVI_284 = 2004
     """
     GOES-R instrument SUVI, measurement 284.
     """
 
-    SUVI_304 = 93
+    SUVI_304 = 2005
     """
     GOES-R instrument SUVI, measurement 304.
     """
