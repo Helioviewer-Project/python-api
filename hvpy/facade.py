@@ -167,7 +167,7 @@ def getStatus() -> Union[bytes, str, Dict[str, Any]]:
     --------
     >>> from hvpy import getStatus
     >>> getStatus()
-    {'AIA': ..., 'COSMO': ..., 'HMI': ..., 'LASCO': ..., 'SECCHI': ..., 'SWAP': ..., 'XRT': ...}
+    {'AIA': ..., ...}
     """
     params = getStatusInputParameters()
     return execute_api_call(input_parameters=params)
