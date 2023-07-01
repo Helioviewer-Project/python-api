@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import datetime
 
-from pydantic import validator
+from pydantic import field_validator
 
 from hvpy.io import HvpyParameters, OutputType
 from hvpy.utils import convert_date_to_isoformat
@@ -134,9 +134,7 @@ class queueMovieInputParameters(HvpyParameters):
     movieIcons: Optional[int] = None
     followViewport: Optional[int] = None
     reqObservationDate: Optional[datetime] = None
-    _date_validator = validator("startTime", "endTime", "reqObservationDate", allow_reuse=True)(
-        convert_date_to_isoformat
-    )
+    _date_validator = field_validator("startTime", "endTime", "reqObservationDate")(convert_date_to_isoformat)
 
     def get_output_type(self) -> OutputType:
         """

@@ -1,7 +1,7 @@
 from typing import Union, Optional
 from datetime import datetime
 
-from pydantic import validator
+from pydantic import field_validator
 
 from hvpy.datasource import DataSource
 from hvpy.io import HvpyParameters, OutputType
@@ -33,8 +33,8 @@ class getClosestImageInputParameters(HvpyParameters):
     date: datetime
     sourceId: Union[int, DataSource]
     callback: Optional[str] = None
-    _date_validator = validator("date", allow_reuse=True)(convert_date_to_isoformat)
-    _source_id_validator = validator("sourceId", allow_reuse=True)(_data_source_to_int)
+    _date_validator = field_validator("date")(convert_date_to_isoformat)
+    _source_id_validator = field_validator("sourceId")(_data_source_to_int)
 
     def get_output_type(self) -> OutputType:
         """

@@ -65,7 +65,7 @@ def getJP2Header(
     Examples
     --------
     >>> from hvpy import getJP2Header
-    >>> getJP2Header(id=7654321,callback="xml_header")
+    >>> getJP2Header(id=7654321, callback="xml_header")
     'xml_header(\\\'<?xml version="1.0" encoding="utf-8"?><meta><fits>...')'
     """
     params = getJP2HeaderInputParameters(id=id, callback=callback)
@@ -99,7 +99,7 @@ def getJPXClosestToMidPoint(
     ...     linked=False,
     ...     jpip=True
     ... )
-    'jpips://beta.helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
+    'jpips://beta.helioviewer.org:8092/movies/...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
         startTimes=startTimes,
@@ -140,7 +140,7 @@ def getJPX(
     ...        jpip=True,
     ...        verbose=False,
     ...        cadence=60)
-    'jpips://beta.helioviewer.org:8090/movies/...'
+    'jpips://beta.helioviewer.org:8092/movies/...'
     """
     params = getJPXInputParameters(
         startTime=startTime,
@@ -217,7 +217,7 @@ def getDataSources(
     --------
     >>> from hvpy import getDataSources
     >>> getDataSources()
-    {'GOES-R': {'SUVI': {...: {'sourceId': ..., 'nickname': 'GOES-R SUVI 94', 'layeringOrder': 1, 'start': ..., 'end': ..., 'uiLabels': [{'label': 'Observatory', 'name': 'GOES-R'}, {'label': 'Detector', 'name': 'SUVI'}, ...}
+    {'GOES-R': {'SUVI': {'94': {'sourceId': 2000, 'nickname': 'GOES-R SUVI 94', 'layeringOrder': 1, 'start': '...', 'end': '...', 'uiLabels': [{'label': 'Observatory', 'name': 'GOES-R'}, {'label': 'Instrument', 'name': 'SUVI'}, {'label': 'Measurement', 'name': '94'}]}...
     """
     params = getDataSourcesInputParameters(
         verbose=verbose,
@@ -238,14 +238,14 @@ def takeScreenshot(
     scaleType: Optional[str] = None,
     scaleX: Optional[int] = None,
     scaleY: Optional[int] = None,
-    width: Optional[str] = None,
-    height: Optional[str] = None,
-    x0: Optional[str] = None,
-    y0: Optional[str] = None,
-    x1: Optional[str] = None,
-    y1: Optional[str] = None,
-    x2: Optional[str] = None,
-    y2: Optional[str] = None,
+    width: Optional[int] = None,
+    height: Optional[int] = None,
+    x0: Optional[int] = None,
+    y0: Optional[int] = None,
+    x1: Optional[int] = None,
+    y1: Optional[int] = None,
+    x2: Optional[int] = None,
+    y2: Optional[int] = None,
     display: bool = False,
     watermark: bool = False,
     callback: Optional[str] = None,
@@ -332,14 +332,14 @@ def queueMovie(
     scaleY: Optional[float] = None,
     movieLength: Optional[float] = None,
     watermark: bool = True,
-    width: Optional[str] = None,
-    height: Optional[str] = None,
-    x0: Optional[str] = None,
-    y0: Optional[str] = None,
-    x1: Optional[str] = None,
-    y1: Optional[str] = None,
-    x2: Optional[str] = None,
-    y2: Optional[str] = None,
+    width: Optional[int] = None,
+    height: Optional[int] = None,
+    x0: Optional[int] = None,
+    y0: Optional[int] = None,
+    x1: Optional[int] = None,
+    y1: Optional[int] = None,
+    x2: Optional[int] = None,
+    y2: Optional[int] = None,
     callback: Optional[str] = None,
     size: int = 0,
     movieIcons: Optional[int] = None,
@@ -412,8 +412,8 @@ def reQueueMovie(
     {Insert}
     Examples
     --------
-    >>> from hvpy import reQueueMovie        # doctest: +SKIP
-    >>> reQueueMovie(id="gxRN5", force=True) # doctest: +SKIP
+    >>> from hvpy import reQueueMovie
+    >>> reQueueMovie(id="gxRN5", force=True)  # doctest: +SKIP
     {'id': 'gxRN5', 'eta': 274, 'queue': 0, 'token': '...'}
     """
     params = reQueueMovieInputParameters(
@@ -440,7 +440,7 @@ def getMovieStatus(
     Examples
     --------
     >>> from hvpy import getMovieStatus
-    >>> getMovieStatus(id="h2n6n", format="mp4")
+    >>> getMovieStatus(id="h2n6n", format="mp4")  # doctest: +SKIP
     {'frameRate': ..., 'numFrames': ..., 'startDate': '...', 'status': ..., 'endDate': '...', 'width': ..., 'height': ..., 'title': '...', 'thumbnails': {'icon': '...', 'small': '...', 'medium': '...', 'large': '...', 'full': '...'}, 'url': '...', 'statusLabel': 'Completed'}
     """
     params = getMovieStatusInputParameters(

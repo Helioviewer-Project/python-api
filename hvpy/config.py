@@ -1,10 +1,12 @@
-from pydantic import BaseSettings, Field
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 __all__ = ["LiveSettings", "set_api_url", "get_api_url"]
 
 
 class Settings(BaseSettings):
-    api_url: str = Field("https://api.helioviewer.org/v2/", env="HELIOVIEWER_API_URL")
+    model_config = SettingsConfigDict(env_prefix="HELIOVIEWER_")
+    api_url: str = Field("https://api.helioviewer.org/v2/")
 
 
 def get_api_url() -> str:

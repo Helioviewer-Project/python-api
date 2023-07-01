@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import datetime
 
-from pydantic import validator
+from pydantic import field_validator
 
 from hvpy.io import HvpyParameters, OutputType
 from hvpy.utils import convert_date_to_isoformat
@@ -98,18 +98,18 @@ class takeScreenshotInputParameters(HvpyParameters):
     scaleType: Optional[str] = None
     scaleX: Optional[int] = None
     scaleY: Optional[int] = None
-    width: Optional[str] = None
-    height: Optional[str] = None
-    x0: Optional[str] = None
-    y0: Optional[str] = None
-    x1: Optional[str] = None
-    y1: Optional[str] = None
-    x2: Optional[str] = None
-    y2: Optional[str] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    x0: Optional[int] = None
+    y0: Optional[int] = None
+    x1: Optional[int] = None
+    y1: Optional[int] = None
+    x2: Optional[int] = None
+    y2: Optional[int] = None
     display: bool = False
     watermark: bool = False
     callback: Optional[str] = None
-    _date_vaidator = validator("date", allow_reuse=True)(convert_date_to_isoformat)
+    _date_vaidator = field_validator("date")(convert_date_to_isoformat)
 
     def get_output_type(self) -> OutputType:
         """
