@@ -29,7 +29,7 @@ def test_str_response(start_time, end_time):
         cadence=60,
     )
     assert isinstance(response, str)
-    assert response.startswith("jpip://")
+    assert response.startswith("jpips://")
 
 
 def test_json_response(start_time, end_time):
@@ -43,7 +43,7 @@ def test_json_response(start_time, end_time):
         cadence=60,
     )
     assert isinstance(response, dict)
-    assert response["uri"].startswith("jpip://")
+    assert response["uri"].startswith("jpips://")
 
     response = getJPX(
         startTime=start_time,

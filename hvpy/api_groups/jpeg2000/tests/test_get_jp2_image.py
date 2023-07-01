@@ -8,14 +8,14 @@ from hvpy.datasource import DataSource
 def test_str_response(date):
     response = getJP2Image(date=date, sourceId=DataSource.AIA_335, jpip=True, json=False)
     assert isinstance(response, str)
-    assert response.startswith("jpip://")
+    assert response.startswith("jpips://")
 
 
 def test_json_response(date):
     response = getJP2Image(date=date, sourceId=14, jpip=True, json=True)
     assert isinstance(response, dict)
     assert "uri" in response
-    assert response["uri"].startswith("jpip://")
+    assert response["uri"].startswith("jpips://")
 
 
 def test_raw_response(date):

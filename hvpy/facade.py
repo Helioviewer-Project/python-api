@@ -44,7 +44,7 @@ def getJP2Image(
     >>> from hvpy import getJP2Image
     >>> from datetime import datetime, timedelta
     >>> getJP2Image(date=datetime.today(), sourceId=14, jpip=True)
-    'jpip://...'
+    'jpips://...'
     """
     params = getJP2ImageInputParameters(date=date, sourceId=sourceId, jpip=jpip, json=json)
     return execute_api_call(input_parameters=params)
@@ -99,7 +99,7 @@ def getJPXClosestToMidPoint(
     ...     linked=False,
     ...     jpip=True
     ... )
-    'jpip://beta.helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
+    'jpips://beta.helioviewer.org:8090/movies/SDO_AIA_335_...jpxmid'
     """
     params = getJPXClosestToMidPointInputParameters(
         startTimes=startTimes,
@@ -140,7 +140,7 @@ def getJPX(
     ...        jpip=True,
     ...        verbose=False,
     ...        cadence=60)
-    'jpip://beta.helioviewer.org:8090/movies/...'
+    'jpips://beta.helioviewer.org:8090/movies/...'
     """
     params = getJPXInputParameters(
         startTime=startTime,
