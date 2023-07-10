@@ -63,7 +63,7 @@ def test_createMovie_timeout(start_time, end_time, tmp_path):
             eventsLabels=True,
             imageScale=1,
             filename=f1,
-            timeout=0.5,
+            timeout=0.01,
         )
 
 
