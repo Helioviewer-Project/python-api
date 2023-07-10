@@ -440,37 +440,37 @@ class DataSource(Enum):
 
     IRIS_SJI_1330 = 88
     """
-    IRIS Slit Jaw Imager, measurement 1330
+    IRIS Slit Jaw Imager, measurement 1330.
     """
 
     IRIS_SJI_2796 = 89
     """
-    IRIS Slit Jaw Imager, measurement 2796
+    IRIS Slit Jaw Imager, measurement 2796.
     """
 
     IRIS_SJI_1400 = 90
     """
-    IRIS Slit Jaw Imager, measurement 1400
+    IRIS Slit Jaw Imager, measurement 1400.
     """
 
     IRIS_SJI_2832 = 92
     """
-    IRIS Slit Jaw Imager, measurement 2832
+    IRIS Slit Jaw Imager, measurement 2832.
     """
 
     GONG_MAGNETOGRAM = 37
     """
-    NSO GONG Magnetograms
+    NSO GONG Magnetograms.
     """
 
     GONG_H_ALPHA = 94
     """
-    NSO GONG H-Alpha
+    NSO GONG H-Alpha.
     """
 
     GONG_FARSIDE = 95
     """
-    NSO GONG Farside
+    NSO GONG Farside.
     """
 
     SUVI_94 = 2000
