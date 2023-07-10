@@ -44,12 +44,8 @@ for line in open("nitpick-exceptions"):
 # -- Options for intersphinx extension -----------------------------------------
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
-    "numpy": ("https://numpy.org/doc/stable/", None),
-    "scipy": ("https://docs.scipy.org/doc/scipy/reference/", None),
-    "matplotlib": ("https://matplotlib.org/stable", None),
-    "aiapy": ("https://aiapy.readthedocs.io/en/stable/", None),
-    "astropy": ("https://docs.astropy.org/en/stable/", None),
     "requests": ("https://requests.readthedocs.io/en/stable/", None),
+    "pydantic": ("https://docs.pydantic.dev/latest/", None),
 }
 
 # -- Options for HTML output ---------------------------------------------------
