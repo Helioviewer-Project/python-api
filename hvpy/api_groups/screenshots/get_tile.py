@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import datetime
 
-from pydantic import validator
+from pydantic import field_validator
 
 from hvpy.io import HvpyParameters, OutputType
 from hvpy.utils import convert_date_to_isoformat
@@ -65,7 +65,7 @@ class getTileInputParameters(HvpyParameters):
     diffTime: Optional[int] = None
     baseDiffTime: Optional[datetime] = None
 
-    _date_vaidator = validator("baseDiffTime", allow_reuse=True)(convert_date_to_isoformat)
+    _date_vaidator = field_validator("baseDiffTime")(convert_date_to_isoformat)
 
     def get_output_type(self) -> OutputType:
         """

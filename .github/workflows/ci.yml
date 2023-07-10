@@ -24,9 +24,9 @@ jobs:
     with:
       submodules: false
       coverage: codecov
-      toxdeps: "'tox<4' tox-pypi-filter"
+      toxdeps: tox-pypi-filter
       envs: |
-        - linux: py310
+        - linux: py311
         - linux: codestyle
   test:
     needs: [core]
@@ -34,13 +34,14 @@ jobs:
     with:
       submodules: false
       coverage: codecov
-      toxdeps: "'tox<4' tox-pypi-filter"
+      toxdeps: tox-pypi-filter
       libraries: |
         apt:
           - libopenjp2-7
           - graphviz
       envs: |
-        - macos: py38
+        - linux: py38
+        - macos: py310
         - windows: py39
         - linux: build_docs
   publish:

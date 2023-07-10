@@ -27,7 +27,7 @@ def test_str_response(start_times, end_times):
         jpip=True,
     )
     assert isinstance(response, str)
-    assert response.startswith("jpip://")
+    assert response.startswith("jpips://")
 
 
 def test_json_response(start_times, end_times):
@@ -40,7 +40,7 @@ def test_json_response(start_times, end_times):
         jpip=True,
     )
     assert isinstance(response, dict)
-    assert response["uri"].startswith("jpip://")
+    assert response["uri"].startswith("jpips://")
 
     response = getJPXClosestToMidPoint(
         startTimes=start_times,

@@ -47,6 +47,6 @@ def execute_api_call(input_parameters: HvpyParameters) -> Union[bytes, str, Dict
     Union[bytes, str, Dict[str, Any]]
         Parsed response from the API.
     """
-    response = requests.get(input_parameters.url, params=input_parameters.dict())
+    response = requests.get(input_parameters.url, params=input_parameters.model_dump())
     response.raise_for_status()
     return parse_response(response, input_parameters.get_output_type())

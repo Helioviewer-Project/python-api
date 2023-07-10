@@ -28,13 +28,18 @@ class HvpyParameters(BaseModel):
     Base model for all Helioviewer API parameters.
     """
 
-    def dict(self) -> Dict[str, Any]:  # type: ignore
+    def model_dump(self) -> Dict[str, Any]:
         # pydantic doesn't allow using lowercase 'json' as a field
-        d = super().dict()
-        if "Json" in d:
-            d["json"] = d["Json"]
-            del d["Json"]
-        return d
+        import warnings
+
+        with warnings.catch_warnings():
+            # Our datetime fields are strings(???) and pydantic complains about that
+            warnings.simplefilter("ignore")
+            dump = super().model_dump()
+        if "Json" in dump:
+            dump["json"] = dump["Json"]
+            del dump["Json"]
+        return dump
 
     def get_output_type(self) -> OutputType:
         """
