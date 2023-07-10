@@ -438,6 +438,41 @@ class DataSource(Enum):
     Solar Orbiter instrument HRI, measurement 1216.
     """
 
+    IRIS_SJI_1330 = 88
+    """
+    IRIS Slit Jaw Imager, measurement 1330
+    """
+
+    IRIS_SJI_2796 = 89
+    """
+    IRIS Slit Jaw Imager, measurement 2796
+    """
+
+    IRIS_SJI_1400 = 90
+    """
+    IRIS Slit Jaw Imager, measurement 1400
+    """
+
+    IRIS_SJI_2832 = 92
+    """
+    IRIS Slit Jaw Imager, measurement 2832
+    """
+
+    GONG_MAGNETOGRAM = 37
+    """
+    NSO GONG Magnetograms
+    """
+
+    GONG_H_ALPHA = 94
+    """
+    NSO GONG H-Alpha
+    """
+
+    GONG_FARSIDE = 95
+    """
+    NSO GONG Farside
+    """
+
     SUVI_94 = 2000
     """
     GOES-R instrument SUVI, measurement 94.
