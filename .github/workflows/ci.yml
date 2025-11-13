@@ -66,7 +66,7 @@ jobs:
         contains(github.event.pull_request.labels.*.name, 'Run publish')
       )
     needs: [test]
-    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v1
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v2
     with:
       test_extras: 'all,tests'
       test_command: 'HELIOVIEWER_API_URL=https://api.beta.helioviewer.org/v2/ pytest -p no:warnings --doctest-rst --pyargs hvpy'
